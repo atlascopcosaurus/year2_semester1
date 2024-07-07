@@ -27,6 +27,15 @@ This module aims to develop academic literacy and communication skills necessary
 
 To clone this repository, use the following command:
 
+**Using SSH:**
+
 ```bash
-git clone git@atlascopcosaurus:atlascopcosaurus/year2_semester1.git
+git clone git@github.com:atlascopcosaurus/year2_semester1.git
 ```
+
+**Using HTTPS:**
+
+```bash
+git clone https://github.com/atlascopcosaurus/year2_semester1.git
+```
+
