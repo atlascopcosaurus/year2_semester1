@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CPA Calculator</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 20%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin: 20px;
+            font-size: 1.2em;
+        }
+
+        .details {
+            text-align: center;
+            margin: 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">CPA Calculator</h2>
+
+    <div id="year1">
+        <h3 style="text-align: center;">Year 1 - Level 5</h3>
+        <table>
+            <tr>
+                <th>Module</th>
+                <th>Credits</th>
+                <th>Marks</th>
+            </tr>
+            <!-- Year 1 Modules -->
+            <tr>
+                <td>Computer Architecture</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M1" /></td>
+            </tr>
+            <tr>
+                <td>Computational Mathematics</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M2" /></td>
+            </tr>
+            <tr>
+                <td>Principles of Programming 1</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M3" /></td>
+            </tr>
+            <tr>
+                <td>Cyber Laws & Ethics</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M4" /></td>
+            </tr>
+            <tr>
+                <td>Client Side Web Technologies</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M5" /></td>
+            </tr>
+            <tr>
+                <td>Network Principles</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M6" /></td>
+            </tr>
+            <tr>
+                <td>Database Principles</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M7" /></td>
+            </tr>
+            <tr>
+                <td>Principles of Programming 2</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY1M8" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="year2">
+        <h3 style="text-align: center;">Year 2 - Level 6</h3>
+        <table>
+            <tr>
+                <th>Module</th>
+                <th>Credits</th>
+                <th>Marks</th>
+            </tr>
+            <!-- Year 2 Modules -->
+            <tr>
+                <td>Server Side Web Technologies</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M1" /></td>
+            </tr>
+            <tr>
+                <td>Networking Technologies</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M2" /></td>
+            </tr>
+            <tr>
+                <td>OO Programming</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M3" /></td>
+            </tr>
+            <tr>
+                <td>Software Engineering</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M4" /></td>
+            </tr>
+            <tr>
+                <td>Algorithms, Data Structures and Complexities</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M5" /></td>
+            </tr>
+            <tr>
+                <td>Mobile Technologies</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M6" /></td>
+            </tr>
+            <tr>
+                <td>Information Systems and Security</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M7" /></td>
+            </tr>
+            <tr>
+                <td>Project Management</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY2M8" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="year3">
+        <h3 style="text-align: center;">Year 3 - Level 7/8</h3>
+        <table>
+            <tr>
+                <th>Module</th>
+                <th>Credits</th>
+                <th>Marks</th>
+            </tr>
+            <!-- Year 3 Modules -->
+            <tr>
+                <td>Design Methodologies</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY3M1" /></td>
+            </tr>
+            <tr>
+                <td>Quality Assurance</td>
+                <td>7.5</td>
+                <td><input type="number" id="marksY3M2" /></td>
+            </tr>
+            <tr>
+                <td>Business Informatics</td>
+                <td>5.0</td>
+                <td><input type="number" id="marksY3M3" /></td>
+            </tr>
+            <tr>
+                <td>Cyber Security & Digital Forensics</td>
+                <td>5.0</td>
+                <td><input type="number" id="marksY3M4" /></td>
+            </tr>
+            <tr>
+                <td>Final Year Applied Project Analysis and Design</td>
+                <td>5.0</td>
+                <td><input type="number" id="marksY3M5" /></td>
+            </tr>
+            <tr>
+                <td>Final Year Applied Project Implementation</td>
+                <td>15.0</td>
+                <td><input type="number" id="marksY3M6" /></td>
+            </tr>
+            <tr>
+                <td>Fundamentals of AI and Machine Learning</td>
+                <td>5.0</td>
+                <td><input type="number" id="marksY3M7" /></td>
+            </tr>
+            <!-- Electives -->
+            <tr>
+                <td>Blockchain Technologies</td>
+                <td>5.0</td>
+                <td><input type="number" id="marksY3M8" /></td>
+            </tr>
+            <tr>
+                <td>Business Intelligence & Data Analytics</td>
+                <td>5.0</td>
+                <td><input type="number" id="marksY3M9" /></td>
+            </tr>
+            <tr>
+                <td>Multimedia</td>
+                <td>5.0</td>
+                <td><input type="number" id="marksY3M10" /></td>
+            </tr>
+        </table>
+        <div style="text-align: center;">
+            <label for="elective1">Select Elective 1:</label>
+            <select id="elective1">
+                <option value="marksY3M8">Blockchain Technologies</option>
+                <option value="marksY3M9">Business Intelligence & Data Analytics</option>
+                <option value="marksY3M10">Multimedia</option>
+            </select>
+            <label for="elective2">Select Elective 2:</label>
+            <select id="elective2">
+                <option value="marksY3M8">Blockchain Technologies</option>
+                <option value="marksY3M9">Business Intelligence & Data Analytics</option>
+                <option value="marksY3M10">Multimedia</option>
+            </select>
+        </div>
+    </div>
+
+    <button onclick="calculateCPA()">Calculate CPA</button>
+
+    <div class="result" id="result"></div>
+    <div class="details" id="details"></div>
+
+    <script>
+        const modules = {
+            year1: [
+                { name: "Computer Architecture", credits: 7.5 },
+                { name: "Computational Mathematics", credits: 7.5 },
+                { name: "Principles of Programming 1", credits: 7.5 },
+                { name: "Cyber Laws & Ethics", credits: 7.5 },
+                { name: "Client Side Web Technologies", credits: 7.5 },
+                { name: "Network Principles", credits: 7.5 },
+                { name: "Database Principles", credits: 7.5 },
+                { name: "Principles of Programming 2", credits: 7.5 },
+            ],
+            year2: [
+                { name: "Server Side Web Technologies", credits: 7.5 },
+                { name: "Networking Technologies", credits: 7.5 },
+                { name: "OO Programming", credits: 7.5 },
+                { name: "Software Engineering", credits: 7.5 },
+                { name: "Algorithms, Data Structures and Complexities", credits: 7.5 },
+                { name: "Mobile Technologies", credits: 7.5 },
+                { name: "Information Systems and Security", credits: 7.5 },
+                { name: "Project Management", credits: 7.5 },
+            ],
+            year3: [
+                { name: "Design Methodologies", credits: 7.5 },
+                { name: "Quality Assurance", credits: 7.5 },
+                { name: "Business Informatics", credits: 5.0 },
+                { name: "Cyber Security & Digital Forensics", credits: 5.0 },
+                { name: "Final Year Applied Project Analysis and Design", credits: 5.0 },
+                { name: "Final Year Applied Project Implementation", credits: 15.0 },
+                { name: "Fundamentals of AI and Machine Learning", credits: 5.0 },
+                { name: "Blockchain Technologies", credits: 5.0 },
+                { name: "Business Intelligence & Data Analytics", credits: 5.0 },
+                { name: "Multimedia", credits: 5.0 },
+            ]
+        };
+
+        function calculateCPA() {
+            const marksYear1 = [
+                parseFloat(document.getElementById('marksY1M1').value),
+                parseFloat(document.getElementById('marksY1M2').value),
+                parseFloat(document.getElementById('marksY1M3').value),
+                parseFloat(document.getElementById('marksY1M4').value),
+                parseFloat(document.getElementById('marksY1M5').value),
+                parseFloat(document.getElementById('marksY1M6').value),
+                parseFloat(document.getElementById('marksY1M7').value),
+                parseFloat(document.getElementById('marksY1M8').value)
+            ];
+            const marksYear2 = [
+                parseFloat(document.getElementById('marksY2M1').value),
+                parseFloat(document.getElementById('marksY2M2').value),
+                parseFloat(document.getElementById('marksY2M3').value),
+                parseFloat(document.getElementById('marksY2M4').value),
+                parseFloat(document.getElementById('marksY2M5').value),
+                parseFloat(document.getElementById('marksY2M6').value),
+                parseFloat(document.getElementById('marksY2M7').value),
+                parseFloat(document.getElementById('marksY2M8').value)
+            ];
+            const marksYear3 = [
+                parseFloat(document.getElementById('marksY3M1').value),
+                parseFloat(document.getElementById('marksY3M2').value),
+                parseFloat(document.getElementById('marksY3M3').value),
+                parseFloat(document.getElementById('marksY3M4').value),
+                parseFloat(document.getElementById('marksY3M5').value),
+                parseFloat(document.getElementById('marksY3M6').value),
+                parseFloat(document.getElementById('marksY3M7').value)
+            ];
+
+            // Add selected electives
+            const elective1 = document.getElementById('elective1').value;
+            const elective2 = document.getElementById('elective2').value;
+            const elective1Value = parseFloat(document.getElementById(elective1).value);
+            const elective2Value = parseFloat(document.getElementById(elective2).value);
+
+            marksYear3.push(elective1Value);
+            marksYear3.push(elective2Value);
+
+            const cpaYear1 = calculateYearCPA(modules.year1, marksYear1);
+            const cpaYear2 = calculateYearCPA(modules.year2, marksYear2);
+            const cpaYear3 = calculateYearCPA(modules.year3.slice(0, 7).concat([{ credits: 5.0 }, { credits: 5.0 }]), marksYear3);
+
+            const totalCPA = calculateTotalCPA(cpaYear1, cpaYear2, cpaYear3);
+
+            document.getElementById('result').innerHTML = `
+      <p>CPA Year 1: ${cpaYear1.toFixed(2)}</p>
+      <p>CPA Year 2: ${cpaYear2.toFixed(2)}</p>
+      <p>CPA Year 3: ${cpaYear3.toFixed(2)}</p>
+      <p>Total CPA: ${totalCPA.toFixed(2)}</p>
+    `;
+
+            document.getElementById('details').innerHTML = `
+      <table style="margin: 0 auto;">
+        <tr>
+          <th>Level</th>
+          <th>Score</th>
+          <th>Weighted Score</th>
+        </tr>
+        <tr>
+          <td>CPA Level 5 (60 credits)</td>
+          <td>${cpaYear1.toFixed(2)}</td>
+          <td>${(cpaYear1 * 0.15).toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td>CPA Level 6 (60 credits)</td>
+          <td>${cpaYear2.toFixed(2)}</td>
+          <td>${(cpaYear2 * 0.35).toFixed(2)}</td>
+        </tr>
+        <tr>
+          <td>CPA Level 7/8 (60 credits)</td>
+          <td>${cpaYear3.toFixed(2)}</td>
+          <td>${(cpaYear3 * 0.50).toFixed(2)}</td>
+        </tr>
+        <tr>
+          <th>Total CPA (180 credits)</th>
+          <th></th>
+          <th>${totalCPA.toFixed(2)}</th>
+        </tr>
+      </table>
+    `;
+        }
+
+        function calculateYearCPA(modules, marks) {
+            let totalCredits = 0;
+            let weightedScore = 0;
+            modules.forEach((module, index) => {
+                totalCredits += module.credits;
+                weightedScore += module.credits * marks[index];
+            });
+            return weightedScore / totalCredits;
+        }
+
+        function calculateTotalCPA(cpaYear1, cpaYear2, cpaYear3) {
+            return (cpaYear1 * 0.15) + (cpaYear2 * 0.35) + (cpaYear3 * 0.50);
+        }
+    </script>
+
+</body>
+
+</html>
