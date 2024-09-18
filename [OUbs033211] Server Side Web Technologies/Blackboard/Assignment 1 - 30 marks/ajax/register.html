@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('registration-form');
+            form.reset();
+        });
+    </script>
+
+
+
+    <script>
+              $( document).ready(function(){
+        
+        $("#username").blur(function(){
+            var username = $("#username").val();
+              if (username !=""){ 
+                    $.ajax({
+                    url: 'check_username.php',
+                    type: 'POST',
+                    data: {username: username},
+                    dataType: "json",
+                    success: function(response){
+                        if(response.exists == true){
+                            $('#username_status').html('Username already exists');
+                            $("#username").focus();
+                           // $('#submit').attr('disabled', 'disabled');
+                        }else {
+                            $('#username_status').html('');
+                           // $('#submit').removeAttr('disabled');
+                        }
+                    }
+                });
+            }
+
+            else{ 
+					$("#username_status").hide(); 
+				}
+            });
+
+            $("#email").blur(function(){
+                var email = $("#email").val();
+               if (email !=""){ 
+                $.ajax({
+                    url: 'check_email.php',
+                    type: 'POST',
+                    data: {email: email},
+                    dataType: "json",
+                    success: function(response1){
+                        if(response1.exists == true){
+                            $('#email_status').html('Email already exists');
+                            $("#email").focus();
+                           // $('#submit').attr('disabled', 'disabled');
+                        }else {
+                            $('#email_status').html('');
+                           // $('#submit').removeAttr('disabled');
+                        }
+                    }
+                });
+            }
+
+            else{ 
+					$("#email_status").hide(); 
+				}
+            });
+
+            $("#registration-form").submit(function(event) {
+                var usernameExists = $("#username_status").text().trim() !== "";
+                var emailExists = $("#email_status").text().trim() !== "";
+
+                if (usernameExists || emailExists) {
+                    alert("Please fix the errors before submitting.");
+                    event.preventDefault();
+                }
+            });
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+<h2>User Registration Form</h2>
+    <form  id="registration-form" method="POST" action="process.php">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <span id="username_status"></span><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required ><br><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required ><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required >
+        <span id="email_status"></span><br><br>
+
+        <input type="submit" id="submit" value="Submit">
+    </form>
+</body>
+</html>
