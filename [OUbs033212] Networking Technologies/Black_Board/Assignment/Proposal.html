@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proposal.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>To design the &quot;Secure Company Network System&quot; in Cisco Packet Tracer, you would follow these key steps based on the provided network diagram:</p>
+<ol>
+<li>
+<p><strong>Network Topology Setup</strong>:</p>
+<ul>
+<li><strong>Core Switches</strong>: You need to set up core switches with redundancy using Layer 3 switches that support protocols like HSRP (Hot Standby Router Protocol) and LACP (Link Aggregation Control Protocol) as seen in the image. Configure them for load balancing and failover.</li>
+<li><strong>Distribution and Access Layers</strong>: Create the connection between the core switches and access switches for different departments (Sales, HR, Finance, IT, etc.) across multiple floors.</li>
+<li><strong>VLANs</strong>: Define VLANs for each department as shown (e.g., VLAN 10 for Sales, VLAN 20 for HR, etc.). Assign corresponding IP ranges.</li>
+<li><strong>Routing</strong>: Configure the appropriate routing protocols (like OSPF or static routing) to ensure communication between different VLANs and with external networks.</li>
+</ul>
+</li>
+<li>
+<p><strong>DMZ and Firewall Setup</strong>:</p>
+<ul>
+<li>Place the servers in the DMZ section as represented (WEB, EMAIL, APP, NAS/STORAGE servers).</li>
+<li>Use firewalls to secure traffic between the internal network and the DMZ.</li>
+</ul>
+</li>
+<li>
+<p><strong>Servers</strong>:</p>
+<ul>
+<li>Add different servers like DNS, FTP, and storage servers in the specified sections of the diagram.</li>
+<li>Ensure that these servers are properly connected to the internal network via switches and VLANs.</li>
+</ul>
+</li>
+<li>
+<p><strong>End Devices</strong>:</p>
+<ul>
+<li>Connect end-user devices (PCs, printers) in each department to the switches and assign them IP addresses based on their VLAN/subnet.</li>
+<li>Use DHCP to dynamically assign IP addresses as indicated.</li>
+</ul>
+</li>
+<li>
+<p><strong>External Network Access</strong>:</p>
+<ul>
+<li>Create external network links to branch offices (e.g., USA, China) and internet service providers (ISPs) using routers.</li>
+<li>Use NAT and ACLs for securing external communication.</li>
+</ul>
+</li>
+<li>
+<p><strong>Security Features</strong>:</p>
+<ul>
+<li>Implement Access Control Lists (ACLs) to manage traffic between departments and restrict access where needed.</li>
+<li>Configure VPN or other secure protocols for remote users accessing the network.</li>
+</ul>
+</li>
+<li>
+<p><strong>Wireless Network</strong>:</p>
+<ul>
+<li>Set up wireless access points (WAP) and controllers, as depicted in the design, to provide Wi-Fi access.</li>
+</ul>
+</li>
+<li>
+<p><strong>Backup and Redundancy</strong>:</p>
+<ul>
+<li>Configure redundancy for core switches and servers using techniques like Active/Standby or LACP.</li>
+<li>Use dual connections where applicable to avoid single points of failure.</li>
+</ul>
+</li>
+</ol>
+<h3 id="tools-in-cisco-packet-tracer">Tools in Cisco Packet Tracer:</h3>
+<ul>
+<li><strong>Switches and Routers</strong>: Use Layer 2/3 switches and routers to simulate core, distribution, and access layers.</li>
+<li><strong>Firewalls</strong>: You can implement a basic firewall configuration for DMZ security.</li>
+<li><strong>VLANs</strong>: Assign VLANs to ports based on department/segment needs.</li>
+<li><strong>End Devices</strong>: Use PCs, laptops, and servers to populate the departments and test connectivity.</li>
+</ul>
+<p>Once you set up the network, you can simulate traffic between departments, test ACLs, firewalls, and routing configurations to ensure the network works securely and efficiently.</p>
+<hr>
+<p>For your <strong>Cytonn Innovation Ltd</strong> project, you will need to design and implement a secure, scalable, and redundant network architecture using <strong>Cisco Packet Tracer</strong>. Here are the key steps and considerations to align with the case study requirements:</p>
+<h3 id="1-hierarchical-network-design">1. <strong>Hierarchical Network Design</strong></h3>
+<ul>
+<li>
+<p><strong>Core Layer</strong>:</p>
+<ul>
+<li>Deploy <strong>multilayer switches</strong> for both switching and routing.</li>
+<li>Assign IP addresses to these multilayer switches to enable Inter-VLAN routing.</li>
+<li>Use <strong>HSRP</strong> (Hot Standby Router Protocol) to ensure high availability and redundancy at the core layer.</li>
+<li>Implement <strong>OSPF</strong> for routing between VLANs and to external networks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Distribution Layer</strong>:</p>
+<ul>
+<li>Place <strong>Cisco ASA Firewalls (5500-X series)</strong> at this layer.</li>
+<li>Establish connection redundancy by configuring dual paths between the core and distribution layers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Access Layer</strong>:</p>
+<ul>
+<li>Use <strong>Catalyst 2960 48-Port switches</strong> for end-user devices, IP phones, and access points.</li>
+<li>Enable <strong>STP PortFast</strong> and <strong>BPDUguard</strong> on access switches to ensure quick port transitions and prevent loops.</li>
+<li>Configure VLANs for different departments (VLAN 10 for Management, VLAN 20 for LAN, VLAN 50 for WLAN, VLAN 70 for VoIP).</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-vlan-and-subnetting">2. <strong>VLAN and Subnetting</strong></h3>
+<ul>
+<li>Allocate IP ranges to VLANs:
+<ul>
+<li><strong>Management Network</strong>: 192.168.10.0/24</li>
+<li><strong>WLAN</strong>: 10.20.0.0/16</li>
+<li><strong>LAN</strong>: 172.16.0.0/16</li>
+<li><strong>VoIP</strong>: 172.30.0.0/16</li>
+<li><strong>DMZ</strong>: 10.11.11.0/27</li>
+</ul>
+</li>
+<li>Use <strong>subnetting</strong> to divide these networks and efficiently manage the IP address space.</li>
+</ul>
+<h3 id="3-security-and-firewalls">3. <strong>Security and Firewalls</strong></h3>
+<ul>
+<li><strong>ASA Firewall</strong>:
+<ul>
+<li>Configure three zones: <strong>outside (internet-facing)</strong>, <strong>inside (internal network)</strong>, and <strong>DMZ (server farm)</strong>.</li>
+<li>Place servers such as <strong>FTP, Web, Email, APP, and NAS storage</strong> in the DMZ.</li>
+<li>Inside zone should include <strong>DHCP, DNS, and AD servers</strong>.</li>
+<li>Define policies and ACLs on the ASA firewall to control access between zones.</li>
+<li>Use <strong>Static routing</strong> to route traffic between the internal network and the outside world.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-wireless-network">4. <strong>Wireless Network</strong>:</h3>
+<ul>
+<li>Install <strong>Cisco Wireless LAN Controllers (WLCs)</strong> for centralized Wi-Fi management.</li>
+<li>Ensure that each department is equipped with <strong>Lightweight Access Points (LAPs)</strong> for wireless connectivity.</li>
+<li>The <strong>WLAN</strong> network will use the IP range <strong>10.20.0.0/16</strong>.</li>
+</ul>
+<h3 id="5-voip-implementation">5. <strong>VoIP Implementation</strong>:</h3>
+<ul>
+<li>Deploy <strong>Cisco IP Phones</strong> for each department using VLAN 70 for <strong>VoIP</strong> communication.</li>
+<li>Configure a <strong>Cisco Voice Gateway</strong> to support telephony services within the network.</li>
+</ul>
+<h3 id="6-dhcp-and-ip-addressing">6. <strong>DHCP and IP Addressing</strong>:</h3>
+<ul>
+<li>Set up two <strong>DHCP servers</strong> for redundancy and to provide dynamic IP addressing for devices in the network.</li>
+<li>Use <strong>static IP addressing</strong> for critical devices such as servers, switches, firewalls, and routers.</li>
+</ul>
+<h3 id="7-link-aggregation-and-lacp">7. <strong>Link Aggregation and LACP</strong>:</h3>
+<ul>
+<li>Use <strong>EtherChannel</strong> with <strong>LACP</strong> to bundle multiple physical links into one logical link for redundancy and load balancing.</li>
+</ul>
+<h3 id="8-testing-and-validation">8. <strong>Testing and Validation</strong>:</h3>
+<ul>
+<li>Perform <strong>thorough testing</strong> to ensure proper connectivity and redundancy:
+<ul>
+<li>Check inter-VLAN communication and routing.</li>
+<li>Validate that all devices are receiving dynamic IPs from the DHCP servers.</li>
+<li>Test failover mechanisms like HSRP and link aggregation.</li>
+<li>Ensure firewall policies and ACLs are working as expected.</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-management-and-remote-access">9. <strong>Management and Remote Access</strong>:</h3>
+<ul>
+<li>Implement <strong>SSH</strong> for secure remote management of the network.</li>
+<li>Configure a <strong>Standard ACL</strong> on the VTY lines to allow only specific management devices to access the network remotely.</li>
+</ul>
+<h3 id="10-future-proofing">10. <strong>Future-Proofing</strong>:</h3>
+<ul>
+<li>Design the network to scale easily as Cytonn Innovation expands.</li>
+<li>Use <strong>modular designs</strong> and ensure ample IP space in each VLAN for future growth.</li>
+<li>Implement <strong>cloud integration</strong> as the company leverages cloud-based services for global clients.</li>
+</ul>
+<hr>
+<p>Cisco Packet Tracer does not directly support scripting for full network deployments in the same way that a live network environment or network simulation tools like GNS3 with automation capabilities (e.g., using Ansible or Python scripts) would allow. However, you can semi-automate the configuration process in Cisco Packet Tracer using configuration templates or by pre-configuring devices in a template network, which you can copy as needed.</p>
+<p>Here's a general approach you can take to streamline your network setup in Cisco Packet Tracer:</p>
+<ol>
+<li>
+<p><strong>Create Configuration Templates</strong>: Write standard configuration sets for routers, switches, and other devices. You can use a text editor to prepare these configurations. For example, create templates for different device roles like Core Switch, Access Switch, Firewall, DHCP Server, etc.</p>
+</li>
+<li>
+<p><strong>Use Partial Automation Features</strong>: Cisco Packet Tracer allows for the import of configuration files into devices. You can prepare these configurations beforehand and load them into the respective devices within your Packet Tracer network. This reduces repetitive tasks and potential errors.</p>
+</li>
+<li>
+<p><strong>Bulk Device Configuration</strong>:</p>
+<ul>
+<li>Prepare device configurations in a text format.</li>
+<li>Open the device in Cisco Packet Tracer.</li>
+<li>Import the configuration via the CLI tab by copying and pasting the pre-written configurations.</li>
+</ul>
+</li>
+</ol>
+<h3 id="example-configuration-template-for-a-core-switch">Example Configuration Template for a Core Switch:</h3>
+<pre class="hljs"><code><div>! Core Switch Configuration Template
+enable
+configure terminal
+hostname CoreSwitch
+! Configure VLANs
+vlan 10
+ name Management
+vlan 20
+ name LAN
+vlan 50
+ name WLAN
+vlan 70
+ name VoIP
+vlan 199
+ name Blackhole
+! Configure Trunk Ports
+interface range gig0/1 - 2
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,50,70,199
+! Configure HSRP for VLAN 10 (Management VLAN)
+interface vlan 10
+ ip address 192.168.10.2 255.255.255.0
+ standby 1 ip 192.168.10.1
+ standby 1 priority 110
+ standby 1 preempt
+! Configure OSPF
+router ospf 1
+ network 192.168.10.0 0.0.0.255 area 0
+ network 172.16.0.0 0.0.255.255 area 0
+ network 172.30.0.0 0.0.255.255 area 0
+ default-information originate
+! Save Configuration
+end
+write memory
+</div></code></pre>
+<h3 id="steps-to-apply-configurations">Steps to Apply Configurations:</h3>
+<ol>
+<li><strong>Prepare Configuration</strong>: Write the configurations for all device types based on your network design requirements.</li>
+<li><strong>Start Cisco Packet Tracer</strong>: Launch your project and place the necessary devices.</li>
+<li><strong>Open Device CLI</strong>: Double-click on a device to open it, go to the CLI tab, and enter the global configuration mode.</li>
+<li><strong>Paste Configuration</strong>: Copy the configuration from your template and paste it into the CLI of the device.</li>
+</ol>
+<p>This method can speed up the process significantly, although it’s not as automated as scripting in a more dynamic simulation environment. For more complex automation, consider using network simulators that support integration with network automation tools. If you're preparing for real-world applications, learning to use tools like Ansible for network configuration might be highly beneficial.</p>
+<hr>
+<p>Certainly! To configure each of the devices for the <strong>Cytonn Innovation Ltd</strong> project in Cisco Packet Tracer, I'll walk you through the configuration of key devices step by step. We'll cover:</p>
+<ol>
+<li><strong>Core Switches</strong> (with HSRP and VLANs)</li>
+<li><strong>Distribution Layer</strong> (with VLANs and routing)</li>
+<li><strong>Cisco ASA Firewalls</strong> (with inside, outside, DMZ zones)</li>
+<li><strong>Access Layer Switches</strong> (with VLANs and basic security features)</li>
+<li><strong>DHCP Servers</strong></li>
+<li><strong>Wireless LAN Controllers and Access Points</strong></li>
+<li><strong>VoIP Gateway and Phones</strong></li>
+<li><strong>Redundant Internet Connectivity via two ISPs</strong></li>
+</ol>
+<p>Let’s start step by step with each component. I'll give you the CLI configuration that you can paste into the devices on Cisco Packet Tracer.</p>
+<hr>
+<h3 id="1-core-switches-configuration-hsrp-and-vlans">1. <strong>Core Switches Configuration (HSRP and VLANs)</strong></h3>
+<p>We will configure the core switches for redundancy using <strong>HSRP</strong>, VLANs, and inter-VLAN routing.</p>
+<h4 id="core-switch-1-primary"><strong>Core Switch 1</strong> (Primary)</h4>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname CoreSwitch1
+
+! Create VLANs for different departments
+vlan 10
+ name Management
+vlan 20
+ name LAN
+vlan 50
+ name WLAN
+vlan 70
+ name VoIP
+vlan 199
+ name Blackhole
+
+! Assign IP addresses to the VLAN interfaces for inter-VLAN routing
+interface vlan 10
+ ip address 192.168.10.2 255.255.255.0
+ standby 1 ip 192.168.10.1
+ standby 1 priority 110
+ standby 1 preempt
+
+interface vlan 20
+ ip address 172.16.0.1 255.255.0.0
+ standby 2 ip 172.16.0.254
+ standby 2 priority 110
+ standby 2 preempt
+
+interface vlan 50
+ ip address 10.20.0.1 255.255.0.0
+ standby 3 ip 10.20.0.254
+ standby 3 priority 110
+ standby 3 preempt
+
+interface vlan 70
+ ip address 172.30.0.1 255.255.0.0
+ standby 4 ip 172.30.0.254
+ standby 4 priority 110
+ standby 4 preempt
+
+! Configure trunk links to distribution switches
+interface range gigabitEthernet 0/1 - 2
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,50,70,199
+
+! Enable OSPF for inter-VLAN routing
+router ospf 1
+ network 192.168.10.0 0.0.0.255 area 0
+ network 172.16.0.0 0.0.255.255 area 0
+ network 10.20.0.0 0.0.255.255 area 0
+ network 172.30.0.0 0.0.255.255 area 0
+
+! Save Configuration
+end
+write memory
+</div></code></pre>
+<h4 id="core-switch-2-secondary"><strong>Core Switch 2</strong> (Secondary)</h4>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname CoreSwitch2
+
+! Create VLANs for different departments
+vlan 10
+ name Management
+vlan 20
+ name LAN
+vlan 50
+ name WLAN
+vlan 70
+ name VoIP
+vlan 199
+ name Blackhole
+
+! Assign IP addresses to the VLAN interfaces for inter-VLAN routing
+interface vlan 10
+ ip address 192.168.10.3 255.255.255.0
+ standby 1 ip 192.168.10.1
+ standby 1 priority 100
+ standby 1 preempt
+
+interface vlan 20
+ ip address 172.16.0.2 255.255.0.0
+ standby 2 ip 172.16.0.254
+ standby 2 priority 100
+ standby 2 preempt
+
+interface vlan 50
+ ip address 10.20.0.2 255.255.0.0
+ standby 3 ip 10.20.0.254
+ standby 3 priority 100
+ standby 3 preempt
+
+interface vlan 70
+ ip address 172.30.0.2 255.255.0.0
+ standby 4 ip 172.30.0.254
+ standby 4 priority 100
+ standby 4 preempt
+
+! Configure trunk links to distribution switches
+interface range gigabitEthernet 0/1 - 2
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,50,70,199
+
+! Enable OSPF for inter-VLAN routing
+router ospf 1
+ network 192.168.10.0 0.0.0.255 area 0
+ network 172.16.0.0 0.0.255.255 area 0
+ network 10.20.0.0 0.0.255.255 area 0
+ network 172.30.0.0 0.0.255.255 area 0
+
+! Save Configuration
+end
+write memory
+</div></code></pre>
+<hr>
+<h3 id="2-access-layer-switches-configuration">2. <strong>Access Layer Switches Configuration</strong></h3>
+<p>Access layer switches connect the end devices to the network and handle VLAN assignments and basic port security features like <strong>PortFast</strong> and <strong>BPDUguard</strong>.</p>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname AccessSwitchX
+
+! Create VLANs for department segregation
+vlan 10
+ name Management
+vlan 20
+ name LAN
+vlan 50
+ name WLAN
+vlan 70
+ name VoIP
+vlan 199
+ name Blackhole
+
+! Configure trunk link to the core switches
+interface gigabitEthernet 0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,50,70,199
+
+! Assign Access Ports to VLANs for end devices
+interface range gigabitEthernet 0/2 - 10
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+! Save Configuration
+end
+write memory
+</div></code></pre>
+<hr>
+<h3 id="3-asa-firewall-configuration">3. <strong>ASA Firewall Configuration</strong></h3>
+<p>Configure the <strong>ASA Firewall</strong> with three zones: <strong>outside</strong>, <strong>inside</strong>, and <strong>DMZ</strong>. The firewall will handle NAT, access control, and static routing.</p>
+<pre class="hljs"><code><div>! Basic firewall configuration
+enable
+configure terminal
+hostname ASA1
+
+! Assign interfaces to zones
+interface gigabitEthernet 0/0
+ nameif outside
+ security-level 0
+ ip address 105.100.50.2 255.255.255.252
+ no shutdown
+
+interface gigabitEthernet 0/1
+ nameif inside
+ security-level 100
+ ip address 192.168.10.254 255.255.255.0
+ no shutdown
+
+interface gigabitEthernet 0/2
+ nameif dmz
+ security-level 50
+ ip address 10.11.11.1 255.255.255.224
+ no shutdown
+
+! Define static routes for internal and external traffic
+route outside 0.0.0.0 0.0.0.0 105.100.50.1
+route inside 172.16.0.0 255.255.0.0 192.168.10.1
+route dmz 10.11.11.0 255.255.255.224 10.11.11.2
+
+! Enable NAT
+nat (inside,outside) dynamic interface
+
+! Apply security policies
+access-list OUTSIDE_IN extended permit tcp any any eq www
+access-list OUTSIDE_IN extended permit tcp any any eq https
+access-group OUTSIDE_IN in interface outside
+
+! Save Configuration
+end
+write memory
+</div></code></pre>
+<hr>
+<h3 id="4-dhcp-server-configuration">4. <strong>DHCP Server Configuration</strong></h3>
+<p>Configure DHCP on a dedicated server to provide dynamic IP addresses to all devices in the internal network.</p>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname DHCP_Server
+
+! Configure DHCP for the LAN
+ip dhcp pool LAN
+ network 172.16.0.0 255.255.0.0
+ default-router 172.16.0.1
+ dns-server 192.168.10.10
+
+! Configure DHCP for WLAN
+ip dhcp pool WLAN
+ network 10.20.0.0 255.255.0.0
+ default-router 10.20.0.1
+ dns-server 192.168.10.10
+
+! Configure DHCP for VoIP
+ip dhcp pool VoIP
+ network 172.30.0.0 255.255.0.0
+ default-router 172.30.0.1
+ dns-server 192.168.10.10
+
+! Save Configuration
+end
+write memory
+</div></code></pre>
+<hr>
+<p>This set of configurations should allow you to establish the core, access, and security features of your network as outlined in the project requirements. Let me know if you need additional configurations for other components like <strong>VoIP Gateway</strong>, <strong>WLC</strong> (Wireless LAN Controller), or specific features like <strong>SSH</strong> ACLs.</p>
+<hr>
+<p>Here’s the continuation of the network setup for <strong>Cytonn Innovation Ltd</strong> project. We will cover additional configurations for the <strong>Wireless LAN Controller (WLC)</strong>, <strong>Lightweight Access Points (LAPs)</strong>, <strong>VoIP Gateway</strong>, and the <strong>SSH ACL</strong> for secure remote management.</p>
+<hr>
+<h3 id="5-wireless-lan-controller-wlc-configuration">5. <strong>Wireless LAN Controller (WLC) Configuration</strong></h3>
+<p>The <strong>Wireless LAN Controller (WLC)</strong> will manage all the Lightweight Access Points (LAPs) deployed in different departments. The WLC will handle WLAN configuration, security policies, and dynamic IP addressing for wireless devices.</p>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname WLC1
+
+! Set the management interface for the WLC
+interface vlan 50
+ ip address 10.20.0.2 255.255.0.0
+ no shutdown
+
+! Define the Wireless LAN (WLAN) for employees and guests
+wlan Employees 1
+ ssid Employees_SSID
+ security wpa wpa2
+ authentication wpa-psk ascii Employee_Password123
+
+wlan Guests 2
+ ssid Guests_SSID
+ security wpa wpa2
+ authentication wpa-psk ascii Guest_Password123
+
+! Set DHCP relay to the DHCP server
+ip helper-address 192.168.10.10
+
+! Apply to the physical interfaces (Ethernet port connected to core switch)
+interface gigabitEthernet 0/0
+ switchport mode access
+ switchport access vlan 50
+ no shutdown
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<hr>
+<h3 id="6-lightweight-access-points-laps-configuration">6. <strong>Lightweight Access Points (LAPs) Configuration</strong></h3>
+<p><strong>Lightweight Access Points</strong> (LAPs) are centrally managed by the WLC. They don’t require complex configuration since most of the configurations will be handled by the WLC.</p>
+<p>To set up LAPs:</p>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname LAP1
+
+! Configure basic settings for LAP
+interface gigabitEthernet 0/0
+ switchport mode access
+ switchport access vlan 50
+ no shutdown
+
+! Define controller IP
+wlc ip 10.20.0.2
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<p>Repeat this configuration for each Lightweight Access Point (LAP) in the building.</p>
+<hr>
+<h3 id="7-voip-gateway-and-ip-phone-configuration">7. <strong>VoIP Gateway and IP Phone Configuration</strong></h3>
+<p>The <strong>VoIP Gateway</strong> enables communication between IP phones in the building using VLAN 70 for <strong>VoIP</strong>. The VoIP gateway connects to the Public Switched Telephone Network (PSTN) for external calls.</p>
+<h4 id="voip-gateway-configuration"><strong>VoIP Gateway Configuration</strong>:</h4>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname VoIP_Gateway
+
+! Configure IP address for VoIP gateway in VLAN 70
+interface vlan 70
+ ip address 172.30.0.10 255.255.0.0
+ no shutdown
+
+! Define a dial-peer for internal VoIP calls
+dial-peer voice 1000 voip
+ destination-pattern 1...
+ session target ipv4:172.30.0.10
+ codec g711ulaw
+
+! Define a dial-peer for external PSTN calls
+dial-peer voice 2000 pots
+ destination-pattern 9T
+ port 0/0/0:15
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<h4 id="ip-phone-configuration"><strong>IP Phone Configuration</strong>:</h4>
+<ol>
+<li>Connect the <strong>IP phones</strong> to the access switches in the relevant department.</li>
+<li>Assign VLAN 70 for <strong>VoIP</strong> communication on the switch ports.</li>
+</ol>
+<pre class="hljs"><code><div>enable
+configure terminal
+interface gigabitEthernet 0/2
+ switchport mode access
+ switchport access vlan 70
+ no shutdown
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<ol start="3">
+<li>Configure the IP phone to automatically obtain its IP address from the DHCP server in VLAN 70.</li>
+</ol>
+<hr>
+<h3 id="8-ssh-acl-configuration-for-secure-remote-management">8. <strong>SSH ACL Configuration for Secure Remote Management</strong></h3>
+<p>To allow only the <strong>Senior Network Security Engineer's PC</strong> to access the core switches and firewalls via SSH, we will configure an ACL and apply it to the <strong>VTY lines</strong>.</p>
+<h4 id="core-switch-1"><strong>Core Switch 1</strong>:</h4>
+<pre class="hljs"><code><div>enable
+configure terminal
+
+! Define an access control list (ACL) to allow only the security engineer’s PC (e.g., 192.168.10.5)
+access-list 10 permit 192.168.10.5
+
+! Apply the ACL to VTY lines
+line vty 0 4
+ access-class 10 in
+ transport input ssh
+ login local
+ password Cisco123
+
+! Enable SSH on the device
+ip domain-name cytonn.local
+crypto key generate rsa
+ modulus 1024
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<p>Repeat the same configuration for <strong>Core Switch 2</strong> and the <strong>ASA Firewall</strong> with similar SSH ACL rules.</p>
+<hr>
+<h3 id="9-redundant-isp-configuration">9. <strong>Redundant ISP Configuration</strong></h3>
+<p>In this setup, Cytonn Innovation Ltd uses two ISPs for internet redundancy, <strong>SEACOM</strong> and <strong>Safaricom</strong>. We will configure static routes and load balancing for redundancy.</p>
+<h4 id="asa-firewall-configuration-continued"><strong>ASA Firewall Configuration</strong> (continued):</h4>
+<pre class="hljs"><code><div>enable
+configure terminal
+
+! Define static routes for SEACOM and Safaricom ISPs
+route outside 105.100.50.0 255.255.255.252 105.100.50.1
+route outside 197.200.100.0 255.255.255.252 197.200.100.1
+
+! Use equal-cost load balancing between the two ISPs
+ip route 0.0.0.0 0.0.0.0 105.100.50.1
+ip route 0.0.0.0 0.0.0.0 197.200.100.1
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<p>This setup ensures that if one ISP connection fails, the other takes over seamlessly, providing continuous internet access.</p>
+<hr>
+<h3 id="10-final-testing-checklist">10. <strong>Final Testing Checklist</strong></h3>
+<ul>
+<li><strong>HSRP</strong> and <strong>LACP</strong> on core switches for redundancy and load balancing.</li>
+<li><strong>VLANs</strong> are properly configured for each department.</li>
+<li><strong>Inter-VLAN routing</strong> through OSPF.</li>
+<li><strong>ASA Firewall</strong> zones and security rules are correctly applied.</li>
+<li><strong>Wireless connectivity</strong> managed by the <strong>WLC</strong> with centralized control.</li>
+<li><strong>VoIP</strong> services operational through the <strong>VoIP Gateway</strong> and IP phones.</li>
+<li><strong>SSH access</strong> restricted to specific management PCs.</li>
+<li><strong>Redundant ISP connections</strong> established for high availability.</li>
+</ul>
+<hr>
+<p>This set of configurations will fully implement the network infrastructure for Cytonn Innovation Ltd based on the project requirements. Let me know if you need any specific adjustments or deeper insights into certain sections!</p>
+<hr>
+<p>I didn’t explicitly provide a configuration for the <strong>Cisco 2960-24TT switch in the DMZ</strong> (DMZ-SW), but I can certainly help with that. The <strong>DMZ-SW</strong> in the Demilitarized Zone (DMZ) will connect the DMZ servers (like FTP, Web, Email, and NAS) to the network and isolate these servers from both the internal network and the outside world.</p>
+<p>Here’s the proposed configuration for the <strong>DMZ-SW</strong>:</p>
+<hr>
+<h3 id="cisco-2960-24tt-dmz-sw-configuration"><strong>Cisco 2960-24TT DMZ-SW Configuration</strong></h3>
+<p>This switch will handle VLANs specific to the <strong>DMZ zone</strong> and connect to the firewall for controlled access to both the internal network (inside) and external network (outside).</p>
+<pre class="hljs"><code><div>enable
+configure terminal
+hostname DMZ-SW
+
+! Create VLAN for the DMZ servers (VLAN 100 for DMZ)
+vlan 100
+ name DMZ_Servers
+
+! Assign interfaces to VLAN 100 (DMZ Servers)
+interface gigabitEthernet 0/1
+ switchport mode access
+ switchport access vlan 100
+ description Connection to FTP Server
+
+interface gigabitEthernet 0/2
+ switchport mode access
+ switchport access vlan 100
+ description Connection to Web Server
+
+interface gigabitEthernet 0/3
+ switchport mode access
+ switchport access vlan 100
+ description Connection to Email Server
+
+interface gigabitEthernet 0/4
+ switchport mode access
+ switchport access vlan 100
+ description Connection to NAS Storage
+
+! Trunk link to ASA Firewall
+interface gigabitEthernet 0/24
+ switchport mode trunk
+ switchport trunk allowed vlan 100
+ description Trunk to ASA Firewall DMZ Interface
+
+! Basic Security Settings
+spanning-tree portfast edge
+spanning-tree bpduguard enable
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<hr>
+<h3 id="explanation-of-configuration"><strong>Explanation of Configuration</strong>:</h3>
+<ol>
+<li>
+<p><strong>VLAN 100 (DMZ)</strong>: A dedicated VLAN is created for the DMZ servers. Each server (FTP, Web, Email, NAS) is connected to the switch via its own access port assigned to VLAN 100.</p>
+</li>
+<li>
+<p><strong>Trunk Link to ASA Firewall</strong>: The switch is connected to the <strong>DMZ interface of the ASA Firewall</strong> (on GigabitEthernet 0/24) using a trunk link. This allows the firewall to manage traffic between the DMZ and other zones (inside and outside).</p>
+</li>
+<li>
+<p><strong>PortFast and BPDUguard</strong>: These settings are applied to prevent potential loops and expedite the port status from blocking to forwarding for end devices (servers).</p>
+</li>
+</ol>
+<hr>
+<h3 id="connecting-to-the-asa-firewall"><strong>Connecting to the ASA Firewall</strong>:</h3>
+<p>Ensure that the <strong>ASA Firewall</strong> has the appropriate configuration for its <strong>DMZ interface</strong> (as I mentioned earlier in the ASA configuration section). The <strong>GigabitEthernet 0/2</strong> interface on the firewall should be assigned to VLAN 100 and connected to the <strong>DMZ-SW</strong>.</p>
+<hr>
+<p>This configuration secures the DMZ, allows it to interface with the firewall, and isolates DMZ traffic while enabling proper management of services like FTP, Web, and Email. Let me know if you need further adjustments or more specific configurations!</p>
+<hr>
+<p>In your network design, the <strong>core switches (Core-SW1 and Core-SW2)</strong> are configured with <strong>HSRP (Hot Standby Router Protocol)</strong> to provide redundancy. If <strong>Core-SW2</strong> goes down, here’s what will happen, and how traffic will be handled:</p>
+<h3 id="1-hsrp-for-gateway-redundancy"><strong>1. HSRP for Gateway Redundancy</strong></h3>
+<p>HSRP creates a <strong>virtual IP address</strong> and <strong>virtual MAC address</strong> that act as the default gateway for devices on the network. Here’s how it ensures continuity:</p>
+<ul>
+<li>
+<p><strong>Primary/Active Role</strong>: In this case, <strong>Core-SW1</strong> has been configured with a higher priority (110) than <strong>Core-SW2</strong> (100). So, by default, <strong>Core-SW1</strong> will act as the <strong>active router</strong> (the primary default gateway) for all VLANs.</p>
+</li>
+<li>
+<p><strong>Standby Role</strong>: <strong>Core-SW2</strong> acts as the <strong>standby router</strong>. If Core-SW1 goes down, Core-SW2 would take over the default gateway role for each VLAN.</p>
+</li>
+<li>
+<p><strong>Preemption</strong>: Since <strong>HSRP preemption</strong> is enabled, Core-SW1 will automatically reclaim the active role once it comes back online after a failure.</p>
+</li>
+</ul>
+<h4 id="hsrp-configuration-for-vlan-10-on-both-switches-example"><strong>HSRP Configuration for VLAN 10 on Both Switches (example)</strong>:</h4>
+<ul>
+<li><strong>Core-SW1 (Active)</strong>:<pre class="hljs"><code><div>interface vlan 10
+ ip address 192.168.10.2 255.255.255.0
+ standby 1 ip 192.168.10.1
+ standby 1 priority 110
+ standby 1 preempt
+</div></code></pre>
+</li>
+<li><strong>Core-SW2 (Standby)</strong>:<pre class="hljs"><code><div>interface vlan 10
+ ip address 192.168.10.3 255.255.255.0
+ standby 1 ip 192.168.10.1
+ standby 1 priority 100
+ standby 1 preempt
+</div></code></pre>
+</li>
+</ul>
+<p>In this scenario, if <strong>Core-SW2</strong> goes down, <strong>Core-SW1</strong> is already acting as the <strong>active router</strong>, so there will be no disruption in the network since <strong>Core-SW1</strong> continues to act as the default gateway.</p>
+<h3 id="2-etherchannel-and-lacp-for-redundant-links"><strong>2. EtherChannel and LACP for Redundant Links</strong></h3>
+<p>You are also using <strong>EtherChannel</strong> with <strong>LACP (Link Aggregation Control Protocol)</strong> for link redundancy and load balancing between the <strong>core switches</strong> and the <strong>access/distribution layer switches</strong>. This creates bundled links that ensure continuous connection even if one or more links fail.</p>
+<h4 id="etherchannel-example-on-access-layer-switch"><strong>EtherChannel Example on Access Layer Switch</strong>:</h4>
+<pre class="hljs"><code><div>interface range gigabitEthernet 0/1 - 2
+ channel-group 1 mode active
+!
+interface port-channel 1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,50,70,199
+</div></code></pre>
+<p>If <strong>Core-SW2</strong> goes down, traffic will continue to flow through the <strong>remaining links</strong> that are connected to <strong>Core-SW1</strong>, ensuring there is no break in connectivity between the core and access layers.</p>
+<h3 id="3-ospf-routing-redundancy"><strong>3. OSPF Routing Redundancy</strong></h3>
+<p>You are using <strong>OSPF</strong> for routing between VLANs and external networks. If <strong>Core-SW2</strong> goes down, <strong>OSPF</strong> will automatically reroute traffic through <strong>Core-SW1</strong>.</p>
+<ul>
+<li><strong>OSPF</strong> is designed to detect failures in adjacent routers and links. If <strong>Core-SW2</strong> fails, <strong>OSPF</strong> will immediately reconverge and reroute traffic through <strong>Core-SW1</strong>. This ensures that VLANs and external connectivity remain operational.</li>
+</ul>
+<h3 id="4-impact-on-dmz-sw-and-asa-firewall"><strong>4. Impact on DMZ-SW and ASA Firewall</strong></h3>
+<p>The <strong>DMZ-SW</strong> is connected to the <strong>ASA firewall</strong> which is also dual-homed (connected to both <strong>Core-SW1</strong> and <strong>Core-SW2</strong>). Since the <strong>ASA firewall</strong> is connected to both core switches via <strong>EtherChannel</strong>, if <strong>Core-SW2</strong> goes down, all traffic will automatically be routed through <strong>Core-SW1</strong>.</p>
+<h3 id="summary-of-handling-the-core-sw2-shutdown"><strong>Summary of Handling the Core-SW2 Shutdown</strong>:</h3>
+<ul>
+<li><strong>HSRP</strong>: Ensures that <strong>Core-SW1</strong> remains as the active router for the network. No disruption in gateway availability occurs since <strong>Core-SW1</strong> is already the active router.</li>
+<li><strong>EtherChannel (LACP)</strong>: If <strong>Core-SW2</strong> goes down, the <strong>EtherChannel</strong> automatically shifts all traffic to the <strong>Core-SW1</strong> links without interruption.</li>
+<li><strong>OSPF</strong>: Routes are dynamically adjusted so that all traffic flows through <strong>Core-SW1</strong> if <strong>Core-SW2</strong> fails.</li>
+<li><strong>DMZ-SW and ASA</strong>: Traffic from the <strong>DMZ</strong> will continue to flow through the <strong>ASA firewall</strong> to <strong>Core-SW1</strong>, ensuring uninterrupted access to DMZ resources.</li>
+</ul>
+<h3 id="in-conclusion">In Conclusion:</h3>
+<p>The network will <strong>seamlessly continue to operate</strong> if <strong>Core-SW2</strong> is shut down, with <strong>Core-SW1</strong> taking over all responsibilities. The combination of <strong>HSRP</strong>, <strong>EtherChannel</strong>, and <strong>OSPF</strong> provides <strong>full redundancy</strong> and ensures that there is no single point of failure in your design.</p>
+<hr>
+<p>To adapt your network to use the <strong>IP range 192.168.200.0/23</strong> and allocate IPs for <strong>three branches</strong> with the four given departments (<strong>Accounts, Administrator, Marketing, Sales</strong>) based on the specified quantities, you will need to <strong>subnet</strong> the IP range to efficiently allocate IP addresses.</p>
+<p>Here’s a step-by-step breakdown of how to approach this:</p>
+<h3 id="1-determine-the-ip-requirements-for-each-department">1. <strong>Determine the IP Requirements for Each Department</strong></h3>
+<p>You have the following departments with the given number of devices:</p>
+<ul>
+<li><strong>Accounts</strong>: 59 devices</li>
+<li><strong>Administrator</strong>: 69 devices</li>
+<li><strong>Marketing</strong>: 119 devices</li>
+<li><strong>Sales</strong>: 249 devices</li>
+</ul>
+<p>For each department, we need to create subnets that can accommodate at least the specified number of devices, while keeping room for growth and adhering to network best practices.</p>
+<h3 id="2-subnet-the-network-192168200023">2. <strong>Subnet the Network 192.168.200.0/23</strong></h3>
+<p>The IP range <strong>192.168.200.0/23</strong> provides <strong>512 total IP addresses</strong> (including network and broadcast addresses). We can break this down into smaller subnets for each department. Since <strong>/23</strong> provides more than 512 IP addresses, we can work with <strong>/24</strong>, <strong>/25</strong>, <strong>/26</strong>, etc., to divide the network accordingly.</p>
+<p>Let’s calculate the required subnets:</p>
+<table>
+<thead>
+<tr>
+<th>Department</th>
+<th>Qty</th>
+<th>Required Hosts</th>
+<th>Recommended Subnet Mask</th>
+<th>Total Usable IPs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Accounts</strong></td>
+<td>59</td>
+<td>At least 62</td>
+<td><strong>/26</strong> (255.255.255.192)</td>
+<td>62 usable IPs</td>
+</tr>
+<tr>
+<td><strong>Administrator</strong></td>
+<td>69</td>
+<td>At least 70</td>
+<td><strong>/25</strong> (255.255.255.128)</td>
+<td>126 usable IPs</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>119</td>
+<td>At least 126</td>
+<td><strong>/25</strong> (255.255.255.128)</td>
+<td>126 usable IPs</td>
+</tr>
+<tr>
+<td><strong>Sales</strong></td>
+<td>249</td>
+<td>At least 254</td>
+<td><strong>/24</strong> (255.255.255.0)</td>
+<td>254 usable IPs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-subnet-assignment">3. <strong>Subnet Assignment</strong></h3>
+<p>Here’s how you can divide the <strong>192.168.200.0/23</strong> network into multiple subnets based on the departments and their requirements:</p>
+<h4 id="a-sales-department-249-devices">a. <strong>Sales Department (249 devices)</strong>:</h4>
+<ul>
+<li><strong>Subnet</strong>: 192.168.200.0/24</li>
+<li><strong>Subnet Mask</strong>: 255.255.255.0</li>
+<li><strong>Usable IPs</strong>: 192.168.200.1 to 192.168.200.254</li>
+<li>This provides <strong>254 usable IP addresses</strong>, which is enough for 249 devices.</li>
+</ul>
+<h4 id="b-marketing-department-119-devices">b. <strong>Marketing Department (119 devices)</strong>:</h4>
+<ul>
+<li><strong>Subnet</strong>: 192.168.201.0/25</li>
+<li><strong>Subnet Mask</strong>: 255.255.255.128</li>
+<li><strong>Usable IPs</strong>: 192.168.201.1 to 192.168.201.126</li>
+<li>This provides <strong>126 usable IP addresses</strong>, which is enough for 119 devices.</li>
+</ul>
+<h4 id="c-administrator-department-69-devices">c. <strong>Administrator Department (69 devices)</strong>:</h4>
+<ul>
+<li><strong>Subnet</strong>: 192.168.201.128/25</li>
+<li><strong>Subnet Mask</strong>: 255.255.255.128</li>
+<li><strong>Usable IPs</strong>: 192.168.201.129 to 192.168.201.254</li>
+<li>This provides <strong>126 usable IP addresses</strong>, which is enough for 69 devices.</li>
+</ul>
+<h4 id="d-accounts-department-59-devices">d. <strong>Accounts Department (59 devices)</strong>:</h4>
+<ul>
+<li><strong>Subnet</strong>: 192.168.200.128/26</li>
+<li><strong>Subnet Mask</strong>: 255.255.255.192</li>
+<li><strong>Usable IPs</strong>: 192.168.200.129 to 192.168.200.190</li>
+<li>This provides <strong>62 usable IP addresses</strong>, which is enough for 59 devices.</li>
+</ul>
+<h3 id="4-network-overview">4. <strong>Network Overview</strong></h3>
+<p>After subnetting, here’s the breakdown:</p>
+<table>
+<thead>
+<tr>
+<th>Department</th>
+<th>Subnet Address</th>
+<th>Subnet Mask</th>
+<th>Usable IP Range</th>
+<th>Total Usable IPs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sales</strong></td>
+<td>192.168.200.0/24</td>
+<td>255.255.255.0</td>
+<td>192.168.200.1 – 192.168.200.254</td>
+<td>254</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>192.168.201.0/25</td>
+<td>255.255.255.128</td>
+<td>192.168.201.1 – 192.168.201.126</td>
+<td>126</td>
+</tr>
+<tr>
+<td><strong>Administrator</strong></td>
+<td>192.168.201.128/25</td>
+<td>255.255.255.128</td>
+<td>192.168.201.129 – 192.168.201.254</td>
+<td>126</td>
+</tr>
+<tr>
+<td><strong>Accounts</strong></td>
+<td>192.168.200.128/26</td>
+<td>255.255.255.192</td>
+<td>192.168.200.129 – 192.168.200.190</td>
+<td>62</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-vlan-configuration-for-each-department">5. <strong>VLAN Configuration for Each Department</strong></h3>
+<p>You can now assign each department a VLAN and link it to the corresponding subnet. Here’s how you could assign VLANs to the subnets:</p>
+<table>
+<thead>
+<tr>
+<th>Department</th>
+<th>VLAN ID</th>
+<th>Subnet Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sales</strong></td>
+<td>VLAN 10</td>
+<td>192.168.200.0/24</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>VLAN 20</td>
+<td>192.168.201.0/25</td>
+</tr>
+<tr>
+<td><strong>Administrator</strong></td>
+<td>VLAN 30</td>
+<td>192.168.201.128/25</td>
+</tr>
+<tr>
+<td><strong>Accounts</strong></td>
+<td>VLAN 40</td>
+<td>192.168.200.128/26</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-routing-between-branches">6. <strong>Routing between Branches</strong></h3>
+<p>Since you have multiple branches, you'll need to implement <strong>inter-VLAN routing</strong> using a <strong>Layer 3 Switch</strong> or <strong>Router</strong>. The switch or router will route traffic between the VLANs for intra-branch communication, and to the WAN link for inter-branch communication.</p>
+<h3 id="7-sample-vlan-and-ip-configuration-for-core-switch">7. <strong>Sample VLAN and IP Configuration for Core Switch</strong></h3>
+<pre class="hljs"><code><div>! Core Switch Configuration (Assuming Layer 3 switch for routing)
+enable
+configure terminal
+hostname CoreSwitch
+
+! Create VLANs for each department
+vlan 10
+ name Sales
+vlan 20
+ name Marketing
+vlan 30
+ name Administrator
+vlan 40
+ name Accounts
+
+! Assign IP addresses to VLAN interfaces (SVIs) for inter-VLAN routing
+interface vlan 10
+ ip address 192.168.200.1 255.255.255.0  ! Sales Default Gateway
+
+interface vlan 20
+ ip address 192.168.201.1 255.255.255.128  ! Marketing Default Gateway
+
+interface vlan 30
+ ip address 192.168.201.129 255.255.255.128  ! Admin Default Gateway
+
+interface vlan 40
+ ip address 192.168.200.129 255.255.255.192  ! Accounts Default Gateway
+
+! Enable OSPF (Optional)
+router ospf 1
+ network 192.168.200.0 0.0.1.255 area 0
+
+! Save configuration
+end
+write memory
+</div></code></pre>
+<h3 id="8-connecting-the-branches">8. <strong>Connecting the Branches</strong></h3>
+<p>For communication between branches, you can establish <strong>VPNs</strong> (for secure connectivity over the internet) or <strong>dedicated leased lines</strong> (for direct communication). If you have a <strong>WAN router</strong> connecting to all three branches, use routing protocols like <strong>OSPF</strong> or <strong>BGP</strong> depending on your WAN setup to ensure smooth routing across branches.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>By following these steps, you've:</p>
+<ol>
+<li>Subnetted the <strong>192.168.200.0/23</strong> network to suit your departmental needs.</li>
+<li>Assigned <strong>VLANs</strong> for departmental segregation.</li>
+<li>Set up <strong>inter-VLAN routing</strong> using a Layer 3 device.</li>
+<li>Provided a scalable and efficient design that fits the current requirements and allows for future expansion.</li>
+</ol>
+
+</body>
+</html>

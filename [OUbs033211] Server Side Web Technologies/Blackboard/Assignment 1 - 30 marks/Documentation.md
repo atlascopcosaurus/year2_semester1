@@ -18,6 +18,9 @@ https://www.youtube.com/watch?v=v2t-1DPjbI4
 29 | Let's Create A Login System in PHP! | 2023 | Learn PHP Full Course for Beginners
 https://www.youtube.com/watch?v=XDz9SMYyTQo
 
+Crud Operation In PHP and MySQL (2021) | Product Store in PHP
+https://www.youtube.com/watch?v=sJsVoAZLa1Q
+
 
 
 
