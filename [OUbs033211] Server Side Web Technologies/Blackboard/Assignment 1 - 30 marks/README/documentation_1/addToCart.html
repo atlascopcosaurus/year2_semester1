@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>addToCart.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="my-cart-functionality---technical-documentation"><strong>My Cart Functionality - Technical Documentation</strong></h2>
+<h3 id="1-overview"><strong>1. Overview</strong></h3>
+<p>The <strong>My Cart</strong> page allows users to review the items added to their cart, adjust the quantity of each item, remove items, and see real-time updates on the total price of their selected products. Additionally, users can opt to save items for later.</p>
+<h3 id="2-key-features"><strong>2. Key Features</strong></h3>
+<h4 id="21-cart-item-display"><strong>2.1. Cart Item Display</strong></h4>
+<ul>
+<li>Each item added to the cart is displayed in a structured format that includes:
+<ul>
+<li><strong>Product Image</strong>: A thumbnail of the product.</li>
+<li><strong>Product Details</strong>:
+<ul>
+<li>Title</li>
+<li>Description</li>
+<li>Author (if available)</li>
+<li>Date of Publication</li>
+<li>Category</li>
+<li>Available Quantity (to reflect stock)</li>
+<li>Price</li>
+</ul>
+</li>
+<li><strong>Quantity Selector</strong>: Users can increase or decrease the number of units for each item using plus and minus buttons.</li>
+<li><strong>Save for Later</strong>: Allows the user to move the item to a wishlist or another list for future purchase without keeping it in the cart.</li>
+<li><strong>Remove</strong>: Allows the user to delete the item from the cart.</li>
+</ul>
+</li>
+</ul>
+<h4 id="22-quantity-management"><strong>2.2. Quantity Management</strong></h4>
+<ul>
+<li>
+<p><strong>Description</strong>:</p>
+<ul>
+<li>Each item in the cart has a quantity selector with <code>+</code> and <code>-</code> buttons to increment or decrement the quantity.</li>
+<li>The system ensures the quantity does not exceed the available stock or fall below one.</li>
+</ul>
+</li>
+<li>
+<p><strong>Real-Time Updates</strong>:</p>
+<ul>
+<li>Every time the quantity is changed, the cart is updated in real-time using AJAX to adjust the total price.</li>
+</ul>
+</li>
+</ul>
+<h4 id="23-total-price-calculation"><strong>2.3. Total Price Calculation</strong></h4>
+<ul>
+<li>
+<p><strong>Real-Time Calculation</strong>:</p>
+<ul>
+<li>The <strong>Price Details</strong> section on the right side of the cart page updates in real-time to reflect:
+<ul>
+<li>The total price for the items added (based on item price multiplied by quantity).</li>
+<li>Delivery charges (which may be <strong>FREE</strong> for certain orders or calculated based on shipping logic).</li>
+<li><strong>Amount Payable</strong>: The final total after adding all the items and delivery charges.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Formula</strong>:</p>
+<ul>
+<li>For each item: <code>Total Item Price = Unit Price × Quantity</code></li>
+<li><strong>Amount Payable</strong>: <code>Sum of all item prices + Delivery Charges</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="24-cart-actions"><strong>2.4. Cart Actions</strong></h4>
+<ul>
+<li>
+<p><strong>Save for Later</strong>:</p>
+<ul>
+<li>If the user clicks the <strong>&quot;Save for Later&quot;</strong> button, the item is moved out of the cart and placed in a separate list, where the user can add it back later.</li>
+<li>This action does not affect the cart total.</li>
+</ul>
+</li>
+<li>
+<p><strong>Remove</strong>:</p>
+<ul>
+<li>Clicking <strong>&quot;Remove&quot;</strong> removes the item from the cart and updates the total price in real-time.</li>
+<li>If the cart becomes empty after removing all items, a message is displayed to inform the user that the cart is empty.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-price-details-panel"><strong>3. Price Details Panel</strong></h3>
+<ul>
+<li><strong>Content</strong>:
+<ul>
+<li><strong>Price</strong>: Displays the total cost for the number of items in the cart.</li>
+<li><strong>Delivery Charges</strong>: Shows the delivery cost. It could be a fixed amount, dynamic based on delivery location, or <strong>FREE</strong> if a threshold (e.g., total cart value) is met.</li>
+<li><strong>Amount Payable</strong>: This is the sum of the product prices plus delivery charges, updated dynamically based on the user's cart changes.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-data-flow"><strong>4. Data Flow</strong></h3>
+<h4 id="41-client-side-ajax-updates"><strong>4.1. Client-Side (AJAX Updates)</strong></h4>
+<ul>
+<li>
+<p><strong>Adding/Removing Items</strong>:</p>
+<ul>
+<li>When the user adds or removes an item from the cart, or adjusts the quantity, AJAX requests are sent to the server to update the cart in real-time without reloading the page.</li>
+</ul>
+</li>
+<li>
+<p><strong>Quantity Changes</strong>:</p>
+<ul>
+<li>The <strong>plus</strong> and <strong>minus</strong> buttons trigger client-side AJAX requests to:
+<ul>
+<li>Validate the new quantity against available stock.</li>
+<li>Recalculate the total price.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Price Calculation</strong>:</p>
+<ul>
+<li>AJAX ensures that the <strong>Price Details</strong> (total price, delivery charges, and amount payable) are recalculated and displayed as the cart content changes.</li>
+</ul>
+</li>
+</ul>
+<h4 id="42-server-side"><strong>4.2. Server-Side</strong></h4>
+<ul>
+<li>
+<p><strong>Cart Persistence</strong>:</p>
+<ul>
+<li>For logged-in users, the cart is stored in the database and linked to their account.</li>
+<li>For guest users, the cart is stored in the session and may expire when the session ends.</li>
+</ul>
+</li>
+<li>
+<p><strong>Real-Time Price Updates</strong>:</p>
+<ul>
+<li>The server recalculates the total price whenever the cart is updated, ensuring the amount payable is accurate.</li>
+<li>Delivery charges may also be computed based on the number of items or the total cart value.</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-error-handling"><strong>5. Error Handling</strong></h3>
+<ul>
+<li>
+<p><strong>Stock Availability</strong>:</p>
+<ul>
+<li>If the user tries to add more items than are available, the system will display an error message indicating the available quantity.</li>
+</ul>
+</li>
+<li>
+<p><strong>Session Expiry</strong>:</p>
+<ul>
+<li>If the guest session expires, the cart data will be lost, and the user will be prompted to log in or re-add items to the cart.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-user-experience"><strong>6. User Experience</strong></h3>
+<h4 id="61-visual-updates"><strong>6.1. Visual Updates</strong></h4>
+<ul>
+<li><strong>Quantity Management</strong>:
+<ul>
+<li>When the user increases or decreases the quantity of an item, the page reflects the changes instantly through visual updates without needing a page refresh.</li>
+</ul>
+</li>
+</ul>
+<h4 id="62-notifications"><strong>6.2. Notifications</strong></h4>
+<ul>
+<li><strong>Item Removal</strong>:
+<ul>
+<li>When an item is removed, a notification may be displayed confirming that the item was successfully removed.</li>
+</ul>
+</li>
+</ul>
+<h4 id="63-empty-cart-state"><strong>6.3. Empty Cart State</strong></h4>
+<ul>
+<li>If the user removes all items from the cart, the page will show an <strong>Empty Cart</strong> message with a prompt to continue shopping.</li>
+</ul>
+<hr>
+<p><img src="images/3.png" alt="Empty Add to Cart"></p>
+<hr/>
+<p><img src="images/12.png" alt="My Cart"></p>
+
+</body>
+</html>

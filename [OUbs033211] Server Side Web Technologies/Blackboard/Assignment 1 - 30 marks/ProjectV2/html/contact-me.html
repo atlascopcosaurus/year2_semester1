@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles_1.css">
+
+</head>
+
+<body>
+
+
+    <header>
+        <nav>
+            <div class="logo">Doosan</div>
+            <ul>
+                <li><a href="../index_1.html">Home/</a></li>
+                <li><a href="about-me.html">About.Me/</a></li>
+                <li><a href="projects.html">Projects/</a></li>
+                <li><a href="#services">Services/</a></li>
+                <li><a href="#blog">Blog/</a></li>
+                <li><a href="contact-me.html" class="active">Contact.Me/</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <div class="left-column">
+            <div class="header-section">
+                <h2>Get in Touch</h2>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="header-section">
+                <p>Welcome to my Contact Me page! If you have any questions or inquiries, feel free to reach out to me.
+                    I'm here to help!</p>
+                <div class="header-buttons">
+                    <button class="header-button">Learn More</button>
+                    <button class="header-button">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-info">
+            <!-- Contact Item for Email -->
+            <div class="contact-item">
+                <img src="../contact-me/8666723_mail_icon.png" alt="Email Icon" width="24" height="24" />
+                <span>
+                    <strong>Email</strong><br>
+                    <a href="mailto:doosan@pagooah.com">doosan@pagooah.com</a>
+                </span>
+            </div>
+            <!-- Contact Item for Phone -->
+            <div class="contact-item">
+                <img src="../contact-me/8666632_phone_icon.png" alt="Phone Icon" width="24" height="24" />
+                <span>
+                    <strong>Phone</strong><br>
+                    <a href="tel:+15550000000">+230 55003108</a>
+                </span>
+            </div>
+            <!-- Contact Item for Office -->
+            <div class="contact-item">
+                <img src="../contact-me/290144_building_office_finance buildings_icon.png" alt="Office Icon" width="24"
+                    height="24" />
+                <span>
+                    <strong>Office</strong><br>
+                    Jansi Street, Poudre d'Or Hamlet, Mauritius
+                </span>
+            </div>
+
+
+
+            <div class="form-info">
+                <h2><br>Have a question or want to work together ? Reach out to me!</h2>
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <div class="checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the Terms</label>
+                    </div>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+
+        </div>
+        <div>
+            <img src="../contact-me/element5-digital-h9eOO7W5m2s-unsplash.jpg">
+        </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <section id="testimonials">
+        <div class="testimonial-container">
+            <!-- The navigation buttons -->
+            <button class="testimonial-nav previous" aria-label="Previous" onclick="previousTestimonial()">
+                <img src="../images/left-arrow.png" alt="Previous">
+            </button>
+            <button class="testimonial-nav next" aria-label="Next" onclick="nextTestimonial()">
+                <img src="../images/right-arrow.png" alt="Next">
+            </button>
+
+            <!--testimonial 1-->
+            <div class="testimonial-item">
+                <div class="testimonial-rating">
+                    ★★★★★
+                </div>
+                <blockquote class="testimonial-quote">
+                    "In my 20 years in the tech industry, I have yet to encounter a DevOps Engineer as proficient
+                    and
+                    dedicated as Doosan. Their seamless integration of our development and operations has catapulted
+                    our
+                    product delivery cycles from monthly to weekly without sacrificing quality. Doosan's expertise
+                    in
+                    automation and their proactive approach to system reliability are simply unmatched."
+                </blockquote>
+                <div class="testimonial-author">
+                    <img class="testimonial-profile-pic" src="../images/profile-placeholder.png" alt="John Doe">
+                    <div>
+                        <p>Jordan S.</p>
+                        <p>VP of Engineering at TechSphere</p>
+                        <img class="testimonial-company-logo" src="../images/location.png" alt="TechSphere">
+                    </div>
+                </div>
+            </div>
+            <!--testimonial 2-->
+            <div class="testimonial-item">
+                <div class="testimonial-rating">
+                    ★★★★
+                </div>
+                <blockquote class="testimonial-quote">
+                    "Doosan's contribution to our cloud infrastructure overhaul has been nothing short of
+                    revolutionary.
+                    Their knowledge of Kubernetes and cloud-native technologies is profound, and their commitment to
+                    security best practices has greatly fortified our systems. Doosan's leadership during our
+                    digital
+                    transformation journey has been a guiding light for the whole team."
+                </blockquote>
+                <div class="testimonial-author">
+                    <img class="testimonial-profile-pic" src="../images/profile-placeholder.png" alt="John Doe">
+                    <div>
+                        <p>Casey P.</p>
+                        <p>Chief Information Officer at CloudNet Solutions</p>
+                        <img class="testimonial-company-logo" src="../images/insurance-company-2.png"
+                            alt="CloudNet Solutions">
+                    </div>
+                </div>
+            </div>
+            <!--testimonial 3-->
+            <div class="testimonial-item">
+                <div class="testimonial-rating">
+                    ★★★
+                </div>
+                <blockquote class="testimonial-quote">
+                    "Working alongside Doosan has been an eye-opening experience. His grasp of CI/CD pipelines and
+                    monitoring systems is exceptional. Doosan's innovative strategies have significantly reduced our
+                    downtime and improved our team's efficiency. They're not only a technical wizard but also a
+                    patient
+                    mentor to our junior staff."
+                </blockquote>
+                <div class="testimonial-author">
+                    <img class="testimonial-profile-pic" src="../images/profile-placeholder.png" alt="John Doe">
+                    <div>
+                        <p>Riley C.</p>
+                        <p>Product Manager at Innovatech</p>
+                        <img class="testimonial-company-logo" src="../images/insurance-company.png" alt="Innovatech">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The indicators for multiple testimonials -->
+        <div class="testimonial-indicators">
+            <span class="testimonial-indicator"></span>
+            <span class="testimonial-indicator"></span>
+            <span class="testimonial-indicator"></span>
+            <!-- Repeat the above span for as many testimonials we have -->
+        </div>
+    </section>
+
+
+
+
+    <section id="cta">
+        <div class="cta-content">
+            <h2>Transform your projects with DevOps</h2>
+            <p>Unlock the power of DevOps for your business</p>
+        </div>
+        <div class="cta-buttons">
+            <button class="btn btn-black">Hire Me</button>
+            <button class="btn btn-black">Read More</button>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <a href="#"><img src="../images/devops.png" alt="devOps"></a>
+            </div>
+            <div class="footer-column">
+                <h4>About Me</h4>
+                <ul>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Contact Me</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Download CV</a></li>
+                    <li><a href="#">View Portfolio</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Professional Highlights</h4>
+                <ul>
+                    <li><a href="#">Skills & Expertise</a></li>
+                    <li><a href="#">Technical Competencies</a></li>
+                    <li><a href="#">Timeline</a></li>
+                    <li><a href="#">Innovation Management</a></li>
+                    <li><a href="#">Project Leadership</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>DevOps Insights</h4>
+                <ul>
+                    <li><a href="#">Industry Trends</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Tool Reviews</a></li>
+                    <li><a href="#">Best Practices</a></li>
+                    <li><a href="#">Thought Leadership</a></li>
+                </ul>
+            </div>
+            <div class="footer-subscribe">
+                <h4>Subscribe</h4>
+                <p>Join my community to receive updates and exclusive offers.</p>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <p class="footer-privacy">By subscribing, you agree to our Privacy Policy and consent to receive updates
+                    from us.</p>
+            </div>
+        </div>
+
+        <div class="footer-social">
+            <a href="#" class="social-icon"><img src="../images/facebook.png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="../images/instagram.png" alt="Instagram"></a>
+            <a href="#" class="social-icon"><img src="../images/xing.png" alt="Xing"></a>
+            <a href="#" class="social-icon"><img src="../images/linkedin.png" alt="LinkedIn"></a>
+            <a href="#" class="social-icon"><img src="../images/youtube.png" alt="YouTube"></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Doosan. All rights reserved.</p>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="#">Cookie Settings</a>
+
+            <p>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                    <img style="border:0;width:88px;height:31px"
+                        src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" />
+                </a>
+            </p>
+
+
+        </div>
+
+    </footer>
+    <script src="../js/testimonial.js"></script>
+    <script src="../js/validation.js"></script>
+
+
+
+</body>
+
+</html>

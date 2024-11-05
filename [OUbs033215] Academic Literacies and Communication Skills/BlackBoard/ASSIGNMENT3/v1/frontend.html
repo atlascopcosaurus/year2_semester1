@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constituency Parse Tree</title>
+
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .tree-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Constituency Parse Tree</h1>
+
+        <!-- Input form -->
+        <div class="mb-3">
+            <label for="sentence" class="form-label">Enter a sentence to parse:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="sentence" placeholder="Type a sentence">
+                <button id="parseButton" class="btn btn-primary">Parse</button>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Generated Parse Tree:</h2>
+        <div id="treeContainer" class="tree-container">
+            <!-- The parse tree image will be displayed here -->
+            <img id="parseTreeImage" src="parse_tree.png" alt="Constituency Parse Tree">
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('parseButton').addEventListener('click', function () {
+            // Get the sentence from the input field
+            const sentence = document.getElementById('sentence').value;
+
+            if (sentence.trim() === '') {
+                alert('Please enter a sentence');
+                return;
+            }
+
+            // In a real-world scenario, you would send the sentence to the backend
+            // to generate the parse tree dynamically, but for this example, we'll
+            // just display the pre-generated parse tree image.
+
+            // You can dynamically update the src attribute of the image to display
+            // the updated parse tree when generated from the backend.
+            document.getElementById('parseTreeImage').src = "parse_tree.png";  // Replace with the dynamic image
+        });
+    </script>
+
+</body>
+
+</html>

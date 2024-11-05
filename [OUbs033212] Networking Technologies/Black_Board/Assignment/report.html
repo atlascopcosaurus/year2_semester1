@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="report">Report</h1>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ol>
+<li>
+<p><strong>Introduction</strong></p>
+<ul>
+<li>Overview of the Case Study</li>
+<li>Objectives of the Network Simulation</li>
+<li>Scope of the Report</li>
+</ul>
+</li>
+<li>
+<p><strong>Network Design Requirements</strong></p>
+<ul>
+<li>IP Addressing Scheme (192.168.200.0/23)</li>
+<li>Branch and Departmental Allocation
+<ul>
+<li>Accounts: 59 Devices</li>
+<li>Administrator: 69 Devices</li>
+<li>Marketing: 119 Devices</li>
+<li>Sales: 249 Devices</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Network Topology</strong></p>
+<ul>
+<li>Design Considerations</li>
+<li>Network Layout and Structure (with diagrams)</li>
+<li>Device and Hardware Specifications</li>
+</ul>
+</li>
+<li>
+<p><strong>Subnetting</strong></p>
+<ul>
+<li>IP Address Distribution</li>
+<li>Subnet Mask Calculation for Each Department</li>
+<li>Example Calculations</li>
+</ul>
+</li>
+<li>
+<p><strong>Configuration of Devices</strong></p>
+<ul>
+<li>Router and Switch Configuration</li>
+<li>VLAN Configuration for Department Segmentation</li>
+<li>IP Assignment and DHCP Configuration</li>
+</ul>
+</li>
+<li>
+<p><strong>Simulation and Implementation</strong></p>
+<ul>
+<li>Setup in Cisco Packet Tracer</li>
+<li>Steps for Creating the Network</li>
+<li>Testing Connectivity</li>
+</ul>
+</li>
+<li>
+<p><strong>Demonstration and Presentation</strong></p>
+<ul>
+<li>Explanation of the Working Solution</li>
+<li>Key Features and Functionality Demonstrated</li>
+</ul>
+</li>
+<li>
+<p><strong>Challenges and Solutions</strong></p>
+<ul>
+<li>Issues Faced During Simulation</li>
+<li>Solutions to Identified Problems</li>
+</ul>
+</li>
+<li>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>Summary of the Solution</li>
+<li>Lessons Learned</li>
+</ul>
+</li>
+<li>
+<p><strong>References</strong></p>
+<ul>
+<li>Tools and Software Used</li>
+<li>Sources for Additional Research</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>Here's a draft for the <strong>Introduction</strong> section of your report:</p>
+<hr>
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<h3 id="overview-of-the-case-study"><strong>Overview of the Case Study</strong></h3>
+<p>This report details the design and simulation of a network infrastructure for an organization that consists of three branches, each containing multiple departments: Accounts, Administration, Marketing, and Sales. The IP address block <strong>192.168.200.0/23</strong> has been assigned, and the organization requires the allocation of IP addresses and network resources to support <strong>496 devices</strong> across these departments. The case study necessitates the development of a scalable, secure, and efficient network, implemented using <strong>Cisco Packet Tracer</strong>, to simulate the required topology.</p>
+<p>The network simulation demonstrates how different departments, ranging in size from <strong>59 to 249 devices</strong>, will be isolated using <strong>VLANs</strong> (Virtual Local Area Networks) and interconnected through <strong>routers and switches</strong> for optimal traffic management. The design is aimed at meeting both the current requirements and allowing for future expansion, ensuring that each branch and department can communicate securely within its own VLAN and across the entire network.</p>
+<h3 id="objectives-of-the-network-simulation"><strong>Objectives of the Network Simulation</strong></h3>
+<p>The main objective of this network simulation is to provide a detailed design and implementation that addresses the following key goals:</p>
+<ol>
+<li><strong>Departmental Segmentation</strong>: Using VLANs to segment network traffic, ensuring that each department operates within its isolated environment.</li>
+<li><strong>Inter-VLAN Communication</strong>: Enabling communication between departments and branches through inter-VLAN routing while maintaining security.</li>
+<li><strong>IP Addressing</strong>: Efficient distribution of IP addresses based on department size and ensuring there is enough address space for each department within the <strong>192.168.200.0/23</strong> subnet.</li>
+<li><strong>Network Scalability</strong>: Designing the network with scalability in mind, allowing easy expansion of departments or branches without major network overhauls.</li>
+<li><strong>Simulation and Testing</strong>: Simulating the network in <strong>Cisco Packet Tracer</strong>, verifying the correctness of the design through connectivity tests, and addressing potential issues such as VLAN trunking and routing.</li>
+<li><strong>Documentation and Presentation</strong>: Producing a detailed report and a presentation to explain the design choices, configurations, and the overall performance of the simulated network.</li>
+</ol>
+<h3 id="scope-of-the-report"><strong>Scope of the Report</strong></h3>
+<p>This report will cover the complete process of designing and simulating the network architecture for the organization. It will provide a thorough analysis of:</p>
+<ul>
+<li><strong>IP Addressing Scheme</strong>: Subnetting and IP allocation for different departments based on their device counts.</li>
+<li><strong>Network Topology</strong>: The physical and logical layout of the network, including the placement of switches, routers, and connections between them.</li>
+<li><strong>Device Configuration</strong>: Configuration of routers and switches, including VLAN creation, trunking, and inter-VLAN routing.</li>
+<li><strong>Testing and Simulation</strong>: The process of testing the network’s functionality, ensuring that devices in each department can communicate with each other and with other branches.</li>
+<li><strong>Challenges and Solutions</strong>: Addressing any technical difficulties encountered during the simulation process, such as VLAN misconfigurations or routing issues, and providing solutions.</li>
+<li><strong>Conclusion and Lessons Learned</strong>: A summary of the overall design, simulation results, and lessons learned throughout the project.</li>
+</ul>
+<hr>
+<p>Here’s a draft for the <strong>Network Design Requirements</strong> section of your report:</p>
+<hr>
+<h2 id="2-network-design-requirements"><strong>2. Network Design Requirements</strong></h2>
+<h3 id="ip-addressing-scheme-192168200023"><strong>IP Addressing Scheme (192.168.200.0/23)</strong></h3>
+<p>The organization has been allocated the IP address range <strong>192.168.200.0/23</strong>, which provides a total of <strong>510 usable IP addresses</strong>. This address block is large enough to accommodate the current device count across all branches and departments while allowing room for future expansion.</p>
+<p>The <strong>/23 subnet mask (255.255.254.0)</strong> provides 512 IP addresses, with the first and last addresses reserved for the network and broadcast addresses, respectively. This leaves <strong>510 usable IP addresses</strong> for allocation across the four departments: <strong>Accounts, Administrator, Marketing, and Sales</strong>. The IP address space will be divided efficiently among the departments, with each department receiving a sufficient number of IP addresses to accommodate their current devices, and additional addresses reserved for scalability.</p>
+<h3 id="branch-and-departmental-allocation"><strong>Branch and Departmental Allocation</strong></h3>
+<p>The network is segmented into multiple <strong>Virtual Local Area Networks (VLANs)</strong>, with each department allocated a dedicated VLAN. This ensures network segmentation, security, and improved traffic management. The following allocation has been made based on the device count in each department:</p>
+<h4 id="accounts-59-devices"><strong>Accounts: 59 Devices</strong></h4>
+<ul>
+<li><strong>VLAN 10</strong> is assigned to the <strong>Accounts Department</strong>, which consists of <strong>59 devices</strong>.</li>
+<li>The <strong>subnet</strong> allocated for this department is <strong>192.168.200.0/25</strong>, providing <strong>126 usable IP addresses</strong>. This allows for the required 59 devices while leaving room for future growth.</li>
+<li>The range of IP addresses for this department will be from <strong>192.168.200.1 to 192.168.200.126</strong>.</li>
+</ul>
+<h4 id="administrator-69-devices"><strong>Administrator: 69 Devices</strong></h4>
+<ul>
+<li><strong>VLAN 20</strong> is assigned to the <strong>Administrator Department</strong>, which consists of <strong>69 devices</strong>.</li>
+<li>The <strong>subnet</strong> allocated for this department is <strong>192.168.200.128/25</strong>, which also provides <strong>126 usable IP addresses</strong>.</li>
+<li>The range of IP addresses for this department will be from <strong>192.168.200.129 to 192.168.200.254</strong>.</li>
+</ul>
+<h4 id="marketing-119-devices"><strong>Marketing: 119 Devices</strong></h4>
+<ul>
+<li><strong>VLAN 30</strong> is assigned to the <strong>Marketing Department</strong>, with a total of <strong>119 devices</strong>.</li>
+<li>The <strong>subnet</strong> allocated for this department is <strong>192.168.201.0/25</strong>, providing <strong>126 usable IP addresses</strong>, which meets the current requirement of 119 devices and leaves room for minor expansion.</li>
+<li>The IP address range for this department will be from <strong>192.168.201.1 to 192.168.201.126</strong>.</li>
+</ul>
+<h4 id="sales-249-devices"><strong>Sales: 249 Devices</strong></h4>
+<ul>
+<li><strong>VLAN 40</strong> is assigned to the <strong>Sales Department</strong>, which consists of <strong>249 devices</strong>.</li>
+<li>The <strong>subnet</strong> allocated for this department is <strong>192.168.201.128/24</strong>, which provides <strong>256 usable IP addresses</strong>, more than sufficient to accommodate the 249 devices.</li>
+<li>The range of IP addresses for the Sales department will be from <strong>192.168.201.129 to 192.168.202.254</strong>.</li>
+</ul>
+<h3 id="summary-of-ip-allocation"><strong>Summary of IP Allocation</strong></h3>
+<p>The table below summarizes the IP allocation for each department, ensuring that each has enough address space to meet current and future needs:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Department</strong></th>
+<th><strong>VLAN</strong></th>
+<th><strong>Subnet</strong></th>
+<th><strong>Usable IP Addresses</strong></th>
+<th><strong>Device Count</strong></th>
+<th><strong>IP Address Range</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accounts</td>
+<td>VLAN 10</td>
+<td>192.168.200.0/25</td>
+<td>126</td>
+<td>59</td>
+<td>192.168.200.1 - 192.168.200.126</td>
+</tr>
+<tr>
+<td>Administrator</td>
+<td>VLAN 20</td>
+<td>192.168.200.128/25</td>
+<td>126</td>
+<td>69</td>
+<td>192.168.200.129 - 192.168.200.254</td>
+</tr>
+<tr>
+<td>Marketing</td>
+<td>VLAN 30</td>
+<td>192.168.201.0/25</td>
+<td>126</td>
+<td>119</td>
+<td>192.168.201.1 - 192.168.201.126</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>VLAN 40</td>
+<td>192.168.201.128/24</td>
+<td>256</td>
+<td>249</td>
+<td>192.168.201.129 - 192.168.202.254</td>
+</tr>
+</tbody>
+</table>
+<p>This IP addressing scheme ensures that each department has sufficient IP address space, meets the requirement for segmentation using VLANs, and supports future expansion.</p>
+<hr>
+<p>Here’s a draft for the <strong>Network Topology</strong> section of your report:</p>
+<hr>
+<p>Thank you for sharing the updated network diagram that utilizes a <strong>two-tier architecture</strong>. Based on this, I will modify the <strong>Network Topology</strong> section to reflect the two-tier architecture instead of the previously mentioned three-tier hierarchical model.</p>
+<p>Here is the updated section:</p>
+<hr>
+<h2 id="3-network-topology"><strong>3. Network Topology</strong></h2>
+<h3 id="design-considerations"><strong>Design Considerations</strong></h3>
+<p>The design is based on a <strong>two-tier architecture</strong>, which combines the functionality of the <strong>core and distribution layers</strong> into a single layer while maintaining a separate <strong>access layer</strong>. This approach simplifies the network, reduces complexity, and offers a more cost-effective and efficient design, especially for medium-sized networks. The following considerations were taken into account:</p>
+<ol>
+<li>
+<p><strong>Simplification of Architecture</strong>: The <strong>two-tier architecture</strong> eliminates the need for a separate distribution layer, making the network more straightforward while still maintaining efficient routing, security, and scalability.</p>
+</li>
+<li>
+<p><strong>Scalability</strong>: The two-tier model allows for easy expansion by adding more access layer switches and devices as needed. The network can support the current number of devices and can easily be scaled up for future growth.</p>
+</li>
+<li>
+<p><strong>Segmentation and Security</strong>: Each department is assigned its own <strong>VLAN</strong>, isolating traffic and ensuring that each department’s network traffic remains secure and manageable.</p>
+</li>
+<li>
+<p><strong>Performance</strong>: The core layer is responsible for routing between VLANs, while the access layer connects end devices to the network. This separation allows for optimized performance and better traffic management, reducing bottlenecks.</p>
+</li>
+<li>
+<p><strong>Redundancy</strong>: The core layer ensures redundancy through high-speed links, preventing single points of failure. Trunk links between switches ensure that VLAN traffic can flow between departments without disruption.</p>
+</li>
+<li>
+<p><strong>Cost Efficiency</strong>: By combining the core and distribution layers into one, the design reduces the number of devices needed, making it more cost-effective without sacrificing performance or scalability.</p>
+</li>
+</ol>
+<hr>
+<h3 id="network-layout-and-structure-with-diagrams"><strong>Network Layout and Structure (with Diagrams)</strong></h3>
+<p>The network follows a <strong>two-tier architecture</strong> model, with two layers: the <strong>core layer</strong> (which combines core and distribution functions) and the <strong>access layer</strong>. The <strong>core layer switch</strong> handles inter-VLAN routing, high-speed traffic forwarding, and traffic aggregation from the access layer switches.</p>
+<h4 id="core-layer"><strong>Core Layer</strong></h4>
+<ul>
+<li>The <strong>core layer</strong> is responsible for high-speed data transfer and inter-VLAN routing across departments. It aggregates traffic from all access layer switches and ensures that traffic is forwarded efficiently across the network.</li>
+<li>The core layer switch also handles inter-department and inter-branch traffic, ensuring that VLANs are properly routed and that policies such as QoS and ACLs are enforced.</li>
+</ul>
+<h4 id="access-layer"><strong>Access Layer</strong></h4>
+<ul>
+<li>The <strong>access layer</strong> connects end devices, such as PCs, printers, and phones, to the network. Each access layer switch is assigned a specific VLAN for each department (Accounts, Administrator, Marketing, and Sales).</li>
+<li>The access switches forward VLAN traffic to the core switch, where inter-VLAN routing is handled. Trunk links are used between the access and core switches to allow multiple VLANs to pass through a single physical connection.</li>
+</ul>
+<h4 id="diagram-two-tier-network-topology"><strong>Diagram: Two-Tier Network Topology</strong></h4>
+<p>Below is a visual representation of the network’s <strong>two-tier architecture</strong>. The diagram illustrates how the core switch handles both routing and aggregation while access switches connect directly to end devices within each department.</p>
+<hr>
+<p><strong>[Insert your updated network diagram here]</strong></p>
+<hr>
+<h3 id="device-and-hardware-specifications"><strong>Device and Hardware Specifications</strong></h3>
+<p>To implement this two-tier network design, the following hardware was used:</p>
+<h4 id="core-layer"><strong>Core Layer:</strong></h4>
+<ul>
+<li><strong>Cisco Catalyst 3650-PS24 (Core Switch)</strong>:
+<ul>
+<li><strong>Purpose</strong>: Serves as the core switch responsible for routing and traffic aggregation from the access layer.</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>24 Gigabit Ethernet ports.</li>
+<li>Layer 3 routing capabilities (RIP, OSPF, EIGRP).</li>
+<li>Supports VLAN trunking and redundancy protocols (STP, EtherChannel).</li>
+<li>Handles inter-VLAN routing for the entire network.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="access-layer"><strong>Access Layer:</strong></h4>
+<ul>
+<li><strong>Cisco Catalyst 2960-24TT (Access Switches)</strong>:
+<ul>
+<li><strong>Purpose</strong>: Connects end devices in each department and forwards VLAN traffic to the core switch via trunk links.</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>24 Fast Ethernet ports.</li>
+<li>Layer 2 switching capabilities (VLAN tagging and segmentation).</li>
+<li>Supports trunk ports for connection to the core switch.</li>
+<li>Provides port security and basic QoS features for end devices.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="end-devices"><strong>End Devices:</strong></h4>
+<ul>
+<li><strong>PCs, Printers, and Phones</strong>: Each department is equipped with the necessary end devices, connected to the access layer switches. Each device is assigned an IP address from its respective VLAN and subnet.</li>
+</ul>
+<hr>
+<p>This updated <strong>Network Topology</strong> section reflects the <strong>two-tier architecture</strong> you have implemented, explaining how the network is structured with the core and access layers, and detailing the device and hardware specifications used. This design provides a balance of simplicity, scalability, and efficiency, making it suitable for your network requirements.</p>
+<p>Let me know if you need further adjustments or additional details!</p>
+<h3 id="design-considerations"><strong>Design Considerations</strong></h3>
+<p>The design of the network is centered around providing a secure, scalable, and efficient infrastructure to support the organization's communication needs. The following considerations were taken into account:</p>
+<ol>
+<li>
+<p><strong>Scalability</strong>: The network is designed to accommodate the current number of devices with room for future growth. The IP addressing scheme allows for the addition of new devices in each department without requiring significant changes to the network architecture.</p>
+</li>
+<li>
+<p><strong>Segmentation</strong>: Using <strong>Virtual Local Area Networks (VLANs)</strong> to segment traffic by department ensures that each department’s traffic remains isolated, improving both security and performance. This allows better control of broadcast domains and improves overall network efficiency.</p>
+</li>
+<li>
+<p><strong>Security</strong>: Each department is allocated its own VLAN, minimizing the risk of unauthorized access between departments. <strong>Inter-VLAN routing</strong> is handled by a Layer 3 switch, ensuring that traffic between VLANs is managed securely with access control lists (ACLs).</p>
+</li>
+<li>
+<p><strong>Redundancy</strong>: The core of the network uses <strong>redundant links</strong> to prevent a single point of failure, improving network uptime and availability. Redundancy is built into the connections between distribution and core layers to ensure smooth operations in case of a failure in any one link.</p>
+</li>
+<li>
+<p><strong>Performance</strong>: The network is designed with separate <strong>core, distribution, and access layers</strong> to optimize performance and manage traffic efficiently. <strong>Trunk links</strong> are used between switches to carry multiple VLAN traffic and ensure seamless communication between different parts of the network.</p>
+</li>
+<li>
+<p><strong>Ease of Management</strong>: The hierarchical model (core, distribution, access) simplifies network management. Each layer has a defined role, which makes troubleshooting easier and allows for network changes without affecting the entire infrastructure.</p>
+</li>
+</ol>
+<hr>
+<h3 id="network-layout-and-structure-with-diagrams"><strong>Network Layout and Structure (with Diagrams)</strong></h3>
+<p>The network is structured following a <strong>three-layer hierarchical model</strong>, which includes the <strong>core layer</strong>, <strong>distribution layer</strong>, and <strong>access layer</strong>. This design provides a modular and flexible architecture that supports both performance and scalability.</p>
+<h4 id="core-layer"><strong>Core Layer</strong></h4>
+<ul>
+<li>The <strong>core layer</strong> acts as the backbone of the network and is responsible for high-speed data transfer between different distribution switches. It connects the distribution switches of all branches and departments, ensuring fast routing of data across the network.</li>
+<li>The <strong>core switch</strong> used is the <strong>Cisco Catalyst 3650</strong>, a high-performance Layer 3 switch that handles inter-VLAN routing and traffic forwarding between branches and departments.</li>
+</ul>
+<h4 id="distribution-layer"><strong>Distribution Layer</strong></h4>
+<ul>
+<li>The <strong>distribution layer</strong> aggregates traffic from the access layer switches and forwards it to the core. This layer is responsible for <strong>routing between VLANs</strong> and applying network policies such as quality of service (QoS) and security measures.</li>
+<li><strong>Cisco Catalyst 3560</strong> switches are used at the distribution layer to provide routing and policy enforcement between VLANs. These switches are connected to the core switch via high-speed <strong>trunk links</strong>.</li>
+</ul>
+<h4 id="access-layer"><strong>Access Layer</strong></h4>
+<ul>
+<li>The <strong>access layer</strong> consists of switches that connect directly to end devices such as computers, printers, and phones. These switches handle VLAN assignments and provide connectivity for end users in the departments.</li>
+<li><strong>Cisco Catalyst 2960</strong> switches are used at the access layer, where each department is assigned its own VLAN. The access switches are connected to the distribution switches via trunk links that carry VLAN traffic.</li>
+</ul>
+<h4 id="diagram-hierarchical-network-topology"><strong>Diagram: Hierarchical Network Topology</strong></h4>
+<p>Below is a simplified representation of the network topology, structured using the core, distribution, and access layers. The diagram illustrates how VLANs are distributed across the departments and how the switches are interconnected.</p>
+<hr>
+<p><strong>[Insert your network diagram here]</strong></p>
+<hr>
+<h3 id="device-and-hardware-specifications"><strong>Device and Hardware Specifications</strong></h3>
+<p>To meet the requirements of the network design, the following hardware was used:</p>
+<h4 id="core-layer"><strong>Core Layer:</strong></h4>
+<ul>
+<li><strong>Cisco Catalyst 3650-PS24 (Core Switch)</strong>:
+<ul>
+<li><strong>Purpose</strong>: High-speed backbone of the network, responsible for inter-VLAN routing and forwarding traffic between branches and departments.</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>24 Gigabit Ethernet ports.</li>
+<li>Layer 3 routing capabilities (RIP, OSPF, EIGRP).</li>
+<li>Supports trunking and redundancy protocols (STP, EtherChannel).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="distribution-layer"><strong>Distribution Layer:</strong></h4>
+<ul>
+<li><strong>Cisco Catalyst 3560-24TS (Distribution Switches)</strong>:
+<ul>
+<li><strong>Purpose</strong>: Aggregates traffic from the access layer switches and forwards it to the core switch.</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>24 Fast Ethernet ports.</li>
+<li>Layer 3 routing capabilities (inter-VLAN routing).</li>
+<li>QoS features and support for ACLs.</li>
+<li>Redundant connections to the core switch.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="access-layer"><strong>Access Layer:</strong></h4>
+<ul>
+<li><strong>Cisco Catalyst 2960-24TT (Access Switches)</strong>:
+<ul>
+<li><strong>Purpose</strong>: Connects end devices (PCs, printers, etc.) and provides VLAN segmentation for each department.</li>
+<li><strong>Key Features</strong>:
+<ul>
+<li>24 Fast Ethernet ports.</li>
+<li>Layer 2 switching capabilities (VLAN tagging and segmentation).</li>
+<li>Trunk ports for connecting to the distribution switches.</li>
+<li>Port security and basic QoS features.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="end-devices"><strong>End Devices:</strong></h4>
+<ul>
+<li><strong>PCs, Printers, and Phones</strong>: Each department is equipped with the necessary end devices, all connected to the access switches. Each device is assigned an IP address based on its VLAN allocation and subnet range.</li>
+</ul>
+<hr>
+<h2 id="4-subnetting"><strong>4. Subnetting</strong></h2>
+<h3 id="ip-address-distribution"><strong>IP Address Distribution</strong></h3>
+<p>The allocated IP address range for the network is <strong>192.168.200.0/23</strong>, which provides a total of <strong>512 IP addresses</strong> (510 usable IPs after accounting for the network and broadcast addresses). This range is sufficient to meet the organization's current requirements, as well as allowing room for future expansion.</p>
+<p>Each department in the organization is allocated its own <strong>VLAN</strong>, and the IP address space is divided among these VLANs based on the number of devices in each department. The subnetting is designed to ensure efficient use of IP addresses, with room for growth in each department.</p>
+<h4 id="ip-address-distribution-by-department"><strong>IP Address Distribution by Department</strong>:</h4>
+<ul>
+<li>
+<p><strong>Accounts Department</strong>: 59 devices</p>
+<ul>
+<li>Allocated IP Range: <strong>192.168.200.0/25</strong></li>
+<li>Usable IP Addresses: <strong>126</strong> (from <strong>192.168.200.1</strong> to <strong>192.168.200.126</strong>)</li>
+</ul>
+</li>
+<li>
+<p><strong>Administrator Department</strong>: 69 devices</p>
+<ul>
+<li>Allocated IP Range: <strong>192.168.200.128/25</strong></li>
+<li>Usable IP Addresses: <strong>126</strong> (from <strong>192.168.200.129</strong> to <strong>192.168.200.254</strong>)</li>
+</ul>
+</li>
+<li>
+<p><strong>Marketing Department</strong>: 119 devices</p>
+<ul>
+<li>Allocated IP Range: <strong>192.168.201.0/25</strong></li>
+<li>Usable IP Addresses: <strong>126</strong> (from <strong>192.168.201.1</strong> to <strong>192.168.201.126</strong>)</li>
+</ul>
+</li>
+<li>
+<p><strong>Sales Department</strong>: 249 devices</p>
+<ul>
+<li>Allocated IP Range: <strong>192.168.201.128/24</strong></li>
+<li>Usable IP Addresses: <strong>256</strong> (from <strong>192.168.201.129</strong> to <strong>192.168.202.254</strong>)</li>
+</ul>
+</li>
+</ul>
+<h3 id="subnet-mask-calculation-for-each-department"><strong>Subnet Mask Calculation for Each Department</strong></h3>
+<p>Each department is allocated a different subnet based on the number of devices it supports. The <strong>subnet mask</strong> is calculated based on the number of required IP addresses for each department.</p>
+<h4 id="subnet-mask-calculation-process"><strong>Subnet Mask Calculation Process</strong></h4>
+<p>The formula for calculating the number of usable IP addresses based on the subnet mask is:
+[ \text{Usable IP Addresses} = (2^{\text{number of host bits}}) - 2 ]
+(The &quot;-2&quot; accounts for the network and broadcast addresses, which cannot be assigned to devices.)</p>
+<ol>
+<li>
+<p><strong>Accounts Department (59 Devices)</strong>:</p>
+<ul>
+<li>Required IP addresses: <strong>59</strong></li>
+<li>We need at least <strong>59 usable IP addresses</strong>, and the closest subnet that provides this many IPs is <strong>/25</strong>.</li>
+<li>A <strong>/25</strong> subnet mask gives <strong>126 usable IP addresses</strong>.</li>
+<li><strong>Subnet Mask</strong>: <strong>255.255.255.128</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Administrator Department (69 Devices)</strong>:</p>
+<ul>
+<li>Required IP addresses: <strong>69</strong></li>
+<li>A <strong>/25</strong> subnet mask is used, which provides <strong>126 usable IP addresses</strong>.</li>
+<li><strong>Subnet Mask</strong>: <strong>255.255.255.128</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Marketing Department (119 Devices)</strong>:</p>
+<ul>
+<li>Required IP addresses: <strong>119</strong></li>
+<li>A <strong>/25</strong> subnet mask is used, which provides <strong>126 usable IP addresses</strong>.</li>
+<li><strong>Subnet Mask</strong>: <strong>255.255.255.128</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Sales Department (249 Devices)</strong>:</p>
+<ul>
+<li>Required IP addresses: <strong>249</strong></li>
+<li>A <strong>/24</strong> subnet mask is needed to provide at least <strong>249 usable IP addresses</strong>.</li>
+<li>A <strong>/24</strong> subnet provides <strong>256 usable IP addresses</strong>.</li>
+<li><strong>Subnet Mask</strong>: <strong>255.255.255.0</strong></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="example-calculations"><strong>Example Calculations</strong></h3>
+<p>Here’s a detailed breakdown of how the subnetting was calculated for each department:</p>
+<h4 id="1-accounts-department"><strong>1. Accounts Department:</strong></h4>
+<ul>
+<li><strong>Number of Devices</strong>: 59</li>
+<li><strong>Required IP Addresses</strong>: At least 59.</li>
+<li>The closest subnet size that accommodates 59 devices is <strong>/25</strong>, which provides <strong>126 usable IPs</strong>.</li>
+</ul>
+<p><strong>Subnet Calculation</strong>:</p>
+<ul>
+<li><strong>Subnet Mask</strong>: <strong>/25</strong> = <strong>255.255.255.128</strong></li>
+<li><strong>Total IP addresses in /25</strong>:
+[
+2^{32 - 25} = 2^7 = 128 \text{ total IP addresses}
+]
+<ul>
+<li><strong>2 addresses reserved</strong> (network and broadcast), so:
+[
+128 - 2 = 126 \text{ usable IP addresses}
+]</li>
+</ul>
+</li>
+<li><strong>Subnet Range</strong>: <strong>192.168.200.0/25</strong>
+<ul>
+<li><strong>Usable IP range</strong>: <strong>192.168.200.1 to 192.168.200.126</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-administrator-department"><strong>2. Administrator Department:</strong></h4>
+<ul>
+<li><strong>Number of Devices</strong>: 69</li>
+<li><strong>Required IP Addresses</strong>: At least 69.</li>
+<li>The closest subnet size that accommodates 69 devices is <strong>/25</strong>, which provides <strong>126 usable IPs</strong>.</li>
+</ul>
+<p><strong>Subnet Calculation</strong>:</p>
+<ul>
+<li><strong>Subnet Mask</strong>: <strong>/25</strong> = <strong>255.255.255.128</strong></li>
+<li><strong>Total IP addresses in /25</strong>:
+[
+2^{32 - 25} = 2^7 = 128 \text{ total IP addresses}
+]
+<ul>
+<li><strong>2 addresses reserved</strong> (network and broadcast), so:
+[
+128 - 2 = 126 \text{ usable IP addresses}
+]</li>
+</ul>
+</li>
+<li><strong>Subnet Range</strong>: <strong>192.168.200.128/25</strong>
+<ul>
+<li><strong>Usable IP range</strong>: <strong>192.168.200.129 to 192.168.200.254</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="3-marketing-department"><strong>3. Marketing Department:</strong></h4>
+<ul>
+<li><strong>Number of Devices</strong>: 119</li>
+<li><strong>Required IP Addresses</strong>: At least 119.</li>
+<li>The closest subnet size that accommodates 119 devices is <strong>/25</strong>, which provides <strong>126 usable IPs</strong>.</li>
+</ul>
+<p><strong>Subnet Calculation</strong>:</p>
+<ul>
+<li><strong>Subnet Mask</strong>: <strong>/25</strong> = <strong>255.255.255.128</strong></li>
+<li><strong>Total IP addresses in /25</strong>:
+[
+2^{32 - 25} = 2^7 = 128 \text{ total IP addresses}
+]
+<ul>
+<li><strong>2 addresses reserved</strong> (network and broadcast), so:
+[
+128 - 2 = 126 \text{ usable IP addresses}
+]</li>
+</ul>
+</li>
+<li><strong>Subnet Range</strong>: <strong>192.168.201.0/25</strong>
+<ul>
+<li><strong>Usable IP range</strong>: <strong>192.168.201.1 to 192.168.201.126</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="4-sales-department"><strong>4. Sales Department:</strong></h4>
+<ul>
+<li><strong>Number of Devices</strong>: 249</li>
+<li><strong>Required IP Addresses</strong>: At least 249.</li>
+<li>The closest subnet size that accommodates 249 devices is <strong>/24</strong>, which provides <strong>256 usable IPs</strong>.</li>
+</ul>
+<p><strong>Subnet Calculation</strong>:</p>
+<ul>
+<li><strong>Subnet Mask</strong>: <strong>/24</strong> = <strong>255.255.255.0</strong></li>
+<li><strong>Total IP addresses in /24</strong>:
+[
+2^{32 - 24} = 2^8 = 256 \text{ total IP addresses}
+]
+<ul>
+<li><strong>2 addresses reserved</strong> (network and broadcast), so:
+[
+256 - 2 = 254 \text{ usable IP addresses}
+]</li>
+</ul>
+</li>
+<li><strong>Subnet Range</strong>: <strong>192.168.201.128/24</strong>
+<ul>
+<li><strong>Usable IP range</strong>: <strong>192.168.201.129 to 192.168.202.254</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-configuration-of-devices"><strong>5. Configuration of Devices</strong></h2>
+<h3 id="router-and-switch-configuration"><strong>Router and Switch Configuration</strong></h3>
+<p>The core of the network includes both <strong>routers and switches</strong> that are essential for routing traffic between VLANs, enforcing network policies, and connecting end devices. Below are the configuration steps for both the <strong>core router</strong> and the <strong>distribution/access layer switches</strong>.</p>
+<h4 id="core-switch-cisco-catalyst-3650-configuration"><strong>Core Switch (Cisco Catalyst 3650) Configuration</strong></h4>
+<p>The <strong>core switch</strong> is responsible for inter-VLAN routing and traffic forwarding between branches. The core switch is configured to handle VLANs from all departments and provide routing services using <strong>HSRP (Hot Standby Router Protocol)</strong> and <strong>LACP (Link Aggregation Control Protocol)</strong> for redundancy.</p>
+<ol>
+<li>
+<p><strong>Enable Routing</strong>:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">enable</span>
+configure terminal
+ip routing
+</div></code></pre>
+</li>
+<li>
+<p><strong>Create VLANs</strong>:
+Each department is assigned its own VLAN to separate traffic.</p>
+<pre class="hljs"><code><div>vlan 10
+name Accounts
+<span class="hljs-built_in">exit</span>
+
+vlan 20
+name Administration
+<span class="hljs-built_in">exit</span>
+
+vlan 30
+name Marketing
+<span class="hljs-built_in">exit</span>
+
+vlan 40
+name Sales
+<span class="hljs-built_in">exit</span>
+
+vlan 50
+name Backbone
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Configure VLAN Interfaces for Inter-VLAN Routing</strong>:
+The core switch will act as the default gateway for all devices in each VLAN.</p>
+<pre class="hljs"><code><div>interface vlan 10
+ip address 192.168.200.1 255.255.255.128
+no shutdown
+<span class="hljs-built_in">exit</span>
+
+interface vlan 20
+ip address 192.168.200.129 255.255.255.128
+no shutdown
+<span class="hljs-built_in">exit</span>
+
+interface vlan 30
+ip address 192.168.201.1 255.255.255.128
+no shutdown
+<span class="hljs-built_in">exit</span>
+
+interface vlan 40
+ip address 192.168.201.129 255.255.254.0
+no shutdown
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Configure Trunk Ports to Access Layer Switches</strong>:
+Trunking is enabled to allow the core switch to communicate with all VLANs on the access switches.</p>
+<pre class="hljs"><code><div>interface range gi0/1 - 4
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,50
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+</ol>
+<h4 id="access-layer-switch-configuration-cisco-2960-switches"><strong>Access Layer Switch Configuration (Cisco 2960 Switches)</strong></h4>
+<p>Each <strong>access layer switch</strong> connects end devices in different departments to the core switch. These switches handle VLAN segmentation and forward traffic to the core switch through trunk links.</p>
+<ol>
+<li>
+<p><strong>Create VLANs on Access Layer Switches</strong>:
+VLANs must be created on each access switch to segment traffic for each department.</p>
+<pre class="hljs"><code><div>vlan 10
+name Accounts
+<span class="hljs-built_in">exit</span>
+
+vlan 20
+name Administration
+<span class="hljs-built_in">exit</span>
+
+vlan 30
+name Marketing
+<span class="hljs-built_in">exit</span>
+
+vlan 40
+name Sales
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Assign Ports to VLANs</strong>:
+Specific ports on the switch will be assigned to each department's VLAN based on the connected devices. For example, if <strong>FastEthernet 0/1 - 0/5</strong> are connected to devices in the Accounts department:</p>
+<pre class="hljs"><code><div>interface range fa0/1 - 5
+switchport mode access
+switchport access vlan 10
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Configure Trunk Ports to Core Switch</strong>:
+Trunk links are configured between the access switches and the core switch to carry VLAN traffic.</p>
+<pre class="hljs"><code><div>interface gi0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Enable Port-Security (Optional)</strong>:
+To enhance security, enable <strong>port security</strong> to restrict the number of MAC addresses that can connect to each port.</p>
+<pre class="hljs"><code><div>interface range fa0/1 - 5
+switchport port-security
+switchport port-security maximum 2
+switchport port-security violation restrict
+switchport port-security mac-address sticky
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+</ol>
+<hr>
+<h3 id="vlan-configuration-for-department-segmentation"><strong>VLAN Configuration for Department Segmentation</strong></h3>
+<p>Each department in the organization is segmented using VLANs to ensure traffic isolation and better performance. Here’s how VLANs are configured for each department:</p>
+<ol>
+<li><strong>VLAN 10 (Accounts Department)</strong>: Segments all devices in the Accounts department, allowing them to communicate within the same VLAN.</li>
+<li><strong>VLAN 20 (Administration Department)</strong>: Separates traffic for the Administration department.</li>
+<li><strong>VLAN 30 (Marketing Department)</strong>: Provides segmentation for the Marketing department, ensuring that devices can communicate within the same VLAN.</li>
+<li><strong>VLAN 40 (Sales Department)</strong>: Isolates traffic for the Sales department.</li>
+<li><strong>VLAN 50 (Backbone VLAN)</strong>: This VLAN is reserved for network management devices, such as switches and routers, to separate management traffic from regular data traffic.</li>
+</ol>
+<p>The configuration steps above allow each department to function in its own isolated network space, preventing unnecessary traffic between departments and improving network security.</p>
+<hr>
+<h3 id="ip-assignment-and-dhcp-configuration"><strong>IP Assignment and DHCP Configuration</strong></h3>
+<p>To simplify IP address management, <strong>DHCP (Dynamic Host Configuration Protocol)</strong> is used to dynamically assign IP addresses to devices within each VLAN. The <strong>DHCP server</strong> is configured to provide IP addresses from the designated range for each department.</p>
+<h4 id="dhcp-server-configuration-for-vlan-10-accounts"><strong>DHCP Server Configuration for VLAN 10 (Accounts)</strong>:</h4>
+<pre class="hljs"><code><div>ip dhcp pool VLAN10
+   network 192.168.200.0 255.255.255.128
+   default-router 192.168.200.1
+   dns-server 10.1.1.37
+   <span class="hljs-built_in">exit</span>
+</div></code></pre>
+<h4 id="dhcp-server-configuration-for-vlan-20-administration"><strong>DHCP Server Configuration for VLAN 20 (Administration)</strong>:</h4>
+<pre class="hljs"><code><div>ip dhcp pool VLAN20
+   network 192.168.200.128 255.255.255.128
+   default-router 192.168.200.129
+   dns-server 10.1.1.37
+   <span class="hljs-built_in">exit</span>
+</div></code></pre>
+<h4 id="dhcp-server-configuration-for-vlan-30-marketing"><strong>DHCP Server Configuration for VLAN 30 (Marketing)</strong>:</h4>
+<pre class="hljs"><code><div>ip dhcp pool VLAN30
+   network 192.168.201.0 255.255.255.128
+   default-router 192.168.201.1
+   dns-server 10.1.1.37
+   <span class="hljs-built_in">exit</span>
+</div></code></pre>
+<h4 id="dhcp-server-configuration-for-vlan-40-sales"><strong>DHCP Server Configuration for VLAN 40 (Sales)</strong>:</h4>
+<pre class="hljs"><code><div>ip dhcp pool VLAN40
+   network 192.168.201.128 255.255.254.0
+   default-router 192.168.201.129
+   dns-server 10.1.1.37
+   <span class="hljs-built_in">exit</span>
+</div></code></pre>
+<p>In each case, the <strong>default gateway</strong> corresponds to the IP address assigned to the VLAN interface on the core switch, and the <strong>DNS server</strong> is specified as <strong>10.1.1.37</strong>, which is the address of the internal DNS server.</p>
+<hr>
+<p>Here’s a draft for the <strong>Simulation and Implementation</strong> section of your report:</p>
+<hr>
+<h2 id="6-simulation-and-implementation"><strong>6. Simulation and Implementation</strong></h2>
+<h3 id="setup-in-cisco-packet-tracer"><strong>Setup in Cisco Packet Tracer</strong></h3>
+<p>The network simulation for this project was created using <strong>Cisco Packet Tracer</strong>, a simulation tool used for network configuration and testing. The network was designed based on a <strong>two-tier architecture</strong>, with a <strong>core switch</strong> responsible for inter-VLAN routing and multiple <strong>access layer switches</strong> handling department-specific VLAN traffic.</p>
+<p>The following devices were used in the Cisco Packet Tracer simulation:</p>
+<ul>
+<li><strong>Cisco Catalyst 3650</strong> (Core Switch)</li>
+<li><strong>Cisco Catalyst 2960</strong> (Access Layer Switches)</li>
+<li><strong>DHCP Server</strong></li>
+<li><strong>End devices</strong>: PCs, printers, phones, and other department-specific devices.</li>
+</ul>
+<p>The network design in Cisco Packet Tracer includes multiple <strong>VLANs</strong> to segment the network traffic for each department. VLANs are configured on both the core and access layer switches to ensure traffic isolation. Each department is connected to the network using their respective <strong>VLANs</strong>, and <strong>DHCP</strong> is used for automatic IP address assignment.</p>
+<h3 id="steps-for-creating-the-network"><strong>Steps for Creating the Network</strong></h3>
+<p>The following steps outline the process of creating the network simulation in Cisco Packet Tracer:</p>
+<h4 id="1-device-placement"><strong>1. Device Placement</strong></h4>
+<ol>
+<li>Open Cisco Packet Tracer and create a new project.</li>
+<li>Place the following devices in the workspace:
+<ul>
+<li><strong>1 Cisco Catalyst 3650</strong> for the core switch.</li>
+<li><strong>Multiple Cisco Catalyst 2960 switches</strong> for the access layer, each corresponding to a different department.</li>
+<li><strong>End devices</strong> (PCs, printers, phones) connected to the access layer switches.</li>
+<li><strong>DHCP server</strong> for dynamic IP address allocation to end devices in each VLAN.</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-vlan-creation-and-trunking"><strong>2. VLAN Creation and Trunking</strong></h4>
+<ol>
+<li>
+<p><strong>On the Core Switch (Cisco 3650)</strong>:</p>
+<ul>
+<li>Configure the VLANs for each department (Accounts, Administration, Marketing, and Sales).</li>
+<li>Enable routing for inter-VLAN communication.</li>
+<li>Configure <strong>trunk ports</strong> to the access layer switches to allow multiple VLANs to pass through.</li>
+</ul>
+<p>Example commands for VLAN and trunk configuration:</p>
+<pre class="hljs"><code><div>vlan 10
+name Accounts
+vlan 20
+name Administration
+vlan 30
+name Marketing
+vlan 40
+name Sales
+
+interface range gi0/1 - 4
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>On the Access Layer Switches (Cisco 2960)</strong>:</p>
+<ul>
+<li>Create the VLANs on each switch.</li>
+<li>Assign access ports to the appropriate VLAN based on the department.</li>
+<li>Configure the <strong>trunk port</strong> that connects to the core switch.</li>
+</ul>
+<p>Example commands for configuring the access switch:</p>
+<pre class="hljs"><code><div>vlan 10
+name Accounts
+interface range fa0/1 - 5
+switchport mode access
+switchport access vlan 10
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>DHCP Server Configuration</strong>:</p>
+<ul>
+<li>Connect the DHCP server to the core switch.</li>
+<li>Configure the DHCP pools for each VLAN, assigning the correct range of IP addresses to each department.</li>
+</ul>
+<p>Example DHCP configuration:</p>
+<pre class="hljs"><code><div>ip dhcp pool VLAN10
+network 192.168.200.0 255.255.255.128
+default-router 192.168.200.1
+dns-server 10.1.1.37
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>End Devices Configuration</strong>:</p>
+<ul>
+<li>Connect end devices to their respective access layer switches.</li>
+<li>Ensure the devices in each department are placed in the correct VLAN (based on the ports they are connected to).</li>
+<li>Configure the devices to obtain an IP address automatically via DHCP.</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-testing-vlan-and-inter-vlan-routing"><strong>3. Testing VLAN and Inter-VLAN Routing</strong></h4>
+<ol>
+<li>
+<p><strong>Test within VLANs</strong>:</p>
+<ul>
+<li>Ensure that devices in the same VLAN can communicate with each other. For example, test communication between two PCs in the <strong>Accounts department (VLAN 10)</strong> by using the <strong>ping</strong> command in the terminal of the end devices.</li>
+</ul>
+<p>Example command:</p>
+<pre class="hljs"><code><div>ping 192.168.200.2
+</div></code></pre>
+</li>
+<li>
+<p><strong>Test inter-VLAN communication</strong>:</p>
+<ul>
+<li>Test communication between devices in different VLANs to ensure inter-VLAN routing is working correctly. For example, ping a device in the <strong>Administration department (VLAN 20)</strong> from a device in the <strong>Accounts department (VLAN 10)</strong>.</li>
+</ul>
+<p>Example command:</p>
+<pre class="hljs"><code><div>ping 192.168.200.130
+</div></code></pre>
+</li>
+<li>
+<p><strong>Test DHCP Functionality</strong>:</p>
+<ul>
+<li>Verify that end devices are automatically receiving IP addresses from the DHCP server based on their VLAN assignment.</li>
+<li>Use the <code>ipconfig</code> or <code>show ip</code> command on end devices to confirm correct IP assignment.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="testing-connectivity"><strong>Testing Connectivity</strong></h3>
+<p>To ensure the network design works as expected, multiple tests were conducted to verify both intra-department communication (within VLANs) and inter-department communication (between VLANs). Testing also included validating IP address assignment via DHCP and ensuring network redundancy and security.</p>
+<h4 id="1-vlan-connectivity-testing"><strong>1. VLAN Connectivity Testing</strong></h4>
+<ul>
+<li><strong>Objective</strong>: Ensure devices within the same department can communicate with each other.</li>
+<li><strong>Method</strong>:
+<ul>
+<li>Ping between devices in the same VLAN to check whether they can communicate without issues.</li>
+<li>For example, ping between <strong>PC1</strong> and <strong>PC2</strong> in the <strong>Accounts Department (VLAN 10)</strong> to ensure successful connectivity.</li>
+</ul>
+</li>
+<li><strong>Result</strong>: Devices within the same VLAN successfully communicated with each other, confirming correct VLAN configuration.</li>
+</ul>
+<h4 id="2-inter-vlan-routing-testing"><strong>2. Inter-VLAN Routing Testing</strong></h4>
+<ul>
+<li><strong>Objective</strong>: Ensure that devices in different VLANs can communicate with each other.</li>
+<li><strong>Method</strong>:
+<ul>
+<li>Ping between devices in different VLANs to verify inter-VLAN routing is functioning.</li>
+<li>For example, test communication between a <strong>PC in the Accounts Department (VLAN 10)</strong> and a <strong>PC in the Sales Department (VLAN 40)</strong>.</li>
+</ul>
+</li>
+<li><strong>Result</strong>: Devices in different VLANs communicated successfully, confirming that the core switch is routing traffic correctly between VLANs.</li>
+</ul>
+<h4 id="3-dhcp-assignment-testing"><strong>3. DHCP Assignment Testing</strong></h4>
+<ul>
+<li><strong>Objective</strong>: Validate that IP addresses are dynamically assigned to devices via DHCP.</li>
+<li><strong>Method</strong>:
+<ul>
+<li>Check whether devices automatically receive IP addresses from the appropriate VLAN-specific IP range.</li>
+<li>For example, a device in <strong>VLAN 10 (Accounts)</strong> should receive an IP address from the range <strong>192.168.200.1 - 192.168.200.126</strong>.</li>
+</ul>
+</li>
+<li><strong>Result</strong>: All devices successfully received IP addresses from the correct subnet based on their VLAN assignment.</li>
+</ul>
+<h4 id="4-redundancy-and-trunking-testing"><strong>4. Redundancy and Trunking Testing</strong></h4>
+<ul>
+<li><strong>Objective</strong>: Test the trunk links and redundant paths to ensure there are no single points of failure.</li>
+<li><strong>Method</strong>:
+<ul>
+<li>Test the trunk connections between the core switch and access layer switches by disabling and enabling trunk ports and checking if traffic still flows through alternate paths (if configured).</li>
+</ul>
+</li>
+<li><strong>Result</strong>: Trunk links were successfully established, and redundancy was confirmed through testing alternate pathways.</li>
+</ul>
+<hr>
+<p>Here’s a draft for the <strong>Demonstration and Presentation</strong> section of your report:</p>
+<hr>
+<h2 id="7-demonstration-and-presentation"><strong>7. Demonstration and Presentation</strong></h2>
+<h3 id="explanation-of-the-working-solution"><strong>Explanation of the Working Solution</strong></h3>
+<p>The network simulation designed for this project was successfully implemented using <strong>Cisco Packet Tracer</strong> and follows a <strong>two-tier architecture</strong> model. The core switch handles inter-VLAN routing while access layer switches segment departmental traffic using VLANs.</p>
+<h4 id="overview-of-the-working-solution"><strong>Overview of the Working Solution</strong></h4>
+<p>The primary goal of the network was to segment traffic for different departments (Accounts, Administration, Marketing, and Sales) using <strong>VLANs</strong> and to route traffic between these VLANs using a <strong>Layer 3 switch (Core Switch)</strong>. The solution ensures that all devices can communicate efficiently within their own VLAN and across VLANs when necessary, while also maintaining security and performance.</p>
+<p>The network was configured as follows:</p>
+<ul>
+<li><strong>VLAN Segmentation</strong>: Each department is assigned its own VLAN, ensuring isolated network traffic for each department.</li>
+<li><strong>Inter-VLAN Routing</strong>: The core switch (Cisco 3650) is responsible for routing traffic between VLANs using <strong>Layer 3 routing capabilities</strong>.</li>
+<li><strong>Trunking</strong>: Trunk links are established between the core and access switches, allowing multiple VLANs to pass over a single physical connection.</li>
+<li><strong>DHCP Configuration</strong>: A DHCP server dynamically assigns IP addresses to end devices in each VLAN, ensuring that devices automatically receive an IP address from their respective VLAN’s IP range.</li>
+<li><strong>HSRP and Redundancy</strong>: <strong>HSRP (Hot Standby Router Protocol)</strong> is configured on the core switch to provide network redundancy. This ensures that in the event of a failure, another standby router takes over and prevents network downtime.</li>
+</ul>
+<h4 id="working-solution-in-action"><strong>Working Solution in Action</strong></h4>
+<p>The working solution was tested and verified by performing several tasks:</p>
+<ul>
+<li><strong>Intra-VLAN Communication</strong>: Devices within the same VLAN can communicate with each other without issues. For instance, all PCs in the <strong>Accounts department</strong> (VLAN 10) can communicate seamlessly.</li>
+<li><strong>Inter-VLAN Routing</strong>: Devices from different VLANs, such as a PC in the <strong>Sales department (VLAN 40)</strong> and a PC in the <strong>Marketing department (VLAN 30)</strong>, are able to communicate across VLANs through the core switch, demonstrating the success of the routing configuration.</li>
+<li><strong>Dynamic IP Address Assignment</strong>: All devices in the network receive IP addresses automatically from the <strong>DHCP server</strong>, ensuring that IP address management is efficient and automated.</li>
+<li><strong>Network Redundancy</strong>: In case of a network link failure, redundant links automatically take over, ensuring continued communication without downtime. This was demonstrated by simulating a failure in one of the core switch connections, after which traffic continued to flow through an alternate route.</li>
+</ul>
+<p>The network setup is flexible, scalable, and ready for future growth, ensuring that additional devices or departments can be added without requiring significant changes to the existing network design.</p>
+<hr>
+<h3 id="key-features-and-functionality-demonstrated"><strong>Key Features and Functionality Demonstrated</strong></h3>
+<h4 id="1-vlan-segmentation"><strong>1. VLAN Segmentation</strong></h4>
+<p>One of the key features demonstrated in this simulation is the use of <strong>VLANs</strong> to segment network traffic for different departments. By using VLANs, we ensured:</p>
+<ul>
+<li><strong>Improved Security</strong>: Each department's traffic is isolated, reducing the risk of unauthorized access to sensitive data.</li>
+<li><strong>Traffic Management</strong>: By segmenting traffic, the network reduces unnecessary broadcast traffic, improving overall performance.</li>
+<li><strong>Simplified Troubleshooting</strong>: With each department's traffic separated, troubleshooting becomes easier, as issues can be isolated within a specific VLAN.</li>
+</ul>
+<h4 id="2-inter-vlan-routing"><strong>2. Inter-VLAN Routing</strong></h4>
+<p>The <strong>Layer 3 core switch</strong> enabled <strong>inter-VLAN routing</strong>, allowing different VLANs to communicate while maintaining traffic segregation. This was demonstrated by:</p>
+<ul>
+<li>Testing communication between devices in different VLANs, ensuring that the <strong>core switch</strong> could route traffic efficiently and securely between departments.</li>
+<li>Verifying that routing policies, such as <strong>ACLs (Access Control Lists)</strong>, could be applied to manage inter-VLAN traffic for security and performance.</li>
+</ul>
+<h4 id="3-trunk-links-and-redundancy"><strong>3. Trunk Links and Redundancy</strong></h4>
+<p>The network demonstrated the use of <strong>trunk links</strong> between the core switch and access layer switches. This allowed multiple VLANs to be carried over a single physical link, simplifying the network structure while maintaining efficiency. Additionally:</p>
+<ul>
+<li><strong>HSRP</strong> was demonstrated as a redundancy mechanism to provide failover functionality for critical network links. This feature ensures high availability and reliability in case of network failures.</li>
+</ul>
+<h4 id="4-dhcp-for-dynamic-ip-assignment"><strong>4. DHCP for Dynamic IP Assignment</strong></h4>
+<p>The demonstration included the configuration and use of a <strong>DHCP server</strong> to dynamically assign IP addresses to devices in each VLAN. This ensures:</p>
+<ul>
+<li><strong>Efficient IP Management</strong>: By automating the process of IP address assignment, DHCP reduces the risk of IP address conflicts and human error.</li>
+<li><strong>Simplified Device Setup</strong>: End devices, including PCs, printers, and phones, are automatically assigned IP addresses when they connect to the network, simplifying the process for end users and network administrators.</li>
+</ul>
+<h4 id="5-redundancy-and-high-availability"><strong>5. Redundancy and High Availability</strong></h4>
+<p>The simulation showcased <strong>redundancy</strong> as a critical component of the network design. The following were highlighted:</p>
+<ul>
+<li><strong>Redundant Trunk Links</strong>: The use of redundant links between the core switch and access switches ensured that traffic could continue to flow even if one of the trunk links failed.</li>
+<li><strong>HSRP</strong>: Configuring <strong>Hot Standby Router Protocol</strong> on the core switch provided high availability for network routing, ensuring that in the event of a core switch failure, another standby router would take over.</li>
+</ul>
+<h4 id="6-scalability-and-future-expansion"><strong>6. Scalability and Future Expansion</strong></h4>
+<p>The network design demonstrated its ability to scale to accommodate future expansion. With an IP addressing scheme that allows for additional devices, the ability to add new VLANs or departments is seamless. Additionally, the use of <strong>trunk links</strong> and <strong>VLANs</strong> provides flexibility for extending the network across additional physical locations without major reconfiguration.</p>
+<hr>
+<h3 id="conclusion-of-demonstration">Conclusion of Demonstration</h3>
+<p>The demonstration successfully showed that the designed network in Cisco Packet Tracer is fully operational, meeting all design objectives. The network is capable of segmenting departmental traffic, routing between VLANs, dynamically assigning IP addresses, and providing network redundancy to ensure uptime and availability. The use of key protocols such as <strong>VLANs, DHCP, and HSRP</strong> ensured a highly secure, efficient, and scalable network, ready for future growth.</p>
+<hr>
+<h2 id="8-challenges-and-solutions"><strong>8. Challenges and Solutions</strong></h2>
+<h3 id="issues-faced-during-simulation"><strong>Issues Faced During Simulation</strong></h3>
+<p>During the design and implementation of the network in <strong>Cisco Packet Tracer</strong>, several challenges were encountered. These issues primarily related to configuring VLANs, ensuring inter-VLAN routing, establishing redundancy for network resilience, and correctly implementing security protocols. Below are the key challenges and the corresponding solutions that were applied to resolve them.</p>
+<h4 id="1-vlan-trunking-issues"><strong>1. VLAN Trunking Issues</strong></h4>
+<ul>
+<li><strong>Problem</strong>: Initially, trunk links between the core switch (Cisco 3650) and the access layer switches (Cisco 2960) were not allowing multiple VLAN traffic to pass. This led to devices in different VLANs being unable to communicate with each other, even though VLANs were configured correctly on both the core and access switches.</li>
+<li><strong>Cause</strong>: The <strong>trunk mode</strong> was not properly configured, which prevented the switches from forwarding traffic for multiple VLANs. Additionally, the allowed VLANs were not explicitly defined on the trunk ports, resulting in untagged traffic being dropped.</li>
+<li><strong>Solution</strong>: The trunk ports were manually configured to allow the required VLANs to pass between the switches. This was done using the following commands on the core and access switches:<pre class="hljs"><code><div>interface gi0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+This configuration enabled traffic from multiple VLANs to pass through the trunk links and allowed inter-VLAN communication.</li>
+</ul>
+<h4 id="2-inter-vlan-routing-challenges"><strong>2. Inter-VLAN Routing Challenges</strong></h4>
+<ul>
+<li><strong>Problem</strong>: Devices from different VLANs were unable to communicate with each other, even though inter-VLAN routing was enabled on the core switch.</li>
+<li><strong>Cause</strong>: The <strong>VLAN interfaces</strong> (SVIs) on the core switch were not properly configured with IP addresses, preventing the switch from acting as a router for the different VLANs.</li>
+<li><strong>Solution</strong>: Each VLAN was assigned a <strong>Switched Virtual Interface (SVI)</strong> with an IP address to act as the default gateway for that VLAN. Once the SVIs were configured and routing was enabled, inter-VLAN communication worked as expected.
+Example configuration:<pre class="hljs"><code><div>interface vlan 10
+ip address 192.168.200.1 255.255.255.128
+no shutdown
+
+interface vlan 20
+ip address 192.168.200.129 255.255.255.128
+no shutdown
+</div></code></pre>
+Additionally, <strong>IP routing</strong> was enabled on the core switch:<pre class="hljs"><code><div>ip routing
+</div></code></pre>
+</li>
+</ul>
+<h4 id="3-dhcp-server-not-assigning-ip-addresses"><strong>3. DHCP Server Not Assigning IP Addresses</strong></h4>
+<ul>
+<li><strong>Problem</strong>: Devices connected to the network were not receiving IP addresses from the DHCP server. This caused manual IP configuration to be necessary, which was not ideal for scalability.</li>
+<li><strong>Cause</strong>: The <strong>DHCP pools</strong> were either not correctly configured, or the VLAN interfaces did not have the correct default gateway settings for the devices to communicate with the DHCP server.</li>
+<li><strong>Solution</strong>: The DHCP pools were configured on the server to provide IP addresses specific to each VLAN’s subnet. The correct <strong>default gateway</strong> was also set for each VLAN on the core switch, ensuring that devices could reach the DHCP server.
+Example configuration for a VLAN 10 DHCP pool:<pre class="hljs"><code><div>ip dhcp pool VLAN10
+network 192.168.200.0 255.255.255.128
+default-router 192.168.200.1
+dns-server 10.1.1.37
+</div></code></pre>
+</li>
+</ul>
+<h4 id="4-redundancy-and-failover-issues"><strong>4. Redundancy and Failover Issues</strong></h4>
+<ul>
+<li><strong>Problem</strong>: The network lacked redundancy, meaning that if a core switch or trunk link failed, there would be no failover mechanism, leading to network downtime.</li>
+<li><strong>Cause</strong>: The network initially did not have a backup or failover configuration for the core switch or the trunk links, which could lead to single points of failure.</li>
+<li><strong>Solution</strong>: <strong>HSRP (Hot Standby Router Protocol)</strong> was implemented on the core switch to provide high availability. This protocol allowed for an automatic failover to a backup router if the primary router became unavailable.
+Configuration example for HSRP:<pre class="hljs"><code><div>interface vlan 10
+ip address 192.168.200.1 255.255.255.128
+standby 10 ip 192.168.200.254
+standby 10 priority 110
+standby 10 preempt
+<span class="hljs-built_in">exit</span>
+</div></code></pre>
+Additionally, <strong>EtherChannel</strong> using <strong>LACP (Link Aggregation Control Protocol)</strong> was configured between the core and access switches to bundle multiple links and provide redundancy in case one link failed:<pre class="hljs"><code><div>interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+</div></code></pre>
+</li>
+</ul>
+<h4 id="5-security-and-vlan-hopping-prevention"><strong>5. Security and VLAN Hopping Prevention</strong></h4>
+<ul>
+<li><strong>Problem</strong>: There was a concern about <strong>VLAN hopping</strong>, where an attacker could send frames to unauthorized VLANs by exploiting a misconfigured trunk port.</li>
+<li><strong>Cause</strong>: Trunk ports were left open to all VLAN traffic by default, and no security measures like <strong>BPDU Guard</strong> or <strong>PortFast</strong> were configured to prevent unauthorized access.</li>
+<li><strong>Solution</strong>: <strong>VLAN hopping prevention</strong> was implemented by limiting the allowed VLANs on each trunk port and configuring <strong>PortFast</strong> and <strong>BPDU Guard</strong> on access ports.
+Example configuration:<pre class="hljs"><code><div>interface gi0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+<span class="hljs-built_in">exit</span>
+
+interface range fa0/1 - 24
+spanning-tree portfast
+spanning-tree bpduguard <span class="hljs-built_in">enable</span>
+</div></code></pre>
+</li>
+</ul>
+<h4 id="6-wireless-infrastructure-setup"><strong>6. Wireless Infrastructure Setup</strong></h4>
+<ul>
+<li><strong>Problem</strong>: The wireless network, managed by the <strong>Cisco Wireless LAN Controller (WLC)</strong>, was initially not allowing proper connectivity for wireless devices across the VLANs.</li>
+<li><strong>Cause</strong>: The Wireless Access Points (LAPs) were not correctly associated with the WLC, and the <strong>VLAN mappings</strong> for wireless traffic were not properly configured.</li>
+<li><strong>Solution</strong>: The Wireless LAN Controller (WLC) was properly configured to handle traffic for specific VLANs. Each department's VLAN was mapped to a specific SSID for wireless clients, and the LAPs were successfully associated with the WLC.
+Example VLAN mapping for wireless clients:<pre class="hljs"><code><div>wlan AccountsSSID 10
+vlan 10
+</div></code></pre>
+</li>
+</ul>
+<h4 id="7-voip-configuration-issues"><strong>7. VoIP Configuration Issues</strong></h4>
+<ul>
+<li><strong>Problem</strong>: The <strong>Cisco Voice Gateway</strong> and IP phones initially experienced connectivity issues, leading to dropped calls and unavailable VoIP services.</li>
+<li><strong>Cause</strong>: <strong>VLAN 70</strong> for VoIP traffic was not properly configured on the access and core switches, and the Voice Gateway’s connection to the switches was not prioritized.</li>
+<li><strong>Solution</strong>: VLAN 70 was created for VoIP traffic, and <strong>QoS (Quality of Service)</strong> settings were applied to ensure that VoIP traffic received higher priority over other data traffic. The Voice Gateway was placed in VLAN 70, and the IP phones were correctly configured to use this VLAN.
+Example configuration:<pre class="hljs"><code><div>vlan 70
+name VoIP
+
+interface gi0/1
+switchport access vlan 70
+mls qos trust cos
+</div></code></pre>
+</li>
+</ul>
+<h3 id="solutions-to-identified-problems"><strong>Solutions to Identified Problems</strong></h3>
+<p>By addressing each of the issues listed above, the network simulation was successfully configured to meet all of the design requirements. The implementation of <strong>VLAN trunking</strong>, <strong>inter-VLAN routing</strong>, <strong>HSRP</strong>, <strong>EtherChannel</strong>, and <strong>security protocols</strong> ensured that the network is fully functional, secure, and resilient to failures. The combination of <strong>wireless infrastructure</strong>, <strong>VoIP</strong>, and <strong>DHCP</strong> functionalities added further versatility to the network, providing comprehensive connectivity for all users and devices.</p>
+<hr>
+<p>Here’s a draft for the <strong>Conclusion</strong> section of your report:</p>
+<hr>
+<h2 id="9-conclusion"><strong>9. Conclusion</strong></h2>
+<h3 id="summary-of-the-solution"><strong>Summary of the Solution</strong></h3>
+<p>The design and implementation of the network infrastructure in <strong>Cisco Packet Tracer</strong> provided a fully functional, scalable, and secure solution tailored to meet the needs of the organization. The <strong>two-tier architecture</strong> used in this project simplified the network structure while ensuring efficient traffic management and enhanced performance.</p>
+<p>Key elements of the solution included:</p>
+<ul>
+<li><strong>VLAN Segmentation</strong>: Each department (Accounts, Administration, Marketing, and Sales) was assigned its own VLAN, effectively isolating traffic for improved security and performance. VLANs ensured that traffic remained contained within the department while allowing controlled inter-department communication.</li>
+<li><strong>Inter-VLAN Routing</strong>: The <strong>Layer 3 core switch</strong> handled all inter-VLAN routing, ensuring devices from different VLANs could communicate securely. This was achieved by configuring <strong>Switched Virtual Interfaces (SVIs)</strong> and enabling <strong>IP routing</strong>.</li>
+<li><strong>Dynamic IP Addressing (DHCP)</strong>: A <strong>DHCP server</strong> was configured to assign IP addresses dynamically, ensuring seamless device integration and reducing administrative overhead. Each department had its own DHCP pool corresponding to its VLAN and subnet, allowing for efficient IP address management.</li>
+<li><strong>Network Redundancy</strong>: The use of <strong>HSRP (Hot Standby Router Protocol)</strong> and <strong>EtherChannel (Link Aggregation)</strong> provided redundancy at both the routing and link layers. These configurations ensured the network remained resilient to failures, improving overall uptime and availability.</li>
+<li><strong>Security Enhancements</strong>: Security features such as <strong>BPDU Guard</strong>, <strong>PortFast</strong>, and <strong>VLAN Hopping Prevention</strong> were implemented to protect the network from potential security threats and unauthorized access. These measures enhanced network integrity and reduced vulnerabilities.</li>
+<li><strong>Wireless and VoIP Integration</strong>: The network supported <strong>wireless connectivity</strong> through the <strong>Cisco Wireless LAN Controller (WLC)</strong>, managing lightweight access points (LAPs) and allowing Wi-Fi access across departments. Additionally, the network incorporated <strong>VoIP (Voice over IP)</strong> technology using a <strong>Cisco Voice Gateway</strong>, enabling reliable telephony services.</li>
+</ul>
+<p>By leveraging these technologies and strategies, the final solution met all of the design objectives, providing a robust, secure, and efficient network capable of handling the organization's current needs while remaining flexible for future expansion.</p>
+<h3 id="lessons-learned"><strong>Lessons Learned</strong></h3>
+<p>Throughout the design and implementation process, several important lessons were learned that highlight the significance of proper planning, configuration, and testing in network infrastructure projects:</p>
+<h4 id="1-importance-of-network-design-planning"><strong>1. Importance of Network Design Planning</strong></h4>
+<p>Effective network design requires a clear understanding of the organization’s requirements, the available hardware, and the proper configuration of protocols and devices. During the initial design phase, careful attention was given to traffic segmentation through VLANs, routing, and redundancy. This planning ensured that the network was able to meet the organization’s needs while maintaining performance and security.</p>
+<h4 id="2-vlan-trunking-and-routing-are-critical-for-inter-vlan-communication"><strong>2. VLAN Trunking and Routing are Critical for Inter-VLAN Communication</strong></h4>
+<p>One of the key challenges in this project was ensuring that devices in different VLANs could communicate with each other through proper <strong>inter-VLAN routing</strong>. Understanding how to configure <strong>trunk links</strong> and <strong>Switched Virtual Interfaces (SVIs)</strong> was essential to enable routing between VLANs. This project reinforced the importance of correctly configuring both <strong>trunk ports</strong> and <strong>SVIs</strong> to ensure efficient data flow between departments.</p>
+<h4 id="3-redundancy-and-failover-mechanisms-are-crucial-for-network-resilience"><strong>3. Redundancy and Failover Mechanisms are Crucial for Network Resilience</strong></h4>
+<p>The implementation of <strong>HSRP</strong> and <strong>EtherChannel</strong> highlighted the importance of redundancy in modern networks. Without proper redundancy mechanisms, a network can be vulnerable to failures that cause downtime and disrupt business operations. This project demonstrated how critical it is to build redundancy into the network design, ensuring that backup paths and devices are in place to handle failures without affecting users.</p>
+<h4 id="4-security-features-must-be-a-priority-in-network-design"><strong>4. Security Features Must Be a Priority in Network Design</strong></h4>
+<p>During the project, we learned that even the most efficient network designs can be compromised if security measures are not properly implemented. The use of <strong>BPDU Guard</strong>, <strong>PortFast</strong>, and <strong>VLAN Hopping Prevention</strong> showed how critical it is to secure network devices and configurations. Ensuring that access control and traffic isolation are properly enforced can prevent potential breaches and maintain the integrity of the network.</p>
+<h4 id="5-testing-is-key-to-ensuring-network-functionality"><strong>5. Testing is Key to Ensuring Network Functionality</strong></h4>
+<p>Throughout the simulation, comprehensive testing was crucial to verifying that the network functioned as expected. Testing VLAN segmentation, DHCP functionality, inter-VLAN routing, and redundancy allowed us to identify and resolve issues early in the implementation process. This project emphasized that thorough testing is necessary to ensure a smooth and successful deployment in real-world scenarios.</p>
+<h4 id="6-integration-of-advanced-technologies-increases-network-versatility"><strong>6. Integration of Advanced Technologies Increases Network Versatility</strong></h4>
+<p>The integration of wireless infrastructure through the <strong>WLC</strong>, <strong>VoIP</strong> for telephony, and dynamic IP addressing through <strong>DHCP</strong> illustrated how modern networks can be equipped with advanced features to meet diverse business needs. These technologies not only increase the versatility of the network but also enhance productivity and user experience. This lesson highlighted the importance of considering current and future technological needs when designing networks.</p>
+<hr>
+<h3 id="conclusion">Conclusion</h3>
+<p>Overall, the project provided valuable insights into network design, configuration, and simulation using Cisco Packet Tracer. The key takeaways from this project emphasize the importance of proper planning, configuration, redundancy, and security in network infrastructure. The knowledge gained during this project can be applied to future network design projects, ensuring efficient, secure, and scalable networks that meet the evolving needs of organizations.</p>
+<hr>
+<p>Here’s a draft for the <strong>References</strong> section of your report:</p>
+<hr>
+<h2 id="10-references"><strong>10. References</strong></h2>
+<h3 id="tools-and-software-used"><strong>Tools and Software Used</strong></h3>
+<p>The following tools and software were utilized during the design, simulation, and implementation of the network infrastructure:</p>
+<ol>
+<li><strong>Cisco Packet Tracer</strong>
+<ul>
+<li><strong>Version</strong>: Cisco Packet Tracer 8.0 and above</li>
+<li><strong>Purpose</strong>: Cisco Packet Tracer was the primary tool used for network simulation. It provided an environment for configuring, testing, and verifying the network setup. The tool allowed for the creation of VLANs, trunking, inter-VLAN routing, DHCP configuration, redundancy testing, and other essential network features.</li>
+<li><strong>Official Website</strong>: <a href="https://www.netacad.com/courses/packet-tracer">Cisco Packet Tracer</a></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="sources-for-additional-research"><strong>Sources for Additional Research</strong></h3>
+<p>Several resources were referenced during the project to ensure best practices in network design, VLAN configuration, routing, and redundancy. The following sources provided critical insights into industry standards and Cisco technologies:</p>
+<ol>
+<li>
+<p><strong>Cisco Networking Academy</strong></p>
+<ul>
+<li><strong>Description</strong>: Cisco’s official online training platform was used to understand the practical application of Cisco technologies, including VLANs, trunking, routing, and advanced security features. The tutorials and labs provided by <strong>NetAcad</strong> helped in configuring and troubleshooting Cisco devices in Packet Tracer.</li>
+<li><strong>Website</strong>: <a href="https://www.netacad.com">Cisco Networking Academy</a></li>
+</ul>
+</li>
+<li>
+<p><strong>CCNA 200-301 Official Cert Guide</strong></p>
+<ul>
+<li><strong>Authors</strong>: Wendell Odom</li>
+<li><strong>Description</strong>: The <strong>CCNA Official Cert Guide</strong> provided in-depth coverage of VLANs, inter-VLAN routing, DHCP, trunking, and basic security measures such as BPDU Guard and PortFast. The book was essential in understanding how to implement these features correctly in the network.</li>
+<li><strong>Publisher</strong>: Cisco Press</li>
+<li><strong>ISBN</strong>: 978-1-58720-559-0</li>
+</ul>
+</li>
+<li>
+<p><strong>Cisco Networking: Introduction to VLANs</strong></p>
+<ul>
+<li><strong>Source</strong>: Cisco Systems</li>
+<li><strong>Description</strong>: Cisco’s technical documentation and guides were referenced to gain a deeper understanding of how to configure and manage VLANs, inter-VLAN routing, and redundancy protocols such as HSRP and EtherChannel.</li>
+<li><strong>Link</strong>: <a href="https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/lanswitch/configuration/xe-3s/lanswitch-xe-3s-book/config-l2-vlan.html">Cisco VLAN Configuration Guide</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Wireshark Network Analysis</strong></p>
+<ul>
+<li><strong>Author</strong>: Laura Chappell</li>
+<li><strong>Description</strong>: This book provided insights into network packet analysis and was used during the testing phase to monitor traffic flow in the network. It helped in troubleshooting issues related to DHCP assignment, inter-VLAN communication, and trunking.</li>
+<li><strong>Publisher</strong>: Chappell University</li>
+<li><strong>ISBN</strong>: 978-1893939977</li>
+</ul>
+</li>
+<li>
+<p><strong>Designing for Cisco Network Service Architectures (ARCH)</strong></p>
+<ul>
+<li><strong>Authors</strong>: Marwan Al-Shawi, Andre Laurent</li>
+<li><strong>Description</strong>: This book was referenced for understanding network redundancy, high availability, and hierarchical network design concepts. The detailed chapters on <strong>HSRP</strong>, <strong>EtherChannel</strong>, and <strong>Layer 3 switch design</strong> provided valuable information for the network’s failover mechanisms.</li>
+<li><strong>Publisher</strong>: Cisco Press</li>
+<li><strong>ISBN</strong>: 978-1587144546</li>
+</ul>
+</li>
+<li>
+<p><strong>Subnetting Made Easy – IP Addressing and Subnetting for Beginners</strong></p>
+<ul>
+<li><strong>Description</strong>: Online resources and tutorials on subnetting were utilized to calculate the appropriate IP address ranges and subnet masks for each department. These resources were essential in ensuring the correct distribution of IP addresses.</li>
+<li><strong>Website</strong>: <a href="https://www.subnetting.org">Subnetting Tutorials</a></li>
+</ul>
+</li>
+<li>
+<p><strong>EtherChannel and HSRP Configuration on Cisco Devices</strong></p>
+<ul>
+<li><strong>Source</strong>: Cisco Tech</li>
+<li><strong>Description</strong>: Cisco’s official support documentation on configuring <strong>EtherChannel</strong> and <strong>HSRP</strong> was used to implement link aggregation and redundancy features on the core and access switches.</li>
+<li><strong>Link</strong>: <a href="https://www.cisco.com/c/en/us/support/docs/lan-switching/etherchannel/12023-4.html">Cisco EtherChannel Configuration Guide</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Spanning Tree Protocol (STP) and Security Best Practices</strong></p>
+<ul>
+<li><strong>Description</strong>: This guide was referenced to configure <strong>Spanning Tree Protocol (STP)</strong> with <strong>PortFast</strong> and <strong>BPDU Guard</strong>, ensuring that the access ports transitioned quickly to a forwarding state while securing them against rogue devices.</li>
+<li><strong>Link</strong>: <a href="https://www.cisco.com/c/en/us/tech/stp/index.html">STP and Port Security Documentation</a></li>
+</ul>
+</li>
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="readme">README</h1>
+<p>Welcome to the README for the homepage layout of our DevOps and SysOps-themed website. Below you will find a detailed description of each section of the homepage. This guide aims to provide clarity on the design, functionality, and content of each part of the homepage.</p>
+<hr>
+<h2 id="accessing-the-project-on-github">Accessing the Project on GitHub</h2>
+<p><strong>Accessing the Project on GitHub</strong></p>
+<p>This project is hosted on GitHub and can be accessed through the following repository:</p>
+<p><a href="https://github.com/atlascopcosaurus/portfolio"><strong>atlascopcosaurus/portfolio</strong></a></p>
+<p>Feel free to explore the repository for source code, documentation, and other relevant project materials. Contributions, suggestions, and feedback are always welcome.</p>
+<hr>
+<h2 id="interactive-walkthrough">Interactive Walkthrough</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=4WZ77OGV9uw" title="Figma tutorial: Christmas Toggle" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<hr>
+<h2 id="project-structure">Project Structure</h2>
+<pre class="hljs"><code><div>[doosan@anton portfolio]$ tree .
+.
+├── assets
+│   └── resume.pdf
+├── contact-me
+│   ├── 290144_building_office_finance buildings_icon.png
+│   ├── 8666632_phone_icon.png
+│   ├── 8666723_mail_icon.png
+│   └── element5-digital-h9eOO7W5m2s-unsplash.jpg
+├── css
+│   ├── styles_1.css
+│   ├── styles_3.css
+│   ├── styles.css
+│   └── styles_dark.css
+├── html
+│   ├── about-me.html
+│   ├── contact-me.html
+│   ├── project-article.html
+│   └── projects.html
+├── images
+│   ├── blog-placeholder-1.jpg
+│   ├── blog-placeholder-3.jpg
+│   ├── blog-placeholder.jpg
+│   ├── brightness.png
+│   ├── building.png
+│   ├── cloudnet.png
+│   ├── Contact Me.png
+│   ├── dark.png
+│   ├── devops.png
+│   ├── facebook.png
+│   ├── icon-placeholder.png
+│   ├── infra.png
+│   ├── instagram.png
+│   ├── insurance-company-2.png
+│   ├── insurance-company.png
+│   ├── left-arrow.png
+│   ├── light-background.jpg
+│   ├── linkedin.png
+│   ├── location.png
+│   ├── profile-pic-3.png
+│   ├── profile-pic-5.png
+│   ├── profile-pic-6.png
+│   ├── profile-placeholder.png
+│   ├── project-placeholder-1.jpg
+│   ├── project-placeholder-2.jpg
+│   ├── project-placeholder-3.jpg
+│   ├── project-placeholder-4.jpg
+│   ├── project-placeholder-5.jpg
+│   ├── right-arrow.png
+│   ├── skills.png
+│   ├── terraform-logo.png
+│   ├── timeline.png
+│   ├── xing.png
+│   └── youtube.png
+├── index.html
+├── js
+│   ├── slider.js
+│   ├── testimonial.js
+│   ├── theme.js
+│   └── validation.js
+├── readme-images
+│   ├── 255a341e2126.png
+│   ├── 53cee40c9dab.png
+│   ├── a519cbe97ffc.png
+│   ├── a8655a4c06e4.png
+│   ├── afb44587c674.png
+│   ├── fa8a4a496769.png
+│   └── homepage_decomposition.png
+└── README.md
+
+</div></code></pre>
+<h2 id="homepage-light-mode-indexhtml">Homepage Light Mode [index.html]</h2>
+<p><img src="readme-images/fa8a4a496769.png" alt="Homepage on Dark Mode"></p>
+<hr>
+<h2 id="homepage-dark-mode">Homepage Dark Mode</h2>
+<p><img src="readme-images/afb44587c674.png" alt="Homepage on Light Mode"></p>
+<h4 id="overview">Overview</h4>
+<p>The dark mode feature on the website is designed to enhance the user experience by offering an alternative, eye-friendly visual option that reduces glare, particularly useful in low-light conditions. This feature is currently implemented only on the <code>index.html</code> page of the website.</p>
+<h4 id="implementation">Implementation</h4>
+<ul>
+<li><strong>Activation</strong>: Users can enable dark mode by clicking on the sun icon located in the navigation bar. This interaction toggles the appearance of the website between light and dark themes.</li>
+<li><strong>Scope</strong>: Due to time constraints, the dark mode feature has been limited to the homepage (<code>index.html</code>). Other pages will retain their default light theme until further updates are made.</li>
+<li><strong>Technical Details</strong>: The toggle likely changes the CSS stylesheet from a light theme to a dark theme, adjusting the background colors, text colors, and potentially other elements like borders and shadows to fit the dark mode aesthetics.</li>
+</ul>
+<h4 id="user-interface">User Interface</h4>
+<ul>
+<li><strong>Icon</strong>: The toggle is represented by a sun icon, which intuitively suggests brightness control.</li>
+<li><strong>Feedback</strong>: Upon interaction, the icon may change to a moon or similar symbol to reflect the dark mode status, providing clear visual feedback that the mode has been activated.</li>
+</ul>
+<h4 id="future-enhancements">Future Enhancements</h4>
+<ul>
+<li><strong>Extension to Other Pages</strong>: Plans to extend the dark mode feature to additional pages would offer a consistent user experience across the entire site.</li>
+<li><strong>User Preferences</strong>: Integrating functionality to remember the user’s theme preference via cookies or local storage, so the preferred theme loads automatically on subsequent visits.</li>
+</ul>
+<hr>
+<h2 id="homepage-decomposition">Homepage Decomposition</h2>
+<p><img src="readme-images/homepage_decomposition.png" alt="Homepage Decomposition"></p>
+<h4 id="a-navigation-bar">A. Navigation Bar</h4>
+<ul>
+<li><strong>Purpose</strong>: Allows users to easily navigate the website.</li>
+<li><strong>Content</strong>: Includes links to key sections: Home, About, Blog, Projects, Services, Blog, Contact, etc.</li>
+<li><strong>Features</strong>: Fixed at the top, becomes sticky on scroll to remain accessible.</li>
+</ul>
+<h4 id="b-image-slider-section">B. Image Slider Section</h4>
+<ul>
+<li><strong>Purpose</strong>: To showcase key highlights and recent achievements.</li>
+<li><strong>Content</strong>: Features a rotating carousel of images that may include recent projects, team events, or key technology focuses.</li>
+<li><strong>Interaction</strong>: Users can manually cycle through the images using navigation arrows.</li>
+</ul>
+<h4 id="c-skills-section">C. Skills Section</h4>
+<ul>
+<li><strong>Purpose</strong>: Highlights professional skills and expertise.</li>
+<li><strong>Content</strong>: Lists core skills such as programming languages, tools, and methodologies. Also includes a brief on experience level and specializations.</li>
+<li><strong>Design</strong>: Icons and short progress bars or charts that visually represent proficiency levels.</li>
+</ul>
+<h4 id="d-banner-section">D. Banner Section</h4>
+<ul>
+<li><strong>Purpose</strong>: Acts as a promotional space to emphasize professional identity.</li>
+<li><strong>Content</strong>: A large, eye-catching banner stating &quot;Passionate DevOps Engineer Creating Innovative Solutions&quot;.</li>
+<li><strong>Design</strong>: Includes dynamic background or subtle animations to draw attention.</li>
+</ul>
+<h4 id="e-projects-section">E. Projects Section</h4>
+<ul>
+<li><strong>Purpose</strong>: To display notable engineering projects.</li>
+<li><strong>Content</strong>: Thumbnails for each project with a brief overview when hovered over. Links to detailed project pages.</li>
+<li><strong>Features</strong>: 'View all' button to explore more projects.</li>
+</ul>
+<h4 id="f-blog-section">F. Blog Section</h4>
+<ul>
+<li><strong>Purpose</strong>: To provide insights, updates, and articles on relevant topics.</li>
+<li><strong>Content</strong>: Preview of blog posts with titles, brief descriptions, and publication dates.</li>
+<li><strong>Interaction</strong>: Includes links to read more and view all blog entries.</li>
+</ul>
+<h4 id="g-testimonial-section">G. Testimonial Section</h4>
+<ul>
+<li><strong>Purpose</strong>: To build trust by showcasing feedback from clients or colleagues.</li>
+<li><strong>Content</strong>: Carousel of testimonials with quotes and attributions to the individuals.</li>
+<li><strong>Design</strong>: Minimalistic with emphasis on readability and authenticity.</li>
+</ul>
+<h4 id="h-call-to-action-section">H. Call to Action Section</h4>
+<ul>
+<li><strong>Purpose</strong>: To encourage users to engage with services or contact for potential collaborations.</li>
+<li><strong>Content</strong>: Features an impactful statement with a button, e.g., &quot;Transform your projects with DevOps – Get in touch today!&quot;</li>
+<li><strong>Design</strong>: Prominent button and bold text to draw user attention.</li>
+</ul>
+<h4 id="i-footer-section">I. Footer Section</h4>
+<ul>
+<li><strong>Purpose</strong>: Provides additional navigation and legal information.</li>
+<li><strong>Content</strong>: Includes links to privacy policy, terms of service, social media icons, and a brief about section.</li>
+<li><strong>Design</strong>: Organized and compact to avoid overwhelming users while providing useful links.</li>
+</ul>
+<p>This README aims to be a comprehensive guide for anyone needing to understand or work on the homepage. Each section is designed to ensure a fluid user experience and provide valuable information clearly and efficiently.</p>
+<hr>
+<h2 id="about-me">About Me</h2>
+<p><img src="readme-images/a519cbe97ffc.png" alt="About Me webpage"></p>
+<h3 id="overview">Overview</h3>
+<p>The &quot;About Me&quot; page is designed to offer a comprehensive view of Doosan Pagooah’s professional background, skills, and work philosophy. It integrates a blend of personal introductions, a detailed timeline of professional experiences, and endorsements, structured to engage visitors and provide a deep insight into his professional journey.</p>
+<h3 id="section-breakdown">Section Breakdown</h3>
+<h4 id="1-introduction-section">1. Introduction Section</h4>
+<ul>
+<li><strong>Purpose</strong>: Introduces Doosan Pagooah, highlighting his professional stance and approach.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Portrait</strong>: A professional photo of Doosan, establishing a personal connection with the visitor.</li>
+<li><strong>Text Content</strong>: A brief introduction that covers his passion for technology, his approach to DevOps and SysOps, and his key skills. This part emphasizes his problem-solving abilities and dedication to continuous learning and improvement.</li>
+<li><strong>Design</strong>: Clean and minimalistic, focusing on readability with a simple, elegant typography layout.</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-professional-journey-and-achievements-timeline">2. Professional Journey and Achievements Timeline</h4>
+<ul>
+<li><strong>Purpose</strong>: Displays the chronological progression of Doosan's career, emphasizing significant achievements and roles.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Timeline</strong>: A vertical timeline that details each position held, along with the corresponding dates. Each entry includes a short description of his role and major accomplishments.</li>
+<li><strong>Icons</strong>: Custom icons next to each timeline entry that visually represent the nature of the job or sector (e.g., a gear icon for engineering roles).</li>
+<li><strong>Interaction</strong>: Users can scroll through the timeline, with each entry clearly delineated for easy reading.</li>
+<li><strong>Design</strong>: The timeline uses contrasting colors to distinguish between different roles and employs subtle animations as the user scrolls to enhance engagement.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-testimonials">3. Testimonials</h4>
+<ul>
+<li><strong>Purpose</strong>: To build credibility through endorsements from colleagues and supervisors.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Quotes</strong>: Carousel of testimonials from various professionals acknowledging Doosan's expertise and contributions.</li>
+<li><strong>Attribution</strong>: Each quote includes the name, position, and company of the individual, adding authenticity to the testimonials.</li>
+<li><strong>Design</strong>: Testimonials are presented in a slider format, allowing users to navigate through them. The design is clean, with a focus on the text and subtle transitions between entries.</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-call-to-action">4. Call to Action</h4>
+<ul>
+<li><strong>Purpose</strong>: Encourages visitors to engage further, whether through professional inquiries or project collaborations.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Button</strong>: A prominent button with &quot;Transform your projects with DevOps&quot; invites users to contact Doosan or learn more about his services.</li>
+<li><strong>Design</strong>: The button is designed to stand out, using a bold color that contrasts with the rest of the page, ensuring it catches the user's eye.</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-footer-section">5. Footer Section</h4>
+<ul>
+<li><strong>Purpose</strong>: Provides additional navigation and legal information along with social media links.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Navigation Links</strong>: Quick links to other parts of the website like Projects, Services, and Contact Me.</li>
+<li><strong>Social Media Icons</strong>: Links to Doosan’s professional social media profiles.</li>
+<li><strong>Design</strong>: Organized in a compact format, the footer remains consistent in style with the rest of the site to maintain a cohesive look.</li>
+</ul>
+</li>
+</ul>
+<h4 id="technologies-used">Technologies Used</h4>
+<ul>
+<li><strong>HTML</strong>: For structuring the webpage.</li>
+<li><strong>CSS</strong>: For styling, including layout, colors, and fonts.</li>
+<li><strong>JavaScript</strong>: For interactive elements like the testimonial carousel.</li>
+<li><strong>Responsive Design</strong>: Ensures the page is accessible and aesthetically pleasing across all devices.</li>
+</ul>
+<p>This documentation should help in understanding the design and functionality of the &quot;About Me&quot; page, ensuring any future updates or modifications can be performed with an understanding of its initial intent and structure.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<p><img src="readme-images/255a341e2126.png" alt="Projects webpage"></p>
+<h3 id="overview">Overview</h3>
+<p>The &quot;Project List&quot; page is designed to display an organized list of Doosan Pagooah's key projects, showcasing his expertise and contributions in the field of DevOps and SysOps. This page offers a detailed view of each project, highlighting its scope, technologies involved, and the challenges addressed.</p>
+<h4 id="1-project-overview-section">1. Project Overview Section</h4>
+<ul>
+<li><strong>Purpose</strong>: To introduce visitors to a range of projects completed by Doosan, emphasizing the diversity and depth of his work.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Project Thumbnails</strong>: Each project is represented by an image that reflects the project's nature or outcome.</li>
+<li><strong>Project Descriptions</strong>: Brief descriptions for each project that outline the objectives, technologies used, and the impact of the project.</li>
+<li><strong>Read More Links</strong>: Each project summary includes a 'Read more' link that directs users to a detailed project page.</li>
+<li><strong>Design</strong>: The section is designed with a clean, grid layout that aligns images and text neatly for easy navigation and a visually appealing presentation.</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-detailed-project-entries">2. Detailed Project Entries</h4>
+<ul>
+<li><strong>Purpose</strong>: Provides a snapshot of each project to engage the visitor and encourage deeper exploration.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Date and Comments</strong>: Each project entry displays the completion date and the number of comments to indicate engagement.</li>
+<li><strong>Technologies Highlight</strong>: Icons or small graphics may represent the key technologies involved in each project, providing a quick visual reference.</li>
+<li><strong>Interaction</strong>: Users can interact with each project entry by clicking on the 'Read more' link or the project image to navigate to the full project article.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-testimonials">3. Testimonials</h4>
+<ul>
+<li><strong>Purpose</strong>: To bolster credibility and showcase the real-world impact of Doosan's work through endorsements from colleagues and clients.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Carousel Format</strong>: Testimonials are presented in a slider format to maximize space and maintain user interest.</li>
+<li><strong>Client Quotes</strong>: Each testimonial includes a quote highlighting the client's experience with the project and Doosan's contributions.</li>
+<li><strong>Client Details</strong>: Attribution includes the client's name and title, enhancing the authenticity of the testimonial.</li>
+<li><strong>Design</strong>: The testimonial section is styled minimally to focus attention on the text, using subtle transitions between slides.</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-call-to-action">4. Call to Action</h4>
+<ul>
+<li><strong>Purpose</strong>: Encourages users to engage with Doosan for future projects or consultations.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Engagement Button</strong>: A prominent button, such as &quot;Hire Me&quot; or &quot;Request Quote&quot;, is placed to prompt direct action from potential clients or collaborators.</li>
+<li><strong>Design</strong>: The button is visually distinct and placed strategically to catch the user's attention after reviewing the projects.</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-footer-section">5. Footer Section</h4>
+<ul>
+<li><strong>Purpose</strong>: Provides additional navigation and essential information such as links to privacy policies and social media profiles.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Navigation Links</strong>: Links to other pages like About, Services, and Contact, facilitating easy movement across the website.</li>
+<li><strong>Social Media Icons</strong>: Quick access to Doosan’s professional profiles for further engagement.</li>
+<li><strong>Design</strong>: Continues the clean and organized theme of the website, ensuring consistency across all pages.</li>
+</ul>
+</li>
+</ul>
+<h3 id="technologies-used">Technologies Used</h3>
+<ul>
+<li><strong>HTML</strong>: Structures the webpage content.</li>
+<li><strong>CSS</strong>: Styles the layout, including grid formats, color schemes, and typography.</li>
+<li><strong>JavaScript</strong>: Enhances interactivity, especially in the carousel and navigation links.</li>
+<li><strong>Responsive Design</strong>: Ensures the page is accessible and functional across all devices, from desktops to smartphones.</li>
+</ul>
+<p>This documentation serves as a comprehensive guide for maintaining or updating the &quot;Project List&quot; page. It aims to ensure that the design intent and functionality are preserved and that any future enhancements align with the established user experience strategy.</p>
+<hr>
+<h2 id="project-article-mode">Project Article Mode</h2>
+<p><img src="readme-images/53cee40c9dab.png" alt="Sample Project Article webpage"></p>
+<h2 id="overview">Overview</h2>
+<p>The &quot;Project Thanatos&quot; page is dedicated to showcasing a significant project in Doosan Pagooah’s portfolio that focuses on automating cloud infrastructure development and management using cutting-edge technologies like AWS, Kubernetes, and Terraform. This page provides an in-depth look at the project's architecture, technologies, benefits, and strategic importance.</p>
+<h3 id="section-breakdown">Section Breakdown</h3>
+<h4 id="1-project-introduction-section">1. Project Introduction Section</h4>
+<ul>
+<li><strong>Purpose</strong>: Introduces the project, providing a high-level overview of its goals and technological framework.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Project Title</strong>: Clearly displays the name 'Project Thanatos'.</li>
+<li><strong>Overview Description</strong>: Summarizes the project’s objective, which is to automate cloud infrastructure deployment and management, thereby reducing manual intervention and improving efficiency.</li>
+<li><strong>Technological Diagram</strong>: Includes a detailed architectural diagram illustrating how various AWS services are integrated with Kubernetes and managed through Terraform scripts.</li>
+<li><strong>Design</strong>: The section uses a clean layout with a professional tone. The diagram is central and is supplemented by minimal text to maintain focus on the visual explanation.</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-detailed-project-description">2. Detailed Project Description</h4>
+<ul>
+<li><strong>Purpose</strong>: Delivers detailed information about the project, explaining how it was implemented and the specific technologies involved.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Technological Details</strong>: Explains the role of AWS, Kubernetes, and Terraform in the project, detailing how each contributes to the project's success.</li>
+<li><strong>Functionality Highlights</strong>: Describes key functionalities such as automated scaling, deployment, and management of infrastructure.</li>
+<li><strong>Design</strong>: Text is structured in concise paragraphs with bullet points for clearer understanding of complex technical processes.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-benefits-of-project-thanatos">3. Benefits of Project Thanatos</h4>
+<ul>
+<li><strong>Purpose</strong>: Articulates the tangible benefits derived from the project, reinforcing the value brought to the organization.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Enhanced Efficiency</strong>: Discusses how the project enhances operational efficiency by automating routine tasks.</li>
+<li><strong>Reduced Errors</strong>: Highlights the reduction in manual configuration errors thanks to standardized scripts.</li>
+<li><strong>Modern Solutions for Digital Enterprises</strong>: Positions Project Thanatos as a model for modern cloud-based architectures.</li>
+<li><strong>Design</strong>: The benefits are listed in a clear, easily digestible format, possibly using icons or small graphics to visually represent each benefit.</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-call-to-action">4. Call to Action</h4>
+<ul>
+<li><strong>Purpose</strong>: Encourages users to engage with Doosan for similar projects or consultations.</li>
+<li><strong>Content Elements</strong>:
+<ul>
+<li><strong>Engagement Button</strong>: Features buttons like “Hire Me” or “Consult for Your Project”, motivating visitors to initiate contact for potential collaborations.</li>
+<li><strong>Design</strong>: Visually compelling buttons that stand out against the page’s background, drawing the user's attention after reading about the project’s success.</li>
+</ul>
+</li>
+</ul>
+<h3 id="technologies-used">Technologies Used</h3>
+<ul>
+<li><strong>HTML5</strong>: For structuring the content of the page.</li>
+<li><strong>CSS3</strong>: For styling, ensuring the page is visually appealing and aligns with the overall design theme of the website.</li>
+<li><strong>JavaScript</strong>: Possibly used for interactions, especially if there are elements like collapsible sections for detailed descriptions.</li>
+<li><strong>SVG or Canvas</strong>: For rendering the detailed architecture diagram to ensure it is scalable and responsive.</li>
+</ul>
+<p>This documentation provides a clear guide for maintaining or enhancing the &quot;Project Thanatos&quot; page. It ensures that the design intent and technical descriptions are well understood, aiding in consistent updates and potential expansions of the content.</p>
+<hr>
+<h2 id="contact-me">Contact Me</h2>
+<p><img src="readme-images/a8655a4c06e4.png" alt="Contact Me webpage"></p>
+<p>The &quot;Contact Me&quot; page on your website is thoughtfully designed to facilitate communication between you and potential clients, collaborators, or anyone interested in reaching out. Here’s a detailed overview of the various elements and functionalities of this page:</p>
+<h3 id="overview">Overview</h3>
+<p>The &quot;Contact Me&quot; page serves as a direct communication channel, inviting users to connect with you through various methods such as email, phone, or a detailed contact form. The design is clean and user-friendly, ensuring that visitors can easily find contact information and submit inquiries.</p>
+<h3 id="detailed-section-breakdown">Detailed Section Breakdown</h3>
+<h4 id="navigation-bar">Navigation Bar</h4>
+<ul>
+<li><strong>Functionality</strong>: Consistent with other pages, it includes links to Home, About Me, Projects, Services, Blog, and Contact Me. The 'Contact Me' link is highlighted as active to indicate the current page.</li>
+<li><strong>Design</strong>: Simplistic and clean, matching the overall website aesthetic.</li>
+</ul>
+<h4 id="contact-information">Contact Information</h4>
+<ul>
+<li><strong>Layout</strong>: The contact details are divided into distinct sections for Email, Phone, and Physical Address, making it easy to locate essential information.</li>
+<li><strong>Interactive Elements</strong>: Each mode of contact (email, phone, office) is accompanied by an icon and is clickable, leading directly to the intended action (e.g., initiating a phone call or composing an email).</li>
+</ul>
+<h4 id="contact-form">Contact Form</h4>
+<ul>
+<li><strong>Fields Included</strong>: Name, Email, and Message fields, all required to ensure that you receive sufficient information to respond appropriately.</li>
+<li><strong>Functionality</strong>: Includes validation to check that the information entered is in the correct format before submission.</li>
+<li><strong>Privacy</strong>: A checkbox for users to agree to the terms of communication, ensuring compliance with data protection regulations.</li>
+</ul>
+<h4 id="call-to-action-buttons">Call to Action Buttons</h4>
+<ul>
+<li><strong>Purpose</strong>: Positioned at the top of the page, these buttons ('Learn More' and 'Sign Up') are intended to guide users to more informational resources or to engage with your services.</li>
+</ul>
+<h4 id="design-and-usability">Design and Usability</h4>
+<ul>
+<li><strong>Visuals</strong>: The page uses a clean layout with plenty of white space to ensure that the information is easy to read and the form is straightforward to use.</li>
+<li><strong>Responsiveness</strong>: The page layout adjusts smoothly across different devices, ensuring that it is functional on desktops, tablets, and smartphones.</li>
+</ul>
+<h4 id="testimonials-optional-section-if-included">Testimonials (optional section if included)</h4>
+<ul>
+<li><strong>Engagement</strong>: While not focused on in this description, if included, testimonials can add a layer of trust by sharing positive experiences from past clients or collaborators.</li>
+</ul>
+<h4 id="footer">Footer</h4>
+<ul>
+<li><strong>Comprehensive Links</strong>: Includes links to various sections of the website such as About Me, Projects, Blog, etc., enhancing navigation.</li>
+<li><strong>Social Media Icons</strong>: Direct links to your social media profiles, encouraging visitors to connect with you on these platforms.</li>
+<li><strong>Legal Links</strong>: Offers easy access to your privacy policy, terms of service, and cookie settings.</li>
+</ul>
+<p>Overall, the &quot;Contact Me&quot; page is designed to be welcoming and efficient, encouraging users to communicate with ease while providing them with multiple options to do so. This approach not only enhances user experience but also fosters professional connections.</p>
+
+</body>
+</html>

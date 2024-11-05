@@ -18,7 +18,7 @@ ii. **Give three (3) reasons why a biometric password is more secure than a PIN.
 
 **An example of a Uniform Resource Locator (URL) is:**
 
-![URL Example](https://www.open.ac.mu/index.htm)
+![URL Example](https://doosan.pagooah.com/index.htm)
 
 **Identify the three (3) parts that make up this URL.**
 

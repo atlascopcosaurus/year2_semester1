@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>login-registration.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h3 id="1-overview"><strong>1. Overview</strong></h3>
+<p>This document outlines the login and registration process for users of the system. There are two user types: Superuser and Normal User. During the registration, all users are automatically assigned the 'normal' role. Only Superusers have the authority to promote or demote users and access the back-office functions such as user and product management.</p>
+<h3 id="2-user-types"><strong>2. User Types</strong></h3>
+<ul>
+<li><strong>Superuser</strong>: Has full access to the system, including the back-office for user and product management.</li>
+<li><strong>Normal User</strong>: Has limited access to the system, typically to front-end functionality only.</li>
+</ul>
+<h3 id="3-registration-process"><strong>3. Registration Process</strong></h3>
+<ul>
+<li>Users can register themselves through the registration page.</li>
+<li>Upon registration, users are automatically assigned the role of a <strong>Normal User</strong>.</li>
+<li>Only <strong>Superusers</strong> can change the role of a user (promote to Superuser or demote to Normal User).</li>
+</ul>
+<h3 id="4-login-process"><strong>4. Login Process</strong></h3>
+<ul>
+<li>Both Superusers and Normal Users can log in to the system using their credentials.</li>
+<li><strong>Superusers</strong> have access to additional features, including user management and product management in the back office.</li>
+</ul>
+<h4 id="login-credentials"><strong>Login Credentials:</strong></h4>
+<ul>
+<li>
+<p><strong>Superuser:</strong></p>
+<ul>
+<li>Username: <code>hex</code></li>
+<li>Password: <code>123qwerty</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Normal User:</strong></p>
+<ul>
+<li>Username: <code>doosan</code></li>
+<li>Password: <code>123qwerty</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="5-user-management"><strong>5. User Management</strong></h3>
+<ul>
+<li><strong>Superusers</strong> have access to a back-office panel where they can manage users.</li>
+<li>They can:
+<ul>
+<li>Promote a <strong>Normal User</strong> to <strong>Superuser</strong>.</li>
+<li>Demote a <strong>Superuser</strong> to <strong>Normal User</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-product-management"><strong>6. Product Management</strong></h3>
+<ul>
+<li>Only <strong>Superusers</strong> can manage products through the back-office, which includes adding, updating, or removing products.</li>
+</ul>
+<hr>
+<h2 id="login--registration-technical-documentation"><strong>Login &amp; Registration Technical Documentation</strong></h2>
+<h3 id="1-overview"><strong>1. Overview</strong></h3>
+<p>The login and registration system allows users to sign in or sign up for an account on the platform. It includes client-side validations, AJAX for handling unique user checks, and server-side authentication.</p>
+<h3 id="2-user-workflow"><strong>2. User Workflow</strong></h3>
+<h4 id="21-sign-up-process"><strong>2.1. Sign Up Process</strong></h4>
+<ul>
+<li><strong>Description</strong>:
+<ul>
+<li>New users are required to sign up if they do not have an existing account.</li>
+<li>The <strong>Sign Up</strong> page requires the following fields:
+<ul>
+<li>First Name</li>
+<li>Last Name</li>
+<li>Username</li>
+<li>Email</li>
+<li>Phone Number</li>
+<li>Password</li>
+</ul>
+</li>
+<li><strong>Validation</strong>:
+<ul>
+<li>All fields must be filled out and validated on the client side for proper format (e.g., valid email format, username length).</li>
+<li>AJAX is used to check for uniqueness of the <strong>username</strong> and <strong>email</strong> to ensure that no two users share the same credentials.</li>
+</ul>
+</li>
+<li><strong>Error Handling</strong>:
+<ul>
+<li>If the entered <strong>username</strong> or <strong>email</strong> already exists in the database, the user is informed via a real-time notification powered by AJAX.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="22-sign-in-process"><strong>2.2. Sign In Process</strong></h4>
+<ul>
+<li><strong>Description</strong>:
+<ul>
+<li>Existing users can sign in using their <strong>Username</strong> and <strong>Password</strong>.</li>
+<li>Upon successful login, the user will be redirected to the homepage and greeted with their <strong>username</strong>.</li>
+<li>If the user enters invalid login credentials (incorrect username or password), they will be <strong>prompted</strong> to try again.</li>
+<li>If a user doesn't have an account, they will be prompted to create one by clicking the <strong>Sign Up</strong> link.</li>
+</ul>
+</li>
+</ul>
+<h4 id="23-error-handling-during-login"><strong>2.3. Error Handling During Login</strong></h4>
+<ul>
+<li>If the <strong>Username</strong> or <strong>Password</strong> is incorrect:
+<ul>
+<li>A user-friendly message is displayed indicating the error.</li>
+<li>The login page is refreshed with the entered username still present to minimize re-entry time for the user.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-validation"><strong>3. Validation</strong></h3>
+<h4 id="31-client-side-validation"><strong>3.1. Client-Side Validation</strong></h4>
+<ul>
+<li><strong>Username</strong>: Must meet length requirements (typically between 4 to 15 characters) and contain only alphanumeric characters.</li>
+<li><strong>Email</strong>: Must be in a valid email format (<code>example@domain.com</code>).</li>
+<li><strong>Password</strong>: Must meet the complexity requirements (e.g., at least 8 characters, containing a combination of letters, numbers, and special characters).</li>
+<li><strong>Phone</strong>: Must be a valid number and meet the platform's format requirements.</li>
+<li><strong>Empty Fields</strong>: No field should be left empty during registration or login.</li>
+</ul>
+<h4 id="32-ajax-validation-for-unique-fields"><strong>3.2. AJAX Validation for Unique Fields</strong></h4>
+<ul>
+<li><strong>Username</strong>: AJAX checks if the entered username already exists in the database. If a duplicate is found, the user is notified in real-time.</li>
+<li><strong>Email</strong>: Similar to the username check, AJAX ensures the email provided is unique before proceeding with registration.</li>
+</ul>
+<h3 id="4-server-side-authentication"><strong>4. Server-Side Authentication</strong></h3>
+<ul>
+<li>Once the user submits their credentials, the backend authenticates the username and password against the database.</li>
+<li>On successful authentication, the session is created, and the user is redirected to the homepage with their credentials stored for personalized greetings.</li>
+</ul>
+<h3 id="5-security-considerations"><strong>5. Security Considerations</strong></h3>
+<ul>
+<li><strong>Password Encryption</strong>: All passwords are encrypted before storing in the database, ensuring secure storage.</li>
+</ul>
+<h3 id="6-user-experience"><strong>6. User Experience</strong></h3>
+<h4 id="61-greeting-based-on-authentication-status"><strong>6.1. Greeting Based on Authentication Status</strong></h4>
+<ul>
+<li>If the user is <strong>not logged in</strong>, they are greeted as <strong>Guest</strong> in the header section.</li>
+<li>If the user is <strong>logged in</strong>, the header section greets the user by their <strong>Username</strong>.</li>
+</ul>
+<h4 id="62-redirection"><strong>6.2. Redirection</strong></h4>
+<ul>
+<li>After successful login or registration, the user is redirected to the <strong>Homepage</strong>.</li>
+<li>If login fails, the page refreshes with a message prompting the user to re-enter valid credentials.</li>
+</ul>
+<h3 id="7-error-messaging"><strong>7. Error Messaging</strong></h3>
+<ul>
+<li><strong>Incorrect Credentials</strong>: &quot;The username or password you entered is incorrect. Please try again.&quot;</li>
+<li><strong>Duplicate Username/Email</strong>: &quot;The username/email you have entered is already in use. Please choose another.&quot;</li>
+</ul>
+<h3 id="8-additional-features"><strong>8. Additional Features</strong></h3>
+<ul>
+<li><strong>Password Recovery</strong>: A &quot;Forgot Password&quot; link is available for users who cannot remember their credentials. This redirects the user to the password recovery system.</li>
+<li><strong>Return to Homepage</strong>: Both login and sign-up pages provide a &quot;Return to Home&quot; link to allow users to navigate back to the homepage without logging in.</li>
+</ul>
+<hr>
+<p><img src="images/4.png" alt="Login"></p>
+<hr/>
+<p><img src="images/5.png" alt="Sign Up"></p>
+<hr/>
+<p><img src="images/8.png" alt="Backoffice"></p>
+
+</body>
+</html>

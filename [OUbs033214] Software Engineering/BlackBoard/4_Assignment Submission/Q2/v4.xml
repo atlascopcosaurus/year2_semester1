@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile>
+  <diagram name="Enhanced Use Case Diagram with All Relationships">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Actors -->
+        <mxCell id="2" value="Customer" style="shape=umlActor" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Sales Assistant" style="shape=umlActor" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Shop Manager" style="shape=umlActor" vertex="1" parent="1">
+          <mxGeometry x="50" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Wholesale Company" style="shape=umlActor" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="80" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Base Use Cases -->
+        <mxCell id="6" value="Purchase Book" style="ellipse" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Order Book" style="ellipse" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="Process Payment" style="ellipse" vertex="1" parent="1">
+          <mxGeometry x="200" y="300" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Manage Stock" style="ellipse" vertex="1" parent="1">
+          <mxGeometry x="200" y="550" width="120" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Include Use Cases -->
+        <mxCell id="10" value="Check Stock Levels" style="ellipse;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="100" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="Record Transaction" style="ellipse;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="300" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Update Stock Levels" style="ellipse;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="550" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Extend Use Cases -->
+        <mxCell id="13" value="Assist with ISBN Search" style="ellipse;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="200" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Add Charge for Advance Orders" style="ellipse;dashed=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="250" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="15" edge="1" source="2" target="6" parent="1" /> <!-- Association -->
+        <mxCell id="16" edge="1" source="2" target="7" parent="1" /> <!-- Association -->
+        <mxCell id="17" edge="1" source="3" target="6" parent="1" /> <!-- Association -->
+        <mxCell id="18" edge="1" source="3" target="7" parent="1" /> <!-- Association -->
+        <mxCell id="19" edge="1" source="3" target="8" parent="1" /> <!-- Association -->
+        <mxCell id="20" edge="1" source="7" target="10" parent="1" style="dashed=1;label=Include;" /> <!-- Include -->
+        <mxCell id="21" edge="1" source="8" target="11" parent="1" style="dashed=1;label=Include;" /> <!-- Include -->
+        <mxCell id="22" edge="1" source="9" target="12" parent="1" style="dashed=1;label=Include;" /> <!-- Include -->
+        <mxCell id="23" edge="1" source="7" target="13" parent="1" style="dashed=1;label=Extend;" /> <!-- Extend -->
+        <mxCell id="24" edge="1" source="7" target="14" parent="1" style="dashed=1;label=Extend;" /> <!-- Extend -->
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

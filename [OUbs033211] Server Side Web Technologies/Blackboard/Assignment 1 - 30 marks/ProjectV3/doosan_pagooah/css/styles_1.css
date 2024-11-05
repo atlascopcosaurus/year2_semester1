@@ -1,0 +1,143 @@
+.container,
+.contact-section {
+    display: flex;
+    width: 95%;
+    max-width: 1600px;
+    margin-bottom: 20px;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+
+}
+
+.header-section,
+.contact-info,
+.map-placeholder {
+    padding: 20px;
+}
+
+.left-column,
+.contact-info {
+    text-align: left;
+    flex: 1;
+
+}
+
+.right-column {
+    text-align: right;
+    flex: 2;
+}
+
+.header-section h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.header-section p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+.contact-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-item span {
+    margin-left: 10px;
+}
+
+
+
+.icon-placeholder {
+    width: 24px;
+    height: 24px;
+    background-color: #333;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+@media (max-width: 768px) {
+
+    .header-section,
+    .contact-info,
+    .map-placeholder {
+        text-align: center;
+    }
+
+    .header-buttons {
+        justify-content: center;
+
+    }
+
+    .left-column,
+    .right-column {
+        flex-basis: 100%;
+    }
+}
+
+
+.contact-form-section {
+    display: flex;
+    width: 90%;
+    max-width: 1600px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.form-info {
+    flex-basis: 40%;
+    padding-right: 50px;
+
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form .checkbox {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

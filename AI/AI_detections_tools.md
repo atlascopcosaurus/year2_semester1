@@ -33,3 +33,8 @@ Yes, there are several tools designed to detect AI-generated content. While "byp
 - **Best Practices**: For more reliable detection, it's often recommended to use a combination of these tools and manual review to ascertain the nature of the content.
 
 These tools are typically used to **identify** AI-generated content rather than "bypass" it.
+
+
+### JustDone
+
+https://justdone.ai/gen/how-to-convert-chatgpt-text-to-human-text

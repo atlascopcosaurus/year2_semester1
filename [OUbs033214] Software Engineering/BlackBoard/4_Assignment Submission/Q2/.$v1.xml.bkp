@@ -1,0 +1,125 @@
+<mxfile host="Electron" modified="2024-10-25T09:13:52.130Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="RVR5k8sGlFBfnwUNTU3B" version="21.1.2" type="device">
+  <diagram name="Use Case Diagram" id="0">
+    <mxGraphModel dx="2678" dy="38" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="EnQR8zkivTcNv5aaEdJz-40" value="" style="rounded=0;whiteSpace=wrap;html=1;glass=0;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="119" y="880" width="931" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="2" value="Customer" style="shape=umlActor;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-90" y="1000" width="50" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Sales Assistant" style="shape=umlActor;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="930" width="50" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Shop Manager" style="shape=umlActor;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1080" y="1190" width="50" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Select Book from Stock" style="ellipse;whiteSpace=wrap;html=1;fillColor=#c9e0f8;strokeColor=#999999;" parent="1" vertex="1">
+          <mxGeometry x="210" y="940" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Order Book" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="390" y="940" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="Process Payment" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="210" y="1060" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="Send Order to Wholesale" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="390" y="1060" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Find Book in Catalogue" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="580" y="1060" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="Print Stock Report" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="210" y="1190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="Place Stock Order" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="380" y="1190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Receive Book Order" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="580" y="1190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="Update Stock Levels" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="770" y="1190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Contact Customer for Book Collection" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="770" y="1060" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-14" value="" style="rounded=0;whiteSpace=wrap;html=1;glass=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1430" width="590" height="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-15" value="Customer" style="shape=umlActor;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="170" y="1520" width="50" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-16" value="Sales Assistant" style="shape=umlActor;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="910" y="1510" width="50" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-17" value="Shop Manager" style="shape=umlActor;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="910" y="2150" width="50" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-18" value="Select Book from Stock" style="ellipse;whiteSpace=wrap;html=1;fillColor=#c9e0f8;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="476" y="1460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-19" value="Order Book" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="1560" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-20" value="Process Payment" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="1660" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-21" value="Send Order to Wholesale" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="1760" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-22" value="Find Book in Catalogue" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="1860" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-23" value="Print Stock Report" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="2080" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-24" value="Place Stock Order" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="2180" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-25" value="Receive Book Order" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="2270" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-26" value="Update Stock Levels" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="2380" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-27" value="Contact Customer for Book Collection" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="476" y="1985" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-28" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-15" target="j6z0N3OjGwVHpWAjWjly-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-29" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-15" target="j6z0N3OjGwVHpWAjWjly-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-30" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-16" target="j6z0N3OjGwVHpWAjWjly-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-31" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-16" target="j6z0N3OjGwVHpWAjWjly-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-32" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-16" target="j6z0N3OjGwVHpWAjWjly-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-33" style="dashed=1;dashPattern=4 4;" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-16" target="j6z0N3OjGwVHpWAjWjly-21" />
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-34" style="dashed=1;dashPattern=4 4;" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-16" target="j6z0N3OjGwVHpWAjWjly-22" />
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-35" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-17" target="j6z0N3OjGwVHpWAjWjly-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-36" style="dashed=1;dashPattern=4 4;" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-17" target="j6z0N3OjGwVHpWAjWjly-24" />
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-37" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-17" target="j6z0N3OjGwVHpWAjWjly-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-38" style="dashed=1;dashPattern=4 4;" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-17" target="j6z0N3OjGwVHpWAjWjly-26" />
+        <mxCell id="j6z0N3OjGwVHpWAjWjly-39" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.779;entryY=0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="j6z0N3OjGwVHpWAjWjly-16" target="j6z0N3OjGwVHpWAjWjly-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="1930" as="sourcePoint" />
+            <mxPoint x="600" y="1880" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

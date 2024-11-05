@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>search.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="search-and-filter-functionality---technical-documentation"><strong>Search and Filter Functionality - Technical Documentation</strong></h2>
+<h3 id="1-overview"><strong>1. Overview</strong></h3>
+<p>The <strong>Search and Filter</strong> functionality enables users to search for products based on specific criteria such as <strong>Product Name</strong>, <strong>Category</strong>, <strong>Price Range</strong>, and other attributes. This feature also includes pagination to break down the product catalogue into manageable pages, improving user experience and load times. Filters are applied using <strong>OR</strong> conditions, allowing users to find products that match any of their selected criteria.</p>
+<h3 id="2-key-features"><strong>2. Key Features</strong></h3>
+<h4 id="21-search-bar"><strong>2.1. Search Bar</strong></h4>
+<ul>
+<li><strong>Product Name Search</strong>:
+<ul>
+<li>Users can enter a product name or keyword into the search bar.</li>
+<li>The system performs a search for products that match the entered text within the product name.</li>
+</ul>
+</li>
+</ul>
+<h4 id="22-filter-options"><strong>2.2. Filter Options</strong></h4>
+<ul>
+<li>
+<p><strong>Category Filter</strong>:</p>
+<ul>
+<li>Users can select a category from the dropdown to filter products within that specific category.</li>
+</ul>
+</li>
+<li>
+<p><strong>Price Range Filter</strong>:</p>
+<ul>
+<li>Users can enter a <strong>Minimum Price</strong> and <strong>Maximum Price</strong> to filter products within a specified price range.</li>
+<li>Products are displayed if their price falls between the minimum and maximum values.</li>
+</ul>
+</li>
+</ul>
+<h4 id="23-or-condition-logic"><strong>2.3. OR Condition Logic</strong></h4>
+<ul>
+<li>The filters (product name, category, price range) are applied using <strong>OR conditions</strong>, meaning:
+<ul>
+<li>If the user selects multiple filters, any product matching <strong>one or more</strong> of the conditions will be displayed.</li>
+<li>Example: If the user selects &quot;Category: Cloud&quot; and sets a price range of 1000 - 3000, products from the &quot;Cloud&quot; category <strong>or</strong> products within the price range will be displayed.</li>
+</ul>
+</li>
+</ul>
+<h4 id="24-search-button"><strong>2.4. Search Button</strong></h4>
+<ul>
+<li>After entering the search term or selecting filter options, the user clicks the <strong>Search</strong> button to apply the filters.</li>
+<li>The search results are displayed based on the selected criteria, updating the product list dynamically.</li>
+</ul>
+<h3 id="3-product-display-with-pagination"><strong>3. Product Display with Pagination</strong></h3>
+<h4 id="31-pagination-system"><strong>3.1. Pagination System</strong></h4>
+<ul>
+<li>
+<p>The product list is divided into pages using pagination to avoid overloading the page with too many results at once.</p>
+</li>
+<li>
+<p>At the bottom of the page, users can navigate between different pages using pagination controls (e.g., <strong>1, 2, Next</strong>).</p>
+</li>
+<li>
+<p><strong>Functionality</strong>:</p>
+<ul>
+<li>A set number of products (e.g., 10) are displayed per page.</li>
+<li>Users can navigate through pages to view more products.</li>
+<li>The pagination is updated dynamically based on the search and filter results.</li>
+</ul>
+</li>
+</ul>
+<h4 id="32-real-time-pagination"><strong>3.2. Real-Time Pagination</strong></h4>
+<ul>
+<li>When users apply filters or search for products, the system dynamically updates the pagination:
+<ul>
+<li>If fewer results are returned, fewer pagination numbers will be displayed.</li>
+<li>The system ensures that only products matching the search criteria are displayed across multiple pages.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-data-flow"><strong>4. Data Flow</strong></h3>
+<h4 id="41-client-side-search-and-filters"><strong>4.1. Client-Side (Search and Filters)</strong></h4>
+<ul>
+<li>The search bar and filters trigger client-side requests using AJAX to send the search criteria to the server.</li>
+<li>After filtering, the client receives the filtered product list and displays it on the page.</li>
+</ul>
+<h4 id="42-server-side-filtering-and-pagination"><strong>4.2. Server-Side (Filtering and Pagination)</strong></h4>
+<ul>
+<li>The server processes the search query and filters applied by the user.</li>
+<li>The server returns the relevant products based on the applied OR conditions.</li>
+<li>The server ensures the pagination reflects the number of matching products and splits them across multiple pages as needed.</li>
+</ul>
+<h3 id="5-error-handling"><strong>5. Error Handling</strong></h3>
+<ul>
+<li>
+<p><strong>Invalid Price Range</strong>:</p>
+<ul>
+<li>If the user enters an invalid price range (e.g., min price &gt; max price), a validation message is displayed, and the search is not performed.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Search Results</strong>:</p>
+<ul>
+<li>If no products match the search criteria, the page will display a message such as &quot;No products found.&quot;</li>
+</ul>
+</li>
+<li>
+<p><strong>Pagination Error</strong>:</p>
+<ul>
+<li>If a user navigates to a page that no longer exists (e.g., filtering reduces the number of pages), the pagination will be reset to page 1.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-user-experience"><strong>6. User Experience</strong></h3>
+<h4 id="61-real-time-feedback"><strong>6.1. Real-Time Feedback</strong></h4>
+<ul>
+<li>Once filters are applied, the product list and pagination update in real-time, providing a seamless browsing experience.</li>
+<li>The current search term and filter selections remain visible, allowing users to modify them as needed.</li>
+</ul>
+<h4 id="62-navigation"><strong>6.2. Navigation</strong></h4>
+<ul>
+<li>Users can easily switch between product pages using pagination controls.</li>
+<li>The <strong>Search</strong> button triggers immediate filtering, reducing the number of steps to perform the search.</li>
+</ul>
+<h3 id="7-security-considerations"><strong>7. Security Considerations</strong></h3>
+<ul>
+<li>
+<p><strong>SQL Injection Prevention</strong>:</p>
+<ul>
+<li>Input from the search bar and filters is sanitized to prevent SQL injection or any form of malicious data manipulation.</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Integrity</strong>:</p>
+<ul>
+<li>Ensure that the pagination updates correctly based on the search results to maintain consistency in the displayed data.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><img src="images/13.png" alt="Search"></p>
+
+</body>
+</html>

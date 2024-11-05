@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>documentation.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>Below is a sample technical documentation for a <strong>Login Page</strong>.</p>
+<hr>
+<h1 id="login-page-technical-documentation"><strong>Login Page Technical Documentation</strong></h1>
+<h2 id="overview"><strong>Overview</strong></h2>
+<p>This document provides a comprehensive guide to the login page, outlining its features, user interaction, authentication mechanisms, and error handling. The login page allows registered users to access a secured area of the web application by providing their credentials (typically a username/email and password).</p>
+<hr>
+<h2 id="features"><strong>Features</strong></h2>
+<ol>
+<li>
+<p><strong>User Authentication</strong>:</p>
+<ul>
+<li>The login page allows users to authenticate via a username/email and password.</li>
+<li>Passwords are securely handled with encryption techniques.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Messages</strong>:</p>
+<ul>
+<li>Displays appropriate error messages for incorrect login attempts, such as invalid credentials or locked accounts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Forgot Password Link</strong>:</p>
+<ul>
+<li>Provides a link for users to initiate a password reset process.</li>
+</ul>
+</li>
+<li>
+<p><strong>Remember Me Option</strong>:</p>
+<ul>
+<li>Users can stay logged in across browser sessions by selecting the “Remember Me” option.</li>
+</ul>
+</li>
+<li>
+<p><strong>Responsive Design</strong>:</p>
+<ul>
+<li>The login page adapts to various device screen sizes, ensuring a smooth user experience on mobile, tablet, and desktop devices.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="functional-requirements"><strong>Functional Requirements</strong></h2>
+<h3 id="login-form"><strong>Login Form</strong></h3>
+<p>The login form includes the following fields:</p>
+<ul>
+<li><strong>Email or Username</strong>: A text input field that accepts the user's email address or username.</li>
+<li><strong>Password</strong>: A password input field that masks the characters as they are typed.</li>
+<li><strong>Remember Me</strong>: A checkbox option to store the login session in the browser's local storage.</li>
+</ul>
+<h3 id="buttons"><strong>Buttons</strong></h3>
+<ul>
+<li><strong>Login Button</strong>: Submits the form for authentication.</li>
+<li><strong>Forgot Password Link</strong>: Redirects the user to the password recovery page.</li>
+</ul>
+<h3 id="form-validation"><strong>Form Validation</strong></h3>
+<ul>
+<li>
+<p><strong>Client-Side Validation</strong>:</p>
+<ul>
+<li>Email or username is required.</li>
+<li>Password is required.</li>
+<li>Input format validation using regex (email format, length of password).</li>
+</ul>
+</li>
+<li>
+<p><strong>Server-Side Validation</strong>:</p>
+<ul>
+<li>Validates credentials against the user database.</li>
+<li>Detects locked accounts or password expiration.</li>
+<li>Returns detailed error messages.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="user-authentication-process"><strong>User Authentication Process</strong></h2>
+<ol>
+<li>
+<p><strong>Input Submission</strong>:</p>
+<ul>
+<li>User enters their email/username and password.</li>
+<li>The form data is submitted via HTTP POST request to the backend.</li>
+</ul>
+</li>
+<li>
+<p><strong>Backend Authentication</strong>:</p>
+<ul>
+<li>The submitted credentials are validated against the user database.</li>
+<li>Passwords are verified using a hashing algorithm (e.g., bcrypt, Argon2).</li>
+<li>Upon successful login, a session token or JWT (JSON Web Token) is generated and sent to the client.</li>
+</ul>
+</li>
+<li>
+<p><strong>Session Management</strong>:</p>
+<ul>
+<li><strong>Session Token</strong>: A secure token is stored in cookies or local storage, depending on the &quot;Remember Me&quot; option.</li>
+<li><strong>Expiration</strong>: If “Remember Me” is not selected, the session expires after a pre-defined time (e.g., 15 minutes of inactivity).</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="error-handling"><strong>Error Handling</strong></h2>
+<h3 id="client-side-errors"><strong>Client-Side Errors</strong></h3>
+<ul>
+<li><strong>Empty Fields</strong>: Display a tooltip under the input field requesting the user to fill out the required information.</li>
+<li><strong>Invalid Email Format</strong>: Shows a validation message when the email format is incorrect (e.g., missing &quot;@&quot; symbol).</li>
+</ul>
+<h3 id="server-side-errors"><strong>Server-Side Errors</strong></h3>
+<ul>
+<li><strong>Invalid Credentials</strong>: When the username or password is incorrect, display an error message: &quot;Invalid username or password. Please try again.&quot;</li>
+<li><strong>Account Locked</strong>: If the account is locked due to too many failed login attempts, show a message: &quot;Your account is locked. Please reset your password or contact support.&quot;</li>
+<li><strong>Server Down</strong>: If the authentication server is not reachable, display: &quot;Unable to connect to the server. Please try again later.&quot;</li>
+</ul>
+<hr>
+<h2 id="security-considerations"><strong>Security Considerations</strong></h2>
+<ol>
+<li>
+<p><strong>Password Encryption</strong>:</p>
+<ul>
+<li>All passwords are hashed and stored securely in the database using encryption algorithms like bcrypt or Argon2.</li>
+</ul>
+</li>
+<li>
+<p><strong>HTTPS</strong>:</p>
+<ul>
+<li>Ensure all login forms are submitted over HTTPS to prevent eavesdropping.</li>
+</ul>
+</li>
+<li>
+<p><strong>Brute Force Protection</strong>:</p>
+<ul>
+<li>Implement rate-limiting and CAPTCHA to mitigate brute force attacks.</li>
+<li>Lock accounts after a specified number of failed login attempts.</li>
+</ul>
+</li>
+<li>
+<p><strong>CSRF Protection</strong>:</p>
+<ul>
+<li>Implement CSRF tokens to prevent cross-site request forgery.</li>
+</ul>
+</li>
+<li>
+<p><strong>SQL Injection Prevention</strong>:</p>
+<ul>
+<li>Use parameterized queries to prevent SQL injection attacks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Secure Session Management</strong>:</p>
+<ul>
+<li>Store session tokens in HttpOnly and Secure cookies to prevent XSS attacks.</li>
+<li>Implement token expiration and automatic session logout after a period of inactivity.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="technology-stack"><strong>Technology Stack</strong></h2>
+<ul>
+<li>
+<p><strong>Frontend</strong>:</p>
+<ul>
+<li>HTML5</li>
+<li>CSS3 (with responsive design using Flexbox or Grid)</li>
+<li>JavaScript/TypeScript (for client-side validation and error handling)</li>
+<li>ReactJS or Angular (optional, for a dynamic frontend framework)</li>
+</ul>
+</li>
+<li>
+<p><strong>Backend</strong>:</p>
+<ul>
+<li>Node.js/Express or Django for server-side handling of login requests.</li>
+<li>Database: PostgreSQL, MySQL, or MongoDB for storing user credentials.</li>
+</ul>
+</li>
+<li>
+<p><strong>Security Libraries</strong>:</p>
+<ul>
+<li>bcrypt/Argon2 for password hashing.</li>
+<li>JWT or OAuth for token-based authentication.</li>
+<li>Helmet.js for securing HTTP headers.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="sample-code"><strong>Sample Code</strong></h2>
+<h3 id="html-form"><strong>HTML Form</strong></h3>
+<pre class="hljs"><code><div><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/login"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"login-form"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"email"</span>&gt;</span>Email or Username:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"rememberMe"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"rememberMe"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"rememberMe"</span>&gt;</span>Remember Me<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Login<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/forgot-password"</span>&gt;</span>Forgot Password?<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<h3 id="backend-nodejs-with-express"><strong>Backend (Node.js with Express)</strong></h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> bcrypt = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bcrypt'</span>);
+<span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">'jsonwebtoken'</span>);
+
+<span class="hljs-comment">// POST /login</span>
+app.post(<span class="hljs-string">'/login'</span>, <span class="hljs-keyword">async</span> (req, res) =&gt; {
+  <span class="hljs-keyword">const</span> { email, password } = req.body;
+
+  <span class="hljs-comment">// Find user by email</span>
+  <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> User.findOne({ email });
+
+  <span class="hljs-keyword">if</span> (!user) {
+    <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).json({ <span class="hljs-attr">message</span>: <span class="hljs-string">'Invalid credentials'</span> });
+  }
+
+  <span class="hljs-comment">// Compare passwords</span>
+  <span class="hljs-keyword">const</span> isMatch = <span class="hljs-keyword">await</span> bcrypt.compare(password, user.password);
+  
+  <span class="hljs-keyword">if</span> (!isMatch) {
+    <span class="hljs-keyword">return</span> res.status(<span class="hljs-number">400</span>).json({ <span class="hljs-attr">message</span>: <span class="hljs-string">'Invalid credentials'</span> });
+  }
+
+  <span class="hljs-comment">// Generate JWT</span>
+  <span class="hljs-keyword">const</span> token = jwt.sign({ <span class="hljs-attr">id</span>: user._id }, process.env.JWT_SECRET, { <span class="hljs-attr">expiresIn</span>: <span class="hljs-string">'1h'</span> });
+
+  res.cookie(<span class="hljs-string">'token'</span>, token, { <span class="hljs-attr">httpOnly</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">secure</span>: <span class="hljs-literal">true</span> });
+  res.json({ <span class="hljs-attr">message</span>: <span class="hljs-string">'Login successful'</span> });
+});
+</div></code></pre>
+<hr>
+<h2 id="deployment"><strong>Deployment</strong></h2>
+<ol>
+<li>
+<p><strong>Environment Setup</strong>:</p>
+<ul>
+<li>Ensure Node.js/Django and the database are configured correctly in the development, staging, and production environments.</li>
+</ul>
+</li>
+<li>
+<p><strong>CI/CD Pipeline</strong>:</p>
+<ul>
+<li>Automate the deployment using tools such as GitHub Actions or Jenkins.</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitoring</strong>:</p>
+<ul>
+<li>Set up monitoring tools such as Grafana or New Relic to track the login page's performance and errors in real time.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>The login page is a critical component of the application’s security and user experience. Proper attention to security features, form validation, and error handling will ensure a robust and user-friendly authentication system.</p>
+<hr>
+<p>Let me know if you need to adjust this document to fit specific project needs!</p>
+
+</body>
+</html>
